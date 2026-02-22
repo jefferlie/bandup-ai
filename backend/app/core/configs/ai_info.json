@@ -1,0 +1,94 @@
+{
+  "heroTitle": "AI Assistants for Learning",
+  "heroSubtitle": "Discover the power of AI in education. Personal AI assistants help you master subjects faster and more effectively.",
+  "features": [
+    {
+      "icon": "brain",
+      "title": "Artificial Intelligence",
+      "description": "Our AI assistants use machine learning to deliver personalized guidance."
+    },
+    {
+      "icon": "zap",
+      "title": "Instant Answers",
+      "description": "Get detailed explanations and solutions in real time, 24/7."
+    },
+    {
+      "icon": "target",
+      "title": "Personalized Approach",
+      "description": "AI adapts to your level and learning style."
+    },
+    {
+      "icon": "shield",
+      "title": "Data Security",
+      "description": "Your data is protected and not shared with third parties."
+    }
+  ],
+  "benefits": [
+    {
+      "icon": "🎯",
+      "title": "Accurate Answers",
+      "description": "AI analyzes your question and returns relevant responses"
+    },
+    {
+      "icon": "📚",
+      "title": "Broad Knowledge",
+      "description": "Access a large knowledge base across multiple subjects"
+    },
+    {
+      "icon": "⏰",
+      "title": "Time Saving",
+      "description": "Get answers instantly"
+    },
+    {
+      "icon": "🔄",
+      "title": "Continuous Improvement",
+      "description": "AI keeps improving and updating its knowledge"
+    }
+  ],
+  "subjects": [
+    {
+      "name": "Writing",
+      "description": "Improve writing skills with AI assistance",
+      "icon": "✍️",
+      "features": [
+        "Grammar",
+        "Style",
+        "Text Structure",
+        "Error Checking"
+      ]
+    },
+    {
+      "name": "Speaking",
+      "description": "Develop speaking skills with an AI coach",
+      "icon": "🗣️",
+      "features": [
+        "Pronunciation",
+        "Confidence",
+        "Dialogues",
+        "Speaking Practice"
+      ]
+    },
+    {
+      "name": "Math",
+      "description": "Solve problems with step-by-step explanations",
+      "icon": "📊",
+      "features": [
+        "Algebra",
+        "Geometry",
+        "Trigonometry",
+        "Step-by-step Solutions"
+      ]
+    },
+    {
+      "name": "Physics",
+      "description": "Understand laws of nature with AI support",
+      "icon": "⚛️",
+      "features": [
+        "Mechanics",
+        "Electrodynamics",
+        "Optics",
+        "Quantum Physics"
+      ]
+    }
+  ]
+}

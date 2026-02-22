@@ -1,0 +1,221 @@
+{
+  "destination": {
+    "id": "r1-part3",
+    "title": "Cambridge IELTS 20 Test 1 — Passage 3",
+    "subtitle": "Academic • A new role for livestock guard dogs",
+    "type": "Paragraph Matching + Summary Completion",
+    "badges": [
+      {
+        "label": "Academic",
+        "bg": "bg-blue-100 dark:bg-blue-900/30",
+        "text": "text-blue-800 dark:text-blue-300"
+      },
+      {
+        "label": "One Passage (20 mins)",
+        "bg": "bg-green-100 dark:bg-green-900/30",
+        "text": "text-green-800 dark:text-green-300"
+      }
+    ]
+  },
+  "test": {
+    "testId": "r1-part3",
+    "title": "Cambridge IELTS 20 Test 1 — Reading Passage 3",
+    "instruction": "Part 3 of 3 · A new role for livestock guard dogs",
+    "durationSeconds": 1200,
+    "passageTitle": "A new role for livestock guard dogs",
+    "passageSubtitle": "Livestock guard dogs, traditionally used to protect farm animals from predators, are now being used to protect the predators themselves",
+    "passageSections": [
+      {
+        "id": "A",
+        "heading": "A",
+        "text": "For thousands of years, livestock guard dogs worked alongside shepherds to protect their sheep, goats and cattle from predators such as wolves and bears. But in the 19th and 20th centuries, when such predators were largely exterminated, most guard dogs lost their jobs. In recent years, however, as increased efforts have been made to protect wild animals, predators have become more widespread again. As a result, farmers once more need to protect their livestock, and guard dogs are enjoying an unexpected revival."
+      },
+      {
+        "id": "B",
+        "heading": "B",
+        "text": "Today there are around 50 breeds of guard dogs on duty in various parts of the world. [[31:These dogs are raised from an early age with the animals they will be watching and eventually these animals become the dog's family.]] The dogs will place themselves between the livestock and any threat, barking loudly. If necessary, they will chase away predators, but [[29:often their mere presence is sufficient.]] [[36:'Their initial training is to make them understand that livestock is going to be their life,' says Dan Macon, a shepherd with three guard dogs.]] 'A fluffy white puppy is fun to be around, but too much human affection makes it a great dog for guarding the front porch, rather than a great livestock guard dog.'"
+      },
+      {
+        "id": "C",
+        "heading": "C",
+        "text": "The evidence indicates that guard dogs are highly effective. For example, in Portugal, biologist Silvia Ribeiro has found that more than 90 per cent of the farmers participating in a programme to train and use guard dogs to protect their herds against attack from wolves [[30:rate the performance of the dogs as very good or excellent.]] In a study carried out in Australia by Linda van Bommel and Chris Johnson at the University of Tasmania, more than 65 per cent of herders reported that predation stopped completely after they got the dogs, and almost all the rest saw a decrease in attacks. [[35:'If they are managed and used properly, livestock guard dogs are the most efficient control method that we have in terms of the amount of livestock that they save from predation,' says van Bommel.]]"
+      },
+      {
+        "id": "D",
+        "heading": "D",
+        "text": "But today's guard dogs also have a new role – to help preserve the predators. It is hoped that reductions in livestock losses can make farmers more tolerant of predators and less likely to kill them. In Namibia, more than 90 per cent of cheetahs live outside protected areas, close to humans raising livestock. As a result, the cheetahs are often held responsible for animal losses, and large numbers have been killed by farmers. When guard dogs were introduced, more than 90 per cent of farmers reported a dramatic reduction in livestock losses, and [[27:said that as a result they were less likely to kill predators.]] Julie Young, at Utah State University in the US, believes this result applies widely. [[32:\"There is common ground from the livestock perspective and from the conservation perspective,' she says. 'If ranchers don't have a dead cow, they will not make a call to apply for a permit to kill a wolf.']]"
+      },
+      {
+        "id": "E",
+        "heading": "E",
+        "text": "Looking at all the published evidence, Bethany Smith at Nottingham Trent University in the UK found that up to 88 per cent of farmers said they no longer killed predators after using dogs – but [[33:warned that such self-reported results must be taken with a pinch of salt.]] What's more, it is possible that livestock guard dogs merely displace predators to unprotected neighbouring properties, where their fate isn't recorded. 'In some regions, we work with almost every farmer, but in others only one or two have dogs,' says Ribeiro. [[34:'If we are not working with everybody, we are transferring the wolf pressure to the neighbour's herd and he can use poison and kill an entire pack of wolves.']]"
+      },
+      {
+        "id": "F",
+        "heading": "F",
+        "text": "Another concern is whether there may be unintended ecological effects of using guard dogs. Studies suggest that reducing deaths of one type of predator may have a negative impact on other species. The extent of this problem isn't known, but the consequences are clear in Namibia. Cheetahs aren't the only species that cause sheep and goat losses there: other predators also attack livestock. In 2015, researchers reported that in spite of the impact farmers obtaining guard dogs had on cheetahs, [[37:the number of jackals killed by dogs and people actually increased.]] Guard dogs have other ecological impacts too. [[38:They have been found to spread diseases to wild animals, including endangered Ethiopian wolves.]] [[39:They may also compete with other carnivores for food.]] And by creating a 'landscape of fear', their mere presence can influence the behaviour of prey animals."
+      },
+      {
+        "id": "G",
+        "heading": "G",
+        "text": "The evidence so far, however, indicates that these consequences aren't always negative. Guard dogs can deliver unexpected benefits by protecting vulnerable wildlife from predators. For example, [[40:their presence has been found to protect birds which build their nests on the ground in fields, where foxes would normally raid them.]] Indeed, Australian researchers are now using dogs to enhance biodiversity and create refuges for species threatened by predation. So if we can get this right, there may be a bright future for guard dogs in [[28:promoting harmonious coexistence between humans and wildlife.]]"
+      }
+    ],
+    "questions": [
+      {
+        "id": "q27",
+        "prompt": "Q27. Which paragraph contains: An example of how one predator has been protected by the introduction of livestock guard dogs",
+        "type": "single-choice",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G"
+        ]
+      },
+      {
+        "id": "q28",
+        "prompt": "Q28. Which paragraph contains: An optimistic suggestion about the possible positive developments in the use of livestock guard dogs",
+        "type": "single-choice",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G"
+        ]
+      },
+      {
+        "id": "q29",
+        "prompt": "Q29. Which paragraph contains: A description of how the methods used by livestock guard dogs help to keep predators away",
+        "type": "single-choice",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G"
+        ]
+      },
+      {
+        "id": "q30",
+        "prompt": "Q30. Which paragraph contains: Claims by different academics that the use of livestock guard dogs is a successful way of protecting farmers' herds",
+        "type": "single-choice",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G"
+        ]
+      },
+      {
+        "id": "q31",
+        "prompt": "Q31. Which paragraph contains: A reference to how livestock guard dogs gain their skills",
+        "type": "single-choice",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E",
+          "F",
+          "G"
+        ]
+      },
+      {
+        "id": "q32",
+        "prompt": "Q32. The use of guard dogs may save the lives of both livestock and wild animals.\nList of People: A. Dan Macon  B. Silvia Ribeiro  C. Linda van Bommel  D. Julie Young  E. Bethany Smith",
+        "type": "single-choice",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ]
+      },
+      {
+        "id": "q33",
+        "prompt": "Q33. Claims of a change in behaviour from those using livestock guard dogs may not be totally accurate.\nList of People: A. Dan Macon  B. Silvia Ribeiro  C. Linda van Bommel  D. Julie Young  E. Bethany Smith",
+        "type": "single-choice",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ]
+      },
+      {
+        "id": "q34",
+        "prompt": "Q34. There may be negative results if the use of livestock guard dogs is not sufficiently widespread.\nList of People: A. Dan Macon  B. Silvia Ribeiro  C. Linda van Bommel  D. Julie Young  E. Bethany Smith",
+        "type": "single-choice",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ]
+      },
+      {
+        "id": "q35",
+        "prompt": "Q35. Livestock guard dogs are the best way of protecting farm animals, as long as the dogs are appropriately handled.\nList of People: A. Dan Macon  B. Silvia Ribeiro  C. Linda van Bommel  D. Julie Young  E. Bethany Smith",
+        "type": "single-choice",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ]
+      },
+      {
+        "id": "q36",
+        "prompt": "Q36. Teaching a livestock guard dog how to do its work needs a different focus from teaching a house guard dog.\nList of People: A. Dan Macon  B. Silvia Ribeiro  C. Linda van Bommel  D. Julie Young  E. Bethany Smith",
+        "type": "single-choice",
+        "options": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ]
+      },
+      {
+        "id": "q37",
+        "prompt": "Q37. Unintended Ecological Effects summary: This has led to a rise in the deaths of other predators, particularly ______",
+        "type": "short-text",
+        "placeholder": "ONE WORD ONLY"
+      },
+      {
+        "id": "q38",
+        "prompt": "Q38. Unintended Ecological Effects summary: It has been suggested that the dogs could have ______ which may affect other species",
+        "type": "short-text",
+        "placeholder": "ONE WORD ONLY"
+      },
+      {
+        "id": "q39",
+        "prompt": "Q39. Unintended Ecological Effects summary: The dogs may reduce the amount of ______ available to certain wild animals",
+        "type": "short-text",
+        "placeholder": "ONE WORD ONLY"
+      },
+      {
+        "id": "q40",
+        "prompt": "Q40. Unintended Ecological Effects summary: These dogs may help birds by protecting their nests. These might otherwise be threatened by predators such as ______",
+        "type": "short-text",
+        "placeholder": "ONE WORD ONLY"
+      }
+    ]
+  }
+}

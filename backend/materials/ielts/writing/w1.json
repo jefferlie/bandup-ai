@@ -1,0 +1,30 @@
+{
+    "testId": "w1",
+    "title": "Cambridge IELTS Practice Writing",
+    "instruction": "Write Task 1 and Task 2 answers",
+    "durationSeconds": 3600,
+    "tasks": [
+        {
+            "id": "task1",
+            "title": "Task 1",
+            "desc": "Diagram Description",
+            "promptTitle": "Diagram Report",
+            "question": "You should spend about 20 minutes on this task. Write at least 150 words.\n\nThe diagram below shows how fabric is manufactured from bamboo. Summarise the information by selecting and reporting the main features, and make comparisons where relevant.",
+            "minWords": 150,
+            "imageUrl": "http://127.0.0.1:5000/materials/ielts/writing/images/w1_task1.png"
+        },
+        {
+            "id": "task2",
+            "title": "Task 2",
+            "desc": "Essay",
+            "promptTitle": "Essay Response",
+            "question": "You should spend about 40 minutes on this task. Write at least 250 words. Write about the following topic:\n\nMany aspects of the way people dress today are influenced by global fashion trends. How has global fashion become such a strong influence on people's lives? Do you think this is a positive or negative development? Give reasons for your answer and include any relevant examples from your own knowledge or experience.",
+            "minWords": 250
+        }
+    ],
+    "tips": [
+        "Plan your answer before you start writing.",
+        "Ensure you meet the minimum word count (150 for Task 1; 250 for Task 2).",
+        "Allocate 20 minutes for Task 1 and 40 minutes for Task 2."
+    ]
+}

@@ -1,0 +1,103 @@
+{
+    "attemptId": "",
+    "testId": "s1",
+    "title": "Cambridge IELTS 20 Academic Speaking Test 4",
+    "instruction": "This is a full IELTS Speaking Mock Test. Record your answer for each question and submit when ready.",
+    "durationSeconds": 900,
+    "tasks": [
+        {
+            "id": "q1",
+            "part": 1,
+            "title": "Part 1 - Question 1",
+            "question": "What do you think your best personal qualities are? [Why?]",
+            "prepSeconds": 0,
+            "speakSeconds": 30
+        },
+        {
+            "id": "q2",
+            "part": 1,
+            "title": "Part 1 - Question 2",
+            "question": "Do you have the same personal qualities as your parents? [Why/Why not?]",
+            "prepSeconds": 0,
+            "speakSeconds": 30
+        },
+        {
+            "id": "q3",
+            "part": 1,
+            "title": "Part 1 - Question 3",
+            "question": "What personal qualities are important to you in a friend? [Why?]",
+            "prepSeconds": 0,
+            "speakSeconds": 30
+        },
+        {
+            "id": "q4",
+            "part": 1,
+            "title": "Part 1 - Question 4",
+            "question": "Do you think you have the personal qualities to be a good/successful leader? [Why/Why not?]",
+            "prepSeconds": 0,
+            "speakSeconds": 30
+        },
+        {
+            "id": "q5",
+            "part": 2,
+            "title": "Part 2 - Cue Card (Question 5)",
+            "question": "Describe a time when you had a long discussion about a news story.\n\nYou should say:\n- what the news story was about\n- who you discussed this news story with\n- what people's opinions were and explain why you had such a long discussion about this news story.",
+            "prepSeconds": 60,
+            "speakSeconds": 120
+        },
+        {
+            "id": "q6",
+            "part": 3,
+            "title": "Part 3 - Question 6",
+            "question": "How do most people find out about the news in your country?",
+            "prepSeconds": 0,
+            "speakSeconds": 60
+        },
+        {
+            "id": "q7",
+            "part": 3,
+            "title": "Part 3 - Question 7",
+            "question": "Are people more interested in local news than national news?",
+            "prepSeconds": 0,
+            "speakSeconds": 60
+        },
+        {
+            "id": "q8",
+            "part": 3,
+            "title": "Part 3 - Question 8",
+            "question": "How important is it to know about international news?",
+            "prepSeconds": 0,
+            "speakSeconds": 60
+        },
+        {
+            "id": "q9",
+            "part": 3,
+            "title": "Part 3 - Question 9",
+            "question": "Why are discussion programmes involving members of the public popular on [TV and radio]?",
+            "prepSeconds": 0,
+            "speakSeconds": 60
+        },
+        {
+            "id": "q10",
+            "part": 3,
+            "title": "Part 3 - Question 10",
+            "question": "What kinds of people want to take part in discussion programmes?",
+            "prepSeconds": 0,
+            "speakSeconds": 60
+        },
+        {
+            "id": "q11",
+            "part": 3,
+            "title": "Part 3 - Question 11",
+            "question": "Do discussion programmes influence people in a good or bad way?",
+            "prepSeconds": 0,
+            "speakSeconds": 60
+        }
+    ],
+    "tips": [
+        "Speak naturally and clearly.",
+        "Try to expand your answers, especially in Part 3.",
+        "Use your 1 minute preparation time in Part 2 wisely to make notes.",
+        "Do not worry if the examiner interrupts you - this is normal."
+    ]
+}

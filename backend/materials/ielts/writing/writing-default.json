@@ -1,0 +1,18 @@
+{
+  "attemptId": "att_w_001",
+  "testId": "w1",
+  "title": "Writing Practice Test",
+  "instruction": "Write Task 1 and Task 2 answers",
+  "durationSeconds": 3600,
+  "tasks": [
+    {
+      "id": "task1",
+      "title": "Task 1",
+      "desc": "Graph Description",
+      "promptTitle": "Line graph report",
+      "question": "Task text...",
+      "minWords": 150
+    }
+  ],
+  "tips": ["Tip 1", "Tip 2"]
+}

@@ -1,0 +1,10 @@
+.DS_Store
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+backend.db
+__MACOSX/
+__IOSX/
+

@@ -1,0 +1,57 @@
+{
+  "heroTitle": "BandUp",
+  "heroSubtitle": "Your personal AI assistant for Writing, Speaking, Math, and Physics. Get personalized learning support 24/7.",
+  "whyBandUp": [
+    {
+      "icon": "target",
+      "title": "Personalized Approach",
+      "description": "AI adapts to your level and learning goals"
+    },
+    {
+      "icon": "clock",
+      "title": "Available 24/7",
+      "description": "Learn anytime, anywhere without limitations"
+    },
+    {
+      "icon": "shield",
+      "title": "Security & Privacy",
+      "description": "Your data is protected and never shared with third parties"
+    }
+  ],
+  "features": [
+    {
+      "icon": "book",
+      "title": "Writing",
+      "description": "Improve writing with personalized feedback and guided exercises"
+    },
+    {
+      "icon": "users",
+      "title": "Speaking",
+      "description": "Build speaking confidence through interactive dialogue practice"
+    },
+    {
+      "icon": "zap",
+      "title": "Math",
+      "description": "Solve math problems with clear step-by-step explanations"
+    },
+    {
+      "icon": "atom",
+      "title": "Physics",
+      "description": "Learn physics from mechanics to quantum concepts with AI support"
+    }
+  ],
+  "howItWorks": [
+    {
+      "title": "Choose a Subject",
+      "description": "Pick Writing, Speaking, Math, or Physics and get started"
+    },
+    {
+      "title": "Talk to AI",
+      "description": "Ask questions and receive personalized answers"
+    },
+    {
+      "title": "Track Progress",
+      "description": "Monitor your growth and improvements in real time"
+    }
+  ]
+}
