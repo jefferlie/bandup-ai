@@ -4,14 +4,16 @@ from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
 from api import *
+from api.payments.payments import router as payments_router
+from api.admin.admin import router as admin_router
 from core.config import IS_ON_PROD
 
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],          # or ["https://myfrontend.com"]
-    allow_methods=["GET", "POST", "OPTIONS", "PUT", "PATCH", "DELETE"],  # include OPTIONS
+    allow_origins=["*"],
+    allow_methods=["GET", "POST", "OPTIONS", "PUT", "PATCH", "DELETE"],
     allow_headers=["*"],
     expose_headers=[],
     max_age=600,
@@ -26,7 +28,10 @@ app.include_router(content_router)
 app.include_router(practice_router)
 app.include_router(ai_router)
 app.include_router(schedule_router)
+app.include_router(payments_router)
+app.include_router(admin_router)
 from pathlib import Path
+
 materials_path = Path(__file__).parent.parent / "materials"
 app.mount("/materials", StaticFiles(directory=materials_path), name="materials")
 

@@ -43,7 +43,9 @@ def _to_bool(value, fallback: bool) -> bool:
     return fallback
 
 
-def _to_int(value, minimum: int, maximum: int, fallback: int | None = None) -> int | None:
+def _to_int(
+    value, minimum: int, maximum: int, fallback: int | None = None
+) -> int | None:
     if value in (None, ""):
         return fallback
     try:
@@ -178,20 +180,26 @@ def normalize_user_settings_payload(
     if not isinstance(payload, dict):
         return base
 
-    profile = payload.get("profile", {}) if isinstance(payload.get("profile"), dict) else {}
+    profile = (
+        payload.get("profile", {}) if isinstance(payload.get("profile"), dict) else {}
+    )
     study = (
         payload.get("studyPreferences", {})
         if isinstance(payload.get("studyPreferences"), dict)
         else {}
     )
-    security = payload.get("security", {}) if isinstance(payload.get("security"), dict) else {}
+    security = (
+        payload.get("security", {}) if isinstance(payload.get("security"), dict) else {}
+    )
     notifications = (
         payload.get("notifications", {})
         if isinstance(payload.get("notifications"), dict)
         else {}
     )
 
-    primary_exam = _to_primary_exam(study.get("primaryExam"), base["studyPreferences"]["primaryExam"])
+    primary_exam = _to_primary_exam(
+        study.get("primaryExam"), base["studyPreferences"]["primaryExam"]
+    )
     target_sat_score = _to_int(study.get("targetSatScore"), 400, 1600, None)
     focus_skills = (
         _to_focus_skills(study.get("focusSkills"))
@@ -275,7 +283,9 @@ class Users_DB:
         """Get or create a connection pool (safe to call multiple times)."""
         try:
             if self._pool is None or self._pool._closed:
-                self._pool = await asyncpg.create_pool(dsn=self._dsn, min_size=2, max_size=10)
+                self._pool = await asyncpg.create_pool(
+                    dsn=self._dsn, min_size=2, max_size=10
+                )
                 async with self._pool.acquire() as conn:
                     await conn.execute("""
                         CREATE TABLE IF NOT EXISTS users(
@@ -324,6 +334,36 @@ class Users_DB:
                         CREATE INDEX IF NOT EXISTS idx_schedule_sessions_user_date
                         ON schedule_sessions(user_id, session_date, start_time);
                     """)
+                    await conn.execute("""
+                        CREATE TABLE IF NOT EXISTS subscriptions (
+                            id SERIAL PRIMARY KEY,
+                            user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+                            stripe_customer_id VARCHAR(128),
+                            stripe_subscription_id VARCHAR(128) UNIQUE,
+                            stripe_price_id VARCHAR(128),
+                            status VARCHAR(32) NOT NULL DEFAULT 'inactive',
+                            current_period_start TIMESTAMP,
+                            current_period_end TIMESTAMP,
+                            cancel_at_period_end BOOLEAN DEFAULT FALSE,
+                            created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+                            updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+                        );
+                    """)
+                    await conn.execute("""
+                        CREATE TABLE IF NOT EXISTS payments (
+                            id SERIAL PRIMARY KEY,
+                            user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+                            stripe_payment_intent_id VARCHAR(128) UNIQUE,
+                            stripe_charge_id VARCHAR(128),
+                            amount INTEGER NOT NULL,
+                            currency VARCHAR(3) NOT NULL DEFAULT 'usd',
+                            status VARCHAR(32) NOT NULL DEFAULT 'pending',
+                            payment_type VARCHAR(32) NOT NULL DEFAULT 'one_time',
+                            description TEXT,
+                            created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+                            updated_at TIMESTAMP NOT NULL DEFAULT NOW()
+                        );
+                    """)
             return 0
 
         except Exception as ex:
@@ -345,16 +385,23 @@ class Users_DB:
     ):
         try:
             async with self._pool.acquire() as conn:
-                is_user_exists = await conn.fetchval("SELECT EXISTS (SELECT 1 FROM users WHERE email = $1)", email)
+                is_user_exists = await conn.fetchval(
+                    "SELECT EXISTS (SELECT 1 FROM users WHERE email = $1)", email
+                )
 
                 if is_user_exists:
                     raise UserExistsException(email)
 
-                row = await conn.fetchrow("""
+                row = await conn.fetchrow(
+                    """
                                     INSERT INTO users (full_name, password_hash, email) 
                                     VALUES ($1, $2, $3)
                                     RETURNING id, full_name, password_hash, email, role, is_admin, created_at
-                                    """, name, password, email)
+                                    """,
+                    name,
+                    password,
+                    email,
+                )
 
                 default_settings = build_default_user_settings(name, email, onboarding)
                 await conn.execute(
@@ -368,8 +415,14 @@ class Users_DB:
                     json.dumps(default_settings),
                 )
 
-                return UserModel(name=row['full_name'], password=row['password_hash'], email=row['email'], \
-                        role=row['role'], is_admin=row['is_admin'], created_at=row['created_at'])
+                return UserModel(
+                    name=row["full_name"],
+                    password=row["password_hash"],
+                    email=row["email"],
+                    role=row["role"],
+                    is_admin=row["is_admin"],
+                    created_at=row["created_at"],
+                )
 
         except UserExistsException as ex:
             logger.info(ex)
@@ -382,14 +435,18 @@ class Users_DB:
     async def get_user_from_email(self, email: str):
         try:
             async with self._pool.acquire() as conn:
-                result = await conn.fetchrow("SELECT * FROM users WHERE email = $1", email)
+                result = await conn.fetchrow(
+                    "SELECT * FROM users WHERE email = $1", email
+                )
                 return result
 
         except Exception as ex:
             logger.error(ex)
             return None
 
-    async def get_user_settings(self, user_id: int, fallback_name: str, fallback_email: str):
+    async def get_user_settings(
+        self, user_id: int, fallback_name: str, fallback_email: str
+    ):
         try:
             async with self._pool.acquire() as conn:
                 row = await conn.fetchrow(
@@ -397,7 +454,9 @@ class Users_DB:
                     user_id,
                 )
                 if not row:
-                    settings = build_default_user_settings(fallback_name, fallback_email)
+                    settings = build_default_user_settings(
+                        fallback_name, fallback_email
+                    )
                     await conn.execute(
                         """
                         INSERT INTO user_settings(user_id, settings_json, updated_at)
@@ -462,8 +521,15 @@ class Users_DB:
     async def add_attempt(self, attempt: AttemptModel):
         try:
             async with self._pool.acquire() as conn:
-                result = await conn.fetchrow("INSERT INTO attempts (attempt_id, user_id, mode, test_id, test_title)\
-                        VALUES ($1, $2, $3, $4, $5) RETURNING attempt_id", attempt.attempt_id, attempt.user_id, attempt.mode, attempt.test_id, attempt.test_title)
+                result = await conn.fetchrow(
+                    "INSERT INTO attempts (attempt_id, user_id, mode, test_id, test_title)\
+                        VALUES ($1, $2, $3, $4, $5) RETURNING attempt_id",
+                    attempt.attempt_id,
+                    attempt.user_id,
+                    attempt.mode,
+                    attempt.test_id,
+                    attempt.test_title,
+                )
                 return result
 
         except Exception as ex:
@@ -473,7 +539,9 @@ class Users_DB:
     async def get_attempt(self, attempt_id):
         try:
             async with self._pool.acquire() as conn:
-                result = await conn.fetchrow("SELECT * FROM attempts WHERE attempt_id=$1", attempt_id)
+                result = await conn.fetchrow(
+                    "SELECT * FROM attempts WHERE attempt_id=$1", attempt_id
+                )
                 return result
 
         except Exception as ex:
@@ -485,7 +553,7 @@ class Users_DB:
             async with self._pool.acquire() as conn:
                 result = await conn.fetch(
                     "SELECT * FROM attempts WHERE mode=$1 AND status IS NOT NULL ORDER BY submitted_at DESC NULLS LAST",
-                    mode
+                    mode,
                 )
                 return result
 
@@ -496,19 +564,26 @@ class Users_DB:
     async def get_user_attempts(self, user_id: int):
         try:
             async with self._pool.acquire() as conn:
-                result = await conn.fetch("SELECT * FROM attempts WHERE user_id=$1 ORDER BY submitted_at DESC NULLS LAST", user_id)
+                result = await conn.fetch(
+                    "SELECT * FROM attempts WHERE user_id=$1 ORDER BY submitted_at DESC NULLS LAST",
+                    user_id,
+                )
                 return result
         except Exception as ex:
             logger.error(ex)
             return []
 
-
-    async def submit_attempt(self, attempt_id: str, score_label: str, status: str = "submitted"):
+    async def submit_attempt(
+        self, attempt_id: str, score_label: str, status: str = "submitted"
+    ):
         try:
             async with self._pool.acquire() as conn:
                 await conn.execute(
                     "UPDATE attempts SET submitted_at = $1, score_label = $2, status = $3 WHERE attempt_id = $4",
-                    datetime.utcnow(), score_label, status, attempt_id
+                    datetime.utcnow(),
+                    score_label,
+                    status,
+                    attempt_id,
                 )
             return 0
 
@@ -527,7 +602,7 @@ class Users_DB:
                     WHERE user_id=$1
                     ORDER BY session_date ASC, start_time ASC
                     """,
-                    user_id
+                    user_id,
                 )
                 return result
         except Exception as ex:
@@ -538,7 +613,9 @@ class Users_DB:
         try:
             async with self._pool.acquire() as conn:
                 async with conn.transaction():
-                    await conn.execute("DELETE FROM schedule_sessions WHERE user_id=$1", user_id)
+                    await conn.execute(
+                        "DELETE FROM schedule_sessions WHERE user_id=$1", user_id
+                    )
 
                     if sessions:
                         await conn.executemany(
@@ -621,7 +698,9 @@ class Users_DB:
             logger.error(ex)
             return None
 
-    async def update_schedule_session(self, user_id: int, session_id: str, session: dict):
+    async def update_schedule_session(
+        self, user_id: int, session_id: str, session: dict
+    ):
         try:
             async with self._pool.acquire() as conn:
                 result = await conn.fetchrow(
@@ -669,16 +748,175 @@ class Users_DB:
             logger.error(ex)
             return 0
 
+    async def get_subscription(self, user_id: int):
+        try:
+            async with self._pool.acquire() as conn:
+                result = await conn.fetchrow(
+                    "SELECT * FROM subscriptions WHERE user_id=$1",
+                    user_id,
+                )
+                return result
+        except Exception as ex:
+            logger.error(ex)
+            return None
+
+    async def upsert_subscription(
+        self,
+        user_id: int,
+        stripe_customer_id: str | None = None,
+        stripe_subscription_id: str | None = None,
+        stripe_price_id: str | None = None,
+        status: str = "inactive",
+        current_period_start=None,
+        current_period_end=None,
+        cancel_at_period_end: bool = False,
+    ):
+        try:
+            async with self._pool.acquire() as conn:
+                result = await conn.fetchrow(
+                    """
+                    INSERT INTO subscriptions (
+                        user_id, stripe_customer_id, stripe_subscription_id, stripe_price_id,
+                        status, current_period_start, current_period_end, cancel_at_period_end
+                    ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+                    ON CONFLICT (user_id) DO UPDATE SET
+                        stripe_customer_id = COALESCE(NULLIF($2, ''), subscriptions.stripe_customer_id),
+                        stripe_subscription_id = COALESCE(NULLIF($3, ''), subscriptions.stripe_subscription_id),
+                        stripe_price_id = COALESCE(NULLIF($4, ''), subscriptions.stripe_price_id),
+                        status = $5,
+                        current_period_start = COALESCE($6, subscriptions.current_period_start),
+                        current_period_end = COALESCE($7, subscriptions.current_period_end),
+                        cancel_at_period_end = $8,
+                        updated_at = NOW()
+                    RETURNING *
+                    """,
+                    user_id,
+                    stripe_customer_id,
+                    stripe_subscription_id,
+                    stripe_price_id,
+                    status,
+                    current_period_start,
+                    current_period_end,
+                    cancel_at_period_end,
+                )
+                return result
+        except Exception as ex:
+            logger.error(ex)
+            return None
+
+    async def get_user_payment_history(self, user_id: int):
+        try:
+            async with self._pool.acquire() as conn:
+                result = await conn.fetch(
+                    "SELECT * FROM payments WHERE user_id=$1 ORDER BY created_at DESC",
+                    user_id,
+                )
+                return result
+        except Exception as ex:
+            logger.error(ex)
+            return []
+
+    async def add_payment(
+        self,
+        user_id: int,
+        stripe_payment_intent_id: str,
+        amount: int,
+        currency: str = "usd",
+        status: str = "pending",
+        payment_type: str = "one_time",
+        description: str | None = None,
+    ):
+        try:
+            async with self._pool.acquire() as conn:
+                result = await conn.fetchrow(
+                    """
+                    INSERT INTO payments (
+                        user_id, stripe_payment_intent_id, amount, currency,
+                        status, payment_type, description
+                    ) VALUES ($1, $2, $3, $4, $5, $6, $7)
+                    RETURNING *
+                    """,
+                    user_id,
+                    stripe_payment_intent_id,
+                    amount,
+                    currency,
+                    status,
+                    payment_type,
+                    description,
+                )
+                return result
+        except Exception as ex:
+            logger.error(ex)
+            return None
+
+    async def update_payment(
+        self,
+        stripe_payment_intent_id: str,
+        status: str,
+        stripe_charge_id: str | None = None,
+    ):
+        try:
+            async with self._pool.acquire() as conn:
+                await conn.execute(
+                    "UPDATE payments SET status=$2, stripe_charge_id=$3, updated_at=NOW() WHERE stripe_payment_intent_id=$1",
+                    stripe_payment_intent_id,
+                    status,
+                    stripe_charge_id,
+                )
+                return 0
+        except Exception as ex:
+            logger.error(ex)
+            return 1
+
+    async def get_all_users(self, limit: int = 100, offset: int = 0):
+        try:
+            async with self._pool.acquire() as conn:
+                result = await conn.fetch(
+                    "SELECT id, full_name, email, role, is_admin, created_at FROM users ORDER BY created_at DESC LIMIT $1 OFFSET $2",
+                    limit,
+                    offset,
+                )
+                return result
+        except Exception as ex:
+            logger.error(ex)
+            return []
+
+    async def get_all_payments(self, limit: int = 100, offset: int = 0):
+        try:
+            async with self._pool.acquire() as conn:
+                result = await conn.fetch(
+                    "SELECT p.*, u.email, u.full_name FROM payments p JOIN users u ON p.user_id = u.id ORDER BY p.created_at DESC LIMIT $1 OFFSET $2",
+                    limit,
+                    offset,
+                )
+                return result
+        except Exception as ex:
+            logger.error(ex)
+            return []
+
+    async def get_all_subscriptions(self, limit: int = 100, offset: int = 0):
+        try:
+            async with self._pool.acquire() as conn:
+                result = await conn.fetch(
+                    "SELECT s.*, u.email, u.full_name FROM subscriptions s JOIN users u ON s.user_id = u.id ORDER BY s.created_at DESC LIMIT $1 OFFSET $2",
+                    limit,
+                    offset,
+                )
+                return result
+        except Exception as ex:
+            logger.error(ex)
+            return []
+
     async def close(self):
         """No-op for pool-based connections. Pool lives for the app lifetime."""
         pass
 
+
 async def main():
-    suers = Users_DB(
-            dsn=DSN
-)
+    suers = Users_DB(dsn=DSN)
     await suers.initialize()
     await suers.close()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     asyncio.run(main())
