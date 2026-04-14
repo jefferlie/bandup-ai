@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.env
+.venv/
+venv/
+*.log
+
+# Node
+band-buddy-connect/node_modules/
+band-buddy-connect/dist/
+band-buddy-connect/.env
+
+# macOS
+.DS_Store
+
+# uv
+.uv/

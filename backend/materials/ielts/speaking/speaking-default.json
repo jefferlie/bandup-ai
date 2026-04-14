@@ -1,0 +1,19 @@
+{
+  "attemptId": "att_s_001",
+  "testId": "s1",
+  "title": "Speaking Practice Test",
+  "instruction": "Prepare and answer each part",
+  "durationSeconds": 900,
+  "parts": [
+    {
+      "id": "part1",
+      "title": "Part 1",
+      "desc": "Introduction & Interview",
+      "prompt": "Tell me about your hometown.",
+      "bulletPoints": ["point 1", "point 2"],
+      "prepSeconds": 30,
+      "speakSeconds": 90
+    }
+  ],
+  "tips": ["Tip 1", "Tip 2"]
+}

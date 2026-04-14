@@ -1,0 +1,95 @@
+{
+  "destination": {
+    "id": "l1-part1",
+    "title": "Cambridge IELTS 20 Test 4",
+    "subtitle": "Part 1",
+    "type": "Part 1",
+    "badges": [
+      {
+        "label": "Academic",
+        "bg": "bg-blue-100 dark:bg-blue-900/30",
+        "text": "text-blue-800 dark:text-blue-300"
+      },
+      {
+        "label": "Full Test (40 mins)",
+        "bg": "bg-green-100 dark:bg-green-900/30",
+        "text": "text-green-800 dark:text-green-300"
+      }
+    ]
+  },
+  "test": {
+    "attemptId": "att_l_001",
+    "testId": "l1-part1",
+    "title": "Cambridge IELTS 20 Academic Listening Test 4 (Part 1)",
+    "instruction": "Listen and answer Part 1 questions.",
+    "durationSeconds": 600,
+    "audioUrl": "http://127.0.0.1:5000/materials/ielts/listening/audio/cambridge-ielts-20-academic-listening-test-4/part1.mp3",
+    "audioDurationLabel": "10:00",
+    "notesTitle": "Listening Part 1",
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "1. What is the name of the agency?",
+        "type": "short-text",
+        "placeholder": "ONE WORD"
+      },
+      {
+        "id": "q2",
+        "prompt": "2. What is the reference number?",
+        "type": "short-text",
+        "placeholder": "A NUMBER"
+      },
+      {
+        "id": "q3",
+        "prompt": "3. Which day of the week?",
+        "type": "short-text",
+        "placeholder": "DAY"
+      },
+      {
+        "id": "q4",
+        "prompt": "4. What is the requested accommodation type?",
+        "type": "short-text",
+        "placeholder": "ONE WORD"
+      },
+      {
+        "id": "q5",
+        "prompt": "5. What is the maximum budget?",
+        "type": "short-text",
+        "placeholder": "AMOUNT"
+      },
+      {
+        "id": "q6",
+        "prompt": "6. Location preference 1",
+        "type": "short-text",
+        "placeholder": "ONE WORD"
+      },
+      {
+        "id": "q7",
+        "prompt": "7. Location preference 2",
+        "type": "short-text",
+        "placeholder": "ONE WORD"
+      },
+      {
+        "id": "q8",
+        "prompt": "8. Required facility",
+        "type": "short-text",
+        "placeholder": "ONE WORD"
+      },
+      {
+        "id": "q9",
+        "prompt": "9. Parking requirements",
+        "type": "short-text",
+        "placeholder": "ONE WORD"
+      },
+      {
+        "id": "q10",
+        "prompt": "10. Move-in date",
+        "type": "short-text",
+        "placeholder": "DATE"
+      }
+    ],
+    "transcripts": {
+      "1": "MAN Sandra, I seem to remember you had some family visitors staying with you recently\n\nWOMAN Yeah that right. My brother and his family were here a couple of months ago.\n\nMAN OK, good. Well, I wanted to ask for your advice. I got my cousin and her family visiting next month and as I don’t have kids, I’ve no idea where to take them.\n\nWOMAN Right. What about accommodation? Are they going to stay with you in your flat?\n\nMAN No, thankfully. There wouldn’t be room. My cousin wants me to recommend a hotel. Do you know anywhere?\n\nWOMAN Yes, I do actually. [[1:I always recommend people stay at the King’s Hotel.]]\n\nMAN Where’s that near?\n\nWOMAN It’s about a five minutes walk from Murray Station, so nice and central. It’s actually on George Street.\n\nMAN Oh yes, I know.\n\nWOMAN I think they’re on quite a tight budget, so how much roughly is it to stay there? If you book a family room, [[2:it’s about £125 per night]]. My brother paid for two double rooms in the end, and I think that was around £95 for each room.\n\nMAN Oh, that’s not too bad.\n\nWOMAN So how old are your cousins’ kids?\n\nMAN Twelve and nine. So I want to organise some trips while they’re here. I was thinking of doing a bus tour of the city centre, as none of them have been here before.\n\nWOMAN Those bus tours are quite expensive. I think it’s better to do a walking tour. [[3:It gives you a much better feel for the city]]. There’s one that starts from Colton Square. It takes a couple of hours and doesn’t cost that much.\n\nMAN Sounds good. I’ll look that up. Thanks.\n\nWOMAN If the weather’s nice, one thing you could do is visit the old fort. [[4:You could get there by boat]]. The whole trip takes half a day.\n\nMAN That’s a really good idea. I’d like to do that myself. And if the weather bad I was thinking they could go to the science museum. But maybe they could do that when I’m at work.\n\nWOMAN Yeah don’t forget it closed on Mondays\n\nMAN They’re here from Saturday for four nights so [[5:Tuesday would be best I think]]\n\nWOMAN And it won’t be so crowded then. Saturdays are terrible. I took my kids to the exhibition on old computers there and it was far too crowded. I wanted to go back but it’s finished now.\n\nMAN That’s a shame. My cousin’s kids would have enjoyed that.\n\nWOMAN There’s another one [[6:starting soon on space, which looks really good too]].\n\nMAN OK, well, I’ll mention that to my cousin.\n\n————————\n\nWOMAN Have you thought about where to take them to eat?\n\nMAN Well, I really like all the food stalls at Clacton Market. My cousin’s vegetarian. I know it’s [[7:one of the best places for that kind of food]].\n\nWOMAN Definitely, and there’ll be loads of choices for the kids too. You need to get there quite early, though. At the weekend, most of the stores [[8:stop serving lunch at 2.30]].\n\nMAN Good point. It’s all going to need careful planning. My cousin said she’d love to take the kids to a show at the theatre, but tickets are so expensive.\n\nWOMAN I know. But you can get some good deals if you book online with bargainedtickets.com for the following day. On some seats there [[9:a 75% discount]]\n\nMAN Really. I must try and get some\n\nWOMAN Yeah There are lots of things you can do for free as well. No need to spend a fortune.\n\nMAN Like what?\n\nWOMAN They’re coming next month, right? Well, check and see if it’s the same weekend as the Roots Music Festival in Blakewell Gardens.\n\nMAN R-O-O-T-S?\n\nWOMAN Yeah, check it out online. It’s always a family-friendly event and there’s no entry charge.\n\nMAN That sounds perfect.\n\nWOMAN And if you’re in Blakewell Gardens, climb Telegraph Hill. You’ll be able to [[10:look right down on the port]]. Everyone’s always really impressed because it’s so huge.\n\nMAN Oh yeah, I’ve been meaning to do that for ages. I’ve heard the view’s amazing.\n\nWOMAN Yeah, it’s really worth the effort.\n\nMAN Well, that’s given me loads of ideas. Thanks so much."
+    }
+  }
+}

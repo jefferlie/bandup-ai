@@ -1,0 +1,278 @@
+{
+  "destination": {
+    "id": "l1",
+    "title": "Cambridge IELTS 20 Test 4",
+    "subtitle": "Academic • Listening",
+    "type": "Full Test",
+    "badges": [
+      {
+        "label": "Academic",
+        "bg": "bg-blue-100 dark:bg-blue-900/30",
+        "text": "text-blue-800 dark:text-blue-300"
+      },
+      {
+        "label": "Full Test (40 mins)",
+        "bg": "bg-green-100 dark:bg-green-900/30",
+        "text": "text-green-800 dark:text-green-300"
+      }
+    ]
+  },
+  "test": {
+    "attemptId": "att_l_001",
+    "testId": "l1",
+    "title": "Cambridge IELTS 20 Academic Listening Test 4",
+    "instruction": "Listen and answer the questions. All questions require a short text answer.",
+    "durationSeconds": 2400,
+    "audioUrl": "http://127.0.0.1:5000/materials/ielts/listening/audio/cambridge-ielts-20-academic-listening-test-4/part1.mp3",
+    "audioDurationLabel": "8:20",
+    "notesTitle": "Listening Sections 1-4",
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "1. What is the name of the agency?",
+        "type": "short-text",
+        "placeholder": "ONE WORD"
+      },
+      {
+        "id": "q2",
+        "prompt": "2. What is the reference number?",
+        "type": "short-text",
+        "placeholder": "A NUMBER"
+      },
+      {
+        "id": "q3",
+        "prompt": "3. Which day of the week?",
+        "type": "short-text",
+        "placeholder": "DAY"
+      },
+      {
+        "id": "q4",
+        "prompt": "4. What is the requested accommodation type?",
+        "type": "short-text",
+        "placeholder": "ONE WORD"
+      },
+      {
+        "id": "q5",
+        "prompt": "5. What is the maximum budget?",
+        "type": "short-text",
+        "placeholder": "AMOUNT"
+      },
+      {
+        "id": "q6",
+        "prompt": "6. Location preference 1",
+        "type": "short-text",
+        "placeholder": "ONE WORD"
+      },
+      {
+        "id": "q7",
+        "prompt": "7. Location preference 2",
+        "type": "short-text",
+        "placeholder": "ONE WORD"
+      },
+      {
+        "id": "q8",
+        "prompt": "8. Required facility",
+        "type": "short-text",
+        "placeholder": "ONE WORD"
+      },
+      {
+        "id": "q9",
+        "prompt": "9. Parking requirements",
+        "type": "short-text",
+        "placeholder": "ONE WORD"
+      },
+      {
+        "id": "q10",
+        "prompt": "10. Move-in date",
+        "type": "short-text",
+        "placeholder": "DATE"
+      },
+      {
+        "id": "q11",
+        "prompt": "11. Stadium visit with children (choose TWO)",
+        "type": "short-text",
+        "placeholder": "A-E"
+      },
+      {
+        "id": "q12",
+        "prompt": "12. Stadium visit with children (choose TWO)",
+        "type": "short-text",
+        "placeholder": "A-E"
+      },
+      {
+        "id": "q13",
+        "prompt": "13. New features of stadium tour (choose TWO)",
+        "type": "short-text",
+        "placeholder": "A-E"
+      },
+      {
+        "id": "q14",
+        "prompt": "14. New features of stadium tour (choose TWO)",
+        "type": "short-text",
+        "placeholder": "A-E"
+      },
+      {
+        "id": "q15",
+        "prompt": "15. 1870",
+        "type": "short-text",
+        "placeholder": "A-H"
+      },
+      {
+        "id": "q16",
+        "prompt": "16. 1874",
+        "type": "short-text",
+        "placeholder": "A-H"
+      },
+      {
+        "id": "q17",
+        "prompt": "17. 1875",
+        "type": "short-text",
+        "placeholder": "A-H"
+      },
+      {
+        "id": "q18",
+        "prompt": "18. 1877",
+        "type": "short-text",
+        "placeholder": "A-H"
+      },
+      {
+        "id": "q19",
+        "prompt": "19. 1878",
+        "type": "short-text",
+        "placeholder": "A-H"
+      },
+      {
+        "id": "q20",
+        "prompt": "20. 1880",
+        "type": "short-text",
+        "placeholder": "A-H"
+      },
+      {
+        "id": "q21",
+        "prompt": "21. Benefits of learning to write (choose TWO)",
+        "type": "short-text",
+        "placeholder": "A-E"
+      },
+      {
+        "id": "q22",
+        "prompt": "22. Benefits of learning to write (choose TWO)",
+        "type": "short-text",
+        "placeholder": "A-E"
+      },
+      {
+        "id": "q23",
+        "prompt": "23. Dyspraxia handwriting problems (choose TWO)",
+        "type": "short-text",
+        "placeholder": "A-E"
+      },
+      {
+        "id": "q24",
+        "prompt": "24. Dyspraxia handwriting problems (choose TWO)",
+        "type": "short-text",
+        "placeholder": "A-E"
+      },
+      {
+        "id": "q25",
+        "prompt": "25. Laptops for dyslexia",
+        "type": "short-text",
+        "placeholder": "A, B or C"
+      },
+      {
+        "id": "q26",
+        "prompt": "26. Cursive vs print writing",
+        "type": "short-text",
+        "placeholder": "A, B or C"
+      },
+      {
+        "id": "q27",
+        "prompt": "27. Poor handwriting and exams",
+        "type": "short-text",
+        "placeholder": "A, B or C"
+      },
+      {
+        "id": "q28",
+        "prompt": "28. Future of handwriting",
+        "type": "short-text",
+        "placeholder": "A, B or C"
+      },
+      {
+        "id": "q29",
+        "prompt": "29. Digital devices difficulty",
+        "type": "short-text",
+        "placeholder": "A, B or C"
+      },
+      {
+        "id": "q30",
+        "prompt": "30. Own handwriting feelings",
+        "type": "short-text",
+        "placeholder": "A, B or C"
+      },
+      {
+        "id": "q31",
+        "prompt": "31. Species studied",
+        "type": "short-text",
+        "placeholder": "ONE WORD"
+      },
+      {
+        "id": "q32",
+        "prompt": "32. Habitat type",
+        "type": "short-text",
+        "placeholder": "ONE WORD"
+      },
+      {
+        "id": "q33",
+        "prompt": "33. Primary diet",
+        "type": "short-text",
+        "placeholder": "ONE WORD"
+      },
+      {
+        "id": "q34",
+        "prompt": "34. Predator",
+        "type": "short-text",
+        "placeholder": "ONE WORD"
+      },
+      {
+        "id": "q35",
+        "prompt": "35. Lifespan",
+        "type": "short-text",
+        "placeholder": "A NUMBER"
+      },
+      {
+        "id": "q36",
+        "prompt": "36. Breeding season",
+        "type": "short-text",
+        "placeholder": "ONE WORD"
+      },
+      {
+        "id": "q37",
+        "prompt": "37. Migration distance",
+        "type": "short-text",
+        "placeholder": "A NUMBER"
+      },
+      {
+        "id": "q38",
+        "prompt": "38. Navigation method",
+        "type": "short-text",
+        "placeholder": "ONE WORD"
+      },
+      {
+        "id": "q39",
+        "prompt": "39. Conservation status",
+        "type": "short-text",
+        "placeholder": "ONE WORD"
+      },
+      {
+        "id": "q40",
+        "prompt": "40. Future threat",
+        "type": "short-text",
+        "placeholder": "ONE WORD"
+      }
+    ],
+    "transcripts": {
+      "1": "MAN Sandra, I seem to remember you had some family visitors staying with you recently\n\nWOMAN Yeah that right. My brother and his family were here a couple of months ago.\n\nMAN OK, good. Well, I wanted to ask for your advice. I got my cousin and her family visiting next month and as I don’t have kids, I’ve no idea where to take them.\n\nWOMAN Right. What about accommodation? Are they going to stay with you in your flat?\n\nMAN No, thankfully. There wouldn’t be room. My cousin wants me to recommend a hotel. Do you know anywhere?\n\nWOMAN Yes, I do actually. [[1:I always recommend people stay at the King’s Hotel.]]\n\nMAN Where’s that near?\n\nWOMAN It’s about a five minutes walk from Murray Station, so nice and central. It’s actually on George Street.\n\nMAN Oh yes, I know.\n\nWOMAN I think they’re on quite a tight budget, so how much roughly is it to stay there? If you book a family room, [[2:it’s about £125 per night]]. My brother paid for two double rooms in the end, and I think that was around £95 for each room.\n\nMAN Oh, that’s not too bad.\n\nWOMAN So how old are your cousins’ kids?\n\nMAN Twelve and nine. So I want to organise some trips while they’re here. I was thinking of doing a bus tour of the city centre, as none of them have been here before.\n\nWOMAN Those bus tours are quite expensive. I think it’s better to do a walking tour. [[3:It gives you a much better feel for the city]]. There’s one that starts from Colton Square. It takes a couple of hours and doesn’t cost that much.\n\nMAN Sounds good. I’ll look that up. Thanks.\n\nWOMAN If the weather’s nice, one thing you could do is visit the old fort. [[4:You could get there by boat]]. The whole trip takes half a day.\n\nMAN That’s a really good idea. I’d like to do that myself. And if the weather bad I was thinking they could go to the science museum. But maybe they could do that when I’m at work.\n\nWOMAN Yeah don’t forget it closed on Mondays\n\nMAN They’re here from Saturday for four nights so [[5:Tuesday would be best I think]]\n\nWOMAN And it won’t be so crowded then. Saturdays are terrible. I took my kids to the exhibition on old computers there and it was far too crowded. I wanted to go back but it’s finished now.\n\nMAN That’s a shame. My cousin’s kids would have enjoyed that.\n\nWOMAN There’s another one [[6:starting soon on space, which looks really good too]].\n\nMAN OK, well, I’ll mention that to my cousin.\n\n————————\n\nWOMAN Have you thought about where to take them to eat?\n\nMAN Well, I really like all the food stalls at Clacton Market. My cousin’s vegetarian. I know it’s [[7:one of the best places for that kind of food]].\n\nWOMAN Definitely, and there’ll be loads of choices for the kids too. You need to get there quite early, though. At the weekend, most of the stores [[8:stop serving lunch at 2.30]].\n\nMAN Good point. It’s all going to need careful planning. My cousin said she’d love to take the kids to a show at the theatre, but tickets are so expensive.\n\nWOMAN I know. But you can get some good deals if you book online with bargainedtickets.com for the following day. On some seats there [[9:a 75% discount]]\n\nMAN Really. I must try and get some\n\nWOMAN Yeah There are lots of things you can do for free as well. No need to spend a fortune.\n\nMAN Like what?\n\nWOMAN They’re coming next month, right? Well, check and see if it’s the same weekend as the Roots Music Festival in Blakewell Gardens.\n\nMAN R-O-O-T-S?\n\nWOMAN Yeah, check it out online. It’s always a family-friendly event and there’s no entry charge.\n\nMAN That sounds perfect.\n\nWOMAN And if you’re in Blakewell Gardens, climb Telegraph Hill. You’ll be able to [[10:look right down on the port]]. Everyone’s always really impressed because it’s so huge.\n\nMAN Oh yeah, I’ve been meaning to do that for ages. I’ve heard the view’s amazing.\n\nWOMAN Yeah, it’s really worth the effort.\n\nMAN Well, that’s given me loads of ideas. Thanks so much.",
+      "2": "MAN Good morning and welcome to City Football Club. I’d like to give you some useful information about your visit to the stadium today and then we’ll start the tour of the areas of the stadium that are open to visitors. I can see lots of children here today, so just to let mums and dads know a few things before we start. The stadium has lots of stairs and the players’ tunnel is very dark. [[11:Please don’t let your children wander off on their own, even for a minute]]. We don’t want any accidents or anyone getting frightened. Cameras are permitted everywhere and you can take pictures of your child shooting a penalty. Assistants are helping to organise this and hopefully the queue won’t be too long. It’s very hot and sunny out on the pitch today. You can get food and drink at the cafe and I really recommend the healthy lunch boxes for children Also in the cafe, children are invited to do a football drawing. [[12:We pick the best one at the end of the afternoon]]. So don’t forget to put your name and contact details on the back. That way if you’ve left the stadium before then, we’ll send your prize, but sadly we can’t return drawings. I’d like to mention some features of the tour. We’ll start with the 360 cinema experience, which has been very popular over the years, and then I’ll take you to the players’ dressing rooms, before going outside to the seating area and the pitch. I should say, if you’d prefer your visit to be self-guided, please collect headphones from the reception, and then you can listen to the pre-recorded information at your own speed. [[13:We’ve only just introduced this feature and would appreciate your feedback.]] We’re thinking of offering tours in other languages in future, so if you have any thoughts on that, we’d welcome those too. If you plan to return another time, you might like to book one of our VIP tours. [[14:We’ve only just started offering these and they can be booked online]].\n\n—————-\n\nNow, the stadium you see today was built in 1989 as part of a three-year redevelopment project. While that project was going on, the team had to play its matches at the ground of another club. Apart from that, the club has been here on this site since 1870. As some of you may know, that was the start of a really important decade in the history of football in this country. For example, [[15:1870 was also the year that football teams started to include a player whose role it was to guard the goal]]. It’s hard to imagine what the game must have been like without someone in that position, isn’t it? In 1872 and 73, many other clubs were established, both here and abroad. And the following year, in 1874, referees were allowed to send players off if they committed certain offences. [[16:And also in that year, teams started having to swap ends at half-time]]. One fact I was interested to discover was that in early football games the aim was for the scorer to get the ball between two flag posts and later between sticks joined at the top with a piece of tape. [[17:In 1875, that tape was replaced with the solid crossbar that we’re familiar with today]]. [[18:1877 saw the founding of further new clubs and the history books tell us that in the same year all the clubs decided to set a limit of 90 minutes for each match]]. Before that it was a more casual arrangement and this sometimes caused huge arguments and sometimes fights during matches when one team called the end of the game and the other team wanted to play on to try and score a winning goal. By 1878, the number of teams in the Football League increased again. [[19:In addition, referees started using whistles and electric lamps were installed on certain pitches]]. This was a significant change, as games could then be played in the evenings all year round. [[20:In 1880, clubs began to charge fans for admission to games]], even though players were still amateurs and had other proper jobs. That’s hard to imagine in the modern professional game. where top players earn significant sums of money from both playing and commercial activities.",
+      "3": "MAN How are you getting on with the assignment on handwriting?\n\nWOMAN Not too bad. You know, I hadn’t realised that children benefit in so many ways from learning to write. It’s such an important skill, and yet most people think handwriting is less important than in the past, because people hardly ever write by hand these days.\n\nMAN Yes, and all the evidence suggests children should learn to write by hand before they learn to type, not least because it helps their memory.\n\nWOMAN That’s right. The physical act of writing helps children to remember letters. That seems pretty obvious when you think about it.\n\nMAN What’s less obvious is how it helps develop their concentration. [[21:They have to sit still and focus on one thing.]]\n\nWOMAN Yeah, that aspect of handwriting had never occurred to me before.\n\nMAN Same here. I’m not sure I understand how it improves children’s imagination, though.\n\nWOMAN Well there was that study which showed that primary age children generated more ideas when they were writing by hand than using a keyboard I would have guessed that would be the case.\n\nMAN Hmm yeah [[22:I never associated spatial awareness with handwriting either]]. I thought spatial awareness was more to do with knowing where you are in relation to objects or other people.\n\nWOMAN I thought that too. But good spatial awareness is essential for writing because you have to space words correctly. It’s not just fine motor skills that improve through writing, as I’d always assumed.\n\nMAN Handwriting is so much harder for children with dyspraxia, who have problems coordinating movement. It’s good there are lots of things you can do in the classroom to help them. They need so much more support with letter formation. You need to play lots of games to help them distinguish letter shapes. It takes a lot of patience.\n\nWOMAN Yeah, I like the idea of using one of those pens that lights up if you press too hard. [[23:That seems like a really simple solution.]]\n\nMAN Yes, absolutely. I’m not sure there’s much you can do about children with dyspraxia writing very slowly. It’s more important to focus on accuracy and as they get more confident, I think they eventually speed up.\n\nWOMAN One quite simple thing you can do is to use grid paper. [[24:So they write each letter in a box and that trains them to space the letters correctly.]]\n\nMAN Indeed, that’s more important for legibility than trying to get them to write in a straight line.\n\n———————-\n\nMAN For some children, it might be better to teach them to write on a laptop rather than by hand, like children with dyslexia. They often really struggle with handwriting and some just give up.\n\nWOMAN Yeah, it’s not as frustrating for them if they get things wrong. [[25:On a keyboard, they can be more willing to have a go]]. But I read that developing fluency isn’t any faster.\n\nMAN That’s right. Did you read that article on the benefits of teaching print rather than cursive handwriting, where the letters are joined up?\n\nWOMAN Yes. Well, in the past, cursive writing was certainly considered more stylish and educated, but not anymore. Teachers’ attitudes have changed because it’s been proved that cursive is more difficult to learn, especially for children with learning difficulties who [[26:find joining up letters really challenging]].\n\nMAN I agree. I was always worried that my poor handwriting affected my exam results, and now research shows that [[27:I was right to worry.]] I’m sure a lot of students think it’s unfair that they’re being judged on their handwriting, not just their knowledge.\n\nWOMAN Marks are definitely affected if examiners can’t read the script. That is why it has always been so important to teach children to write legibly. Do you think the role of handwriting will change in the future?\n\nMAN I can’t see that changing much. Touch typing still isn’t taught in most schools, which is a shame. But maybe that won’t be necessary in the future, because people will also be able to write by hand on digital devices. Anyway, teachers understand the value of handwriting. [[28:It’s a basic life skill]].\n\nWOMAN True. However, the fact is that people are writing by hand less and less and relying on digital devices. That does cause some problems.\n\nMAN You mean like note-taking. There are lots of apps for that.\n\nWOMAN And for reading historical documents, apparently. But my mum is shocked by my awful spelling and the fact that my punctuation is really inconsistent. I think you can put that down to [[29:lack of practice]].\n\nMAN I expect so. Personally, I miss writing by hand. I hardly ever write anything now. I remember my grandparents had such beautiful handwriting and it was so individual. [[30:Nobody I know would be able to identify my handwriting now. It’s a shame.]]\n\nWOMAN I know. I feel the same way. I used to write a diary by hand and now I do that digitally. It just seems less effort to do it that way. So it’s not just a problem…",
+      "4": "We’ve been looking at different types of conflicts that may arise between wildlife and humans at the boundaries of protected areas, such as national parks and animal sanctuaries. I’d like to illustrate this by telling you about some research that I’ve been involved in recently in the Central African country of Zambia in the area around the Chembe Bird Sanctuary which contains over 300 of the listed birds of Zambia These include a number of birds of prey such as eagles hawks and owls that live by hunting and killing other birds and animals Now most of the people living in the local communities near to the bird sanctuary are small-scale farmers and these birds of prey provide important social and ecological benefits to them. For example, a lot of damage can be caused to farmers’ crops by rodents, such as rats, which would [[31:consume the crops as they grow in the fields]], as well as after harvesting if they weren’t hunted and killed by the birds. And the predatory habits of these birds also protect farmers in other ways. For example, a major danger to rural workers is snakes, whose bite may be dangerous or even fatal, and [[32:birds of prey have a major role in keeping their populations under control]]. Local people have always been aware of these benefits and for years, even before the sanctuary was opened in 1973, the birds played a key role in the culture of the region. However, more recently, the sanctuary and its birds have also become increasingly important to the community in economic terms, because at present, after a relatively slow start, [[33:tourism has become an important source of revenue for them]]. However, although these birds of prey are protected by the government, their numbers are falling. Some of these deaths are accidental. [[34:Fatalities occur when birds alight on roads to catch and eat their prey, and are hit by fast moving traffic]]. Drivers in Zambia have to take special care at night, as birds may regard the quieter roads as safe places to sleep. Accidental deaths may also occur if these birds fly close to high power lines as they may be electrocuted. [[35:This is a particular danger in the heavy rain which can occur in the region in the months from December to April]]. And local farmers also pose a threat to these birds. As well as growing crops, small-scale farmers in the area also rear chickens.\n\nThese provide food for the farmers’ families, as well as being an important source of income. But they’re also an easy target for birds of prey, and so farmers may shoot these birds, which is illegal but understandable, or they may poison the birds, [[36:which again is illegal and can have negative effects on the ecosystem]]. So how else can farmers protect their chickens from birds of prey? Some people believe that to prevent the predators from settling near the area where the chickens are kept, it’s best to keep this area free from vegetation. But in fact, this is counterproductive, as it means the chickens have no cover to hide in and they’ll be easier for the birds to see. [[37:Another possibility would be to prevent the chickens from going outside at all and to keep them safe from predators inside a building, but this would cost far too much to be a practical solution]]. Nearly all the farmers reported that they spent a lot of time and effort trying to frighten off the birds of prey without actually harming them. [[38:Most of the farmers had at least one dog and said this was a big help at scaring away the predators]]. Some of the farmers also reported that during the breeding season, when the chickens were particularly vulnerable, [[39:they encouraged their children to watch over the chickens and to hit pans with a metal spoon so that the resulting noise would succeed in driving away birds that were trying to seize the young chicks]]. None of these methods was 100% effective so as a result [[40:the village people told us that rather than just using one method, they were forced to use a combination for them to have any effect]]. And even so, these birds of prey remain a major threat to the chickens’ survival and cause considerable economic loss to farmers. So we looked at the possibility of a longer-term solution to…"
+    }
+  }
+}
