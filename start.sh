@@ -1,21 +1,26 @@
 #!/usr/bin/env bash
-# start.sh — Run BandUp AI locally (backend + frontend)
-# Usage: ./start.sh [--port-backend 8000] [--port-frontend 8080] [--host 0.0.0.0]
+# start.sh — Run BandUp AI locally or in production
+# Usage:
+#   ./start.sh                  # dev mode (Vite dev server, hot reload)
+#   ./start.sh --prod           # production mode (build frontend, nginx serves it)
+#   ./start.sh --port-backend 5000 --port-frontend 8080 --host 0.0.0.0
 
 set -euo pipefail
 
 # ── Defaults ──────────────────────────────────────────────────────────────────
-BACKEND_PORT=8000
+BACKEND_PORT=5000
 FRONTEND_PORT=8080
-HOST=0.0.0.0          # 0.0.0.0 = accessible on local network (Raspberry Pi)
+HOST=0.0.0.0
+PROD_MODE=false
 LOG_DIR="$(dirname "$0")/logs"
 
 # ── Arg parsing ───────────────────────────────────────────────────────────────
 while [[ $# -gt 0 ]]; do
   case $1 in
-    --port-backend)  BACKEND_PORT="$2";  shift 2 ;;
-    --port-frontend) FRONTEND_PORT="$2"; shift 2 ;;
-    --host)          HOST="$2";          shift 2 ;;
+    --prod)            PROD_MODE=true;         shift ;;
+    --port-backend)    BACKEND_PORT="$2";      shift 2 ;;
+    --port-frontend)   FRONTEND_PORT="$2";     shift 2 ;;
+    --host)            HOST="$2";              shift 2 ;;
     *) echo "Unknown option: $1"; exit 1 ;;
   esac
 done
@@ -48,6 +53,11 @@ check_cmd uv    "curl -LsSf https://astral.sh/uv/install.sh | sh"
 check_cmd node  "sudo apt install nodejs  (or use nvm)"
 check_cmd npm   "sudo apt install npm"
 
+if [[ "$PROD_MODE" == "true" ]]; then
+  check_cmd nginx "sudo apt install nginx"
+  check_cmd certbot "sudo apt install certbot python3-certbot-nginx"
+fi
+
 # ── .env check ────────────────────────────────────────────────────────────────
 if [[ ! -f "$BACKEND_DIR/.env" ]]; then
   error "backend/.env not found."
@@ -58,11 +68,23 @@ if [[ ! -f "$BACKEND_DIR/.env" ]]; then
   echo "  Required keys:"
   echo "    DATABASE_URL   — PostgreSQL connection string"
   echo "    GEMINI_API_KEY — Google AI Studio key (aistudio.google.com)"
+  if [[ "$PROD_MODE" == "true" ]]; then
+    echo "    IS_ON_PROD=true"
+    echo "    BASE_URL=https://backend.bandup-ai.com"
+    echo "    FRONTEND_URL=https://bandup-ai.com"
+    echo "    ALLOWED_ORIGINS=https://bandup-ai.com,https://www.bandup-ai.com"
+  fi
   exit 1
 fi
 
 if ! grep -q "GEMINI_API_KEY=." "$BACKEND_DIR/.env" 2>/dev/null; then
   warn "GEMINI_API_KEY appears empty in backend/.env — AI chat will return 500 errors."
+fi
+
+if [[ "$PROD_MODE" == "true" ]]; then
+  if ! grep -q "IS_ON_PROD=true" "$BACKEND_DIR/.env" 2>/dev/null; then
+    warn "IS_ON_PROD is not set to true in backend/.env — running in dev mode with permissive CORS."
+  fi
 fi
 
 # ── PostgreSQL check ──────────────────────────────────────────────────────────
@@ -80,34 +102,55 @@ else
 fi
 
 # ── Port collision check ──────────────────────────────────────────────────────
-for port in "$BACKEND_PORT" "$FRONTEND_PORT"; do
-  if ss -tlnp 2>/dev/null | grep -q ":${port} " || \
-     lsof -i ":${port}" &>/dev/null 2>&1; then
-    warn "Port $port is already in use. The server may fail to start."
-  fi
-done
+if [[ "$PROD_MODE" == "false" ]]; then
+  for port in "$BACKEND_PORT" "$FRONTEND_PORT"; do
+    if ss -tlnp 2>/dev/null | grep -q ":${port} "; then
+      warn "Port $port is already in use. The server may fail to start."
+    fi
+  done
+fi
 
-# ── DB creation ───────────────────────────────────────────────────────────────
-# Parse DB name from DATABASE_URL (postgresql://user:pass@host:port/dbname)
+# ── DB user + database creation ───────────────────────────────────────────────
+# Parse postgresql://user:pass@host:port/dbname
 DB_URL=$(grep "^DATABASE_URL=" "$BACKEND_DIR/.env" | cut -d'=' -f2-)
-DB_NAME=$(echo "$DB_URL" | sed 's|.*\/||' | sed 's|?.*||')
+DB_USER=$(echo "$DB_URL" | sed 's|postgresql://||' | cut -d':' -f1)
+DB_PASS=$(echo "$DB_URL" | sed 's|postgresql://[^:]*:||' | cut -d'@' -f1)
+DB_NAME=$(echo "$DB_URL" | sed 's|.*\/||'  | sed 's|?.*||')
 
-if [[ -n "$DB_NAME" ]]; then
-  info "Ensuring database '$DB_NAME' exists..."
-  if psql -U postgres -lqt 2>/dev/null | cut -d'|' -f1 | grep -qw "$DB_NAME"; then
-    ok "Database '$DB_NAME' already exists."
+pg_admin() { sudo -u postgres psql -v ON_ERROR_STOP=1 -c "$1" 2>&1; }
+
+if [[ -n "$DB_USER" && -n "$DB_NAME" ]]; then
+  info "Ensuring PostgreSQL user '$DB_USER' exists..."
+  if sudo -u postgres psql -tAc "SELECT 1 FROM pg_roles WHERE rolname='$DB_USER'" 2>/dev/null | grep -q 1; then
+    ok "User '$DB_USER' already exists."
   else
-    if psql -U postgres -c "CREATE DATABASE \"$DB_NAME\";" >> "$LOG_DIR/migrations.log" 2>&1; then
-      ok "Database '$DB_NAME' created."
+    if pg_admin "CREATE USER \"$DB_USER\" WITH PASSWORD '$DB_PASS';" >> "$LOG_DIR/migrations.log" 2>&1; then
+      ok "User '$DB_USER' created."
     else
-      warn "Could not auto-create database (may need sudo or peer auth)."
-      warn "Run manually:  sudo -u postgres psql -c \"CREATE DATABASE $DB_NAME;\""
+      warn "Could not auto-create user '$DB_USER'."
+      echo "  Run manually:  sudo -u postgres psql -c \"CREATE USER $DB_USER WITH PASSWORD '$DB_PASS';\""
       read -rp "  Continue anyway? [y/N] " yn
       [[ "$yn" =~ ^[Yy]$ ]] || exit 1
     fi
   fi
+
+  info "Ensuring database '$DB_NAME' exists..."
+  if sudo -u postgres psql -lqt 2>/dev/null | cut -d'|' -f1 | grep -qw "$DB_NAME"; then
+    ok "Database '$DB_NAME' already exists."
+  else
+    if pg_admin "CREATE DATABASE \"$DB_NAME\" OWNER \"$DB_USER\";" >> "$LOG_DIR/migrations.log" 2>&1; then
+      ok "Database '$DB_NAME' created (owner: $DB_USER)."
+    else
+      warn "Could not auto-create database '$DB_NAME'."
+      echo "  Run manually:  sudo -u postgres psql -c \"CREATE DATABASE $DB_NAME OWNER $DB_USER;\""
+      read -rp "  Continue anyway? [y/N] " yn
+      [[ "$yn" =~ ^[Yy]$ ]] || exit 1
+    fi
+  fi
+
+  pg_admin "GRANT ALL PRIVILEGES ON DATABASE \"$DB_NAME\" TO \"$DB_USER\";" >> "$LOG_DIR/migrations.log" 2>&1 || true
 else
-  warn "Could not parse DB name from DATABASE_URL — skipping auto-create."
+  warn "Could not parse DATABASE_URL — skipping auto user/db creation."
 fi
 
 # ── DB migrations ─────────────────────────────────────────────────────────────
@@ -140,15 +183,14 @@ cleanup() {
 trap cleanup SIGINT SIGTERM
 
 # ── Start backend ─────────────────────────────────────────────────────────────
-info "Starting backend on $HOST:$BACKEND_PORT ..."
+info "Starting backend on 127.0.0.1:$BACKEND_PORT ..."
 cd "$BACKEND_DIR/app"
 uv run uvicorn main:app \
-  --host "$HOST" \
+  --host 127.0.0.1 \
   --port "$BACKEND_PORT" \
   >> "$LOG_DIR/backend.log" 2>&1 &
 BACKEND_PID=$!
 
-# Wait for backend to be ready (up to 15 s)
 for i in $(seq 1 15); do
   if nc -z 127.0.0.1 "$BACKEND_PORT" 2>/dev/null; then
     ok "Backend is up. (PID $BACKEND_PID)"
@@ -162,37 +204,78 @@ for i in $(seq 1 15); do
   fi
 done
 
-# ── Start frontend ────────────────────────────────────────────────────────────
-info "Starting frontend on $HOST:$FRONTEND_PORT ..."
-cd "$FRONTEND_DIR"
-VITE_DEV_PROXY_TARGET="http://127.0.0.1:$BACKEND_PORT" \
-  npm run dev -- --host "$HOST" --port "$FRONTEND_PORT" \
-  >> "$LOG_DIR/frontend.log" 2>&1 &
-FRONTEND_PID=$!
+# ── Production mode: build frontend + configure nginx ─────────────────────────
+if [[ "$PROD_MODE" == "true" ]]; then
+  info "Building frontend for production..."
+  cd "$FRONTEND_DIR"
+  npm run build >> "$LOG_DIR/frontend-build.log" 2>&1
+  ok "Frontend built → band-buddy-connect/dist/"
 
-sleep 3
-if ! kill -0 "$FRONTEND_PID" 2>/dev/null; then
-  error "Frontend failed to start — check $LOG_DIR/frontend.log"
-  kill "$BACKEND_PID" 2>/dev/null
-  exit 1
+  info "Installing nginx config..."
+  NGINX_AVAIL="/etc/nginx/sites-available"
+  NGINX_ENABLED="/etc/nginx/sites-enabled"
+
+  sudo cp "$SCRIPT_DIR/nginx/bandup-ai.com.conf"         "$NGINX_AVAIL/bandup-ai.com"
+  sudo cp "$SCRIPT_DIR/nginx/backend.bandup-ai.com.conf" "$NGINX_AVAIL/backend.bandup-ai.com"
+  sudo ln -sf "$NGINX_AVAIL/bandup-ai.com"         "$NGINX_ENABLED/bandup-ai.com"
+  sudo ln -sf "$NGINX_AVAIL/backend.bandup-ai.com" "$NGINX_ENABLED/backend.bandup-ai.com"
+
+  if sudo nginx -t >> "$LOG_DIR/nginx.log" 2>&1; then
+    sudo systemctl reload nginx
+    ok "Nginx reloaded."
+  else
+    error "Nginx config test failed — check $LOG_DIR/nginx.log"
+    exit 1
+  fi
+
+  LOCAL_IP=$(ip route get 1.1.1.1 2>/dev/null | awk '{for(i=1;i<=NF;i++) if($i=="src") print $(i+1)}' | head -1)
+  echo ""
+  echo -e "${GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+  echo -e "${GREEN}  BandUp AI — Production${NC}"
+  echo -e "${GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+  echo -e "  Frontend   https://bandup-ai.com  (nginx)"
+  echo -e "  Backend    https://backend.bandup-ai.com  (nginx → :$BACKEND_PORT)"
+  echo -e "  Pi LAN IP  ${LOCAL_IP:-unknown}"
+  echo -e "  Logs       $LOG_DIR/"
+  echo -e "${GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+  echo ""
+  echo "  SSL: run certbot if not already done:"
+  echo "    sudo certbot --nginx -d bandup-ai.com -d www.bandup-ai.com"
+  echo "    sudo certbot --nginx -d backend.bandup-ai.com"
+  echo ""
+  echo "  Press Ctrl+C to stop the backend."
+  echo ""
+  wait
+
+# ── Dev mode: Vite dev server ─────────────────────────────────────────────────
+else
+  info "Starting frontend dev server on $HOST:$FRONTEND_PORT ..."
+  cd "$FRONTEND_DIR"
+  VITE_DEV_PROXY_TARGET="http://127.0.0.1:$BACKEND_PORT" \
+    npm run dev -- --host "$HOST" --port "$FRONTEND_PORT" \
+    >> "$LOG_DIR/frontend.log" 2>&1 &
+  FRONTEND_PID=$!
+
+  sleep 3
+  if ! kill -0 "$FRONTEND_PID" 2>/dev/null; then
+    error "Frontend failed to start — check $LOG_DIR/frontend.log"
+    kill "$BACKEND_PID" 2>/dev/null
+    exit 1
+  fi
+  ok "Frontend is up. (PID $FRONTEND_PID)"
+
+  LOCAL_IP=$(ip route get 1.1.1.1 2>/dev/null | awk '{for(i=1;i<=NF;i++) if($i=="src") print $(i+1)}' | head -1)
+  echo ""
+  echo -e "${GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+  echo -e "${GREEN}  BandUp AI — Dev${NC}"
+  echo -e "${GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+  echo -e "  Frontend   http://${LOCAL_IP:-localhost}:$FRONTEND_PORT"
+  echo -e "  Backend    http://${LOCAL_IP:-localhost}:$BACKEND_PORT"
+  echo -e "  API docs   http://127.0.0.1:$BACKEND_PORT/docs"
+  echo -e "  Logs       $LOG_DIR/"
+  echo -e "${GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+  echo ""
+  echo "  Press Ctrl+C to stop both servers."
+  echo ""
+  wait
 fi
-ok "Frontend is up. (PID $FRONTEND_PID)"
-
-# ── Print access info ─────────────────────────────────────────────────────────
-LOCAL_IP=$(ip route get 1.1.1.1 2>/dev/null | awk '{for(i=1;i<=NF;i++) if($i=="src") print $(i+1)}' | head -1)
-
-echo ""
-echo -e "${GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${GREEN}  BandUp AI is running${NC}"
-echo -e "${GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "  Frontend   http://${LOCAL_IP:-localhost}:$FRONTEND_PORT"
-echo -e "  Backend    http://${LOCAL_IP:-localhost}:$BACKEND_PORT"
-echo -e "  API docs   http://${LOCAL_IP:-localhost}:$BACKEND_PORT/docs"
-echo -e "  Logs       $LOG_DIR/"
-echo -e "${GREEN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo ""
-echo "  Press Ctrl+C to stop both servers."
-echo ""
-
-# ── Tail logs ────────────────────────────────────────────────────────────────
-wait

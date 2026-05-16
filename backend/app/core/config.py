@@ -3,7 +3,8 @@ from pathlib import Path
 
 IS_ON_PROD = os.getenv("IS_ON_PROD", "false").lower() in ("true", "1", "yes")
 
-BASE_URL = os.getenv("BASE_URL", "http://backend.bandup-ai.com" if IS_ON_PROD else "http://127.0.0.1:5000")
+BASE_URL = os.getenv("BASE_URL", "https://backend.bandup-ai.com" if IS_ON_PROD else "http://127.0.0.1:5000")
+FRONTEND_URL = os.getenv("FRONTEND_URL", "https://bandup-ai.com" if IS_ON_PROD else "http://127.0.0.1:8080")
 DSN = os.getenv("DATABASE_URL", "postgresql://fisuan:1337@localhost:5432/bandup_db")
 
 _MATERIALS_DIR = Path(__file__).resolve().parents[3] / "materials"

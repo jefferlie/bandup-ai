@@ -46,7 +46,7 @@ async def get_all_users(
     except Exception as ex:
         logger.error(ex)
         await users.close()
-        return {"error": str(ex)}, 500
+        raise HTTPException(status_code=500, detail=str(ex))
 
 
 @router.get("/users/{user_id}")
@@ -86,7 +86,7 @@ async def get_user(
     except Exception as ex:
         logger.error(ex)
         await users.close()
-        return {"error": str(ex)}, 500
+        raise HTTPException(status_code=500, detail=str(ex))
 
 
 @router.patch("/users/{user_id}")
@@ -127,7 +127,7 @@ async def update_user(
     except Exception as ex:
         logger.error(ex)
         await users.close()
-        return {"error": str(ex)}, 500
+        raise HTTPException(status_code=500, detail=str(ex))
 
 
 @router.delete("/users/{user_id}")
@@ -143,7 +143,7 @@ async def delete_user(
     except Exception as ex:
         logger.error(ex)
         await users.close()
-        return {"error": str(ex)}, 500
+        raise HTTPException(status_code=500, detail=str(ex))
 
 
 @router.get("/payments")
@@ -160,7 +160,7 @@ async def get_all_payments(
     except Exception as ex:
         logger.error(ex)
         await users.close()
-        return {"error": str(ex)}, 500
+        raise HTTPException(status_code=500, detail=str(ex))
 
 
 @router.get("/subscriptions")
@@ -177,7 +177,7 @@ async def get_all_subscriptions(
     except Exception as ex:
         logger.error(ex)
         await users.close()
-        return {"error": str(ex)}, 500
+        raise HTTPException(status_code=500, detail=str(ex))
 
 
 @router.get("/overview")
@@ -260,7 +260,7 @@ async def get_overview(admin: dict = Depends(get_current_admin)):
             await users.close()
         except Exception:
             pass
-        return {"error": str(ex)}, 500
+        raise HTTPException(status_code=500, detail=str(ex))
 
 
 @router.get("/stats")
@@ -299,4 +299,4 @@ async def get_stats(admin: dict = Depends(get_current_admin)):
     except Exception as ex:
         logger.error(ex)
         await users.close()
-        return {"error": str(ex)}, 500
+        raise HTTPException(status_code=500, detail=str(ex))

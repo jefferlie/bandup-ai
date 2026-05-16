@@ -12,7 +12,7 @@ sys.path.append(str(PROJECT_ROOT))
 
 load_dotenv(dotenv_path=PROJECT_ROOT / ".env", override=False)
 
-from core.config import BASE_URL, DSN
+from core.config import FRONTEND_URL, DSN
 from db.db_functions import Users_DB
 from api.deps import get_current_user
 
@@ -63,8 +63,8 @@ async def create_checkout_session(
             payment_method_types=["card"],
             line_items=[{"price": request.price_id, "quantity": 1}],
             mode="subscription",
-            success_url=f"{BASE_URL}/payment/success?session_id={{CHECKOUT_SESSION_ID}}",
-            cancel_url=f"{BASE_URL}/payment/cancel",
+            success_url=f"{FRONTEND_URL}/payment/success?session_id={{CHECKOUT_SESSION_ID}}",
+            cancel_url=f"{FRONTEND_URL}/payment/cancel",
             metadata={
                 "user_id": str(user_id),
                 "price_id": request.price_id,
