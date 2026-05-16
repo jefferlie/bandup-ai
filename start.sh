@@ -153,15 +153,9 @@ else
   warn "Could not parse DATABASE_URL — skipping auto user/db creation."
 fi
 
-# ── DB migrations ─────────────────────────────────────────────────────────────
-info "Running database migrations..."
-cd "$BACKEND_DIR"
-if uv run alembic upgrade head >> "$LOG_DIR/migrations.log" 2>&1; then
-  ok "Migrations applied."
-else
-  error "Migrations failed — check $LOG_DIR/migrations.log"
-  exit 1
-fi
+# ── DB schema init ────────────────────────────────────────────────────────────
+# Tables are created via CREATE TABLE IF NOT EXISTS inside Users_DB.initialize()
+# which is called automatically on first request. Nothing to run here.
 
 # ── Frontend deps ─────────────────────────────────────────────────────────────
 if [[ ! -d "$FRONTEND_DIR/node_modules" ]]; then
