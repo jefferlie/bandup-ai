@@ -12,7 +12,9 @@ BACKEND_PORT=5000
 FRONTEND_PORT=8080
 HOST=0.0.0.0
 PROD_MODE=false
-LOG_DIR="$(dirname "$0")/logs"
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+LOG_DIR="$SCRIPT_DIR/logs"
 
 # ── Arg parsing ───────────────────────────────────────────────────────────────
 while [[ $# -gt 0 ]]; do
@@ -24,8 +26,6 @@ while [[ $# -gt 0 ]]; do
     *) echo "Unknown option: $1"; exit 1 ;;
   esac
 done
-
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 BACKEND_DIR="$SCRIPT_DIR/backend"
 FRONTEND_DIR="$SCRIPT_DIR/band-buddy-connect"
 
