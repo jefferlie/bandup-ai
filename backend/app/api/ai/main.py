@@ -9,12 +9,15 @@ from pydantic import BaseModel
 from typing import List, Literal
 
 import google.generativeai as genai
+from google import genai as genai_new
 
 from dotenv import load_dotenv
 from pathlib import Path
 import sys
 
 PROJECT_ROOT = Path(__file__).resolve().parents[4]  # root
+# Load backend .env first, fall back to frontend .env for legacy keys
+load_dotenv(dotenv_path=PROJECT_ROOT / "backend/.env", override=False)
 load_dotenv(dotenv_path=PROJECT_ROOT / "band-buddy-connect/.env", override=False)
 
 genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
@@ -57,22 +60,29 @@ async def chat_message(
     request: ChatMessageRequest,
     current_user: dict = Depends(get_current_user),
 ):
+    api_key = os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+        raise HTTPException(status_code=500, detail="GEMINI_API_KEY is not configured on the server.")
     try:
+        client = genai_new.Client(api_key=api_key)
+
         history = []
         for msg in request.conversation_history:
-            history.append({
-                "role": "user" if msg.role == "user" else "model",
-                "parts": [msg.content],
-            })
+            history.append(
+                genai_new.types.Content(
+                    role="user" if msg.role == "user" else "model",
+                    parts=[genai_new.types.Part(text=msg.content)],
+                )
+            )
 
-        model = genai.GenerativeModel(
-            model_name="gemini-2.0-flash",
-            system_instruction=SYSTEM_PROMPT,
-        )
-        chat = model.start_chat(history=history)
-        response = chat.send_message(
-            request.message,
-            generation_config=genai.types.GenerationConfig(
+        response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=history + [genai_new.types.Content(
+                role="user",
+                parts=[genai_new.types.Part(text=request.message)],
+            )],
+            config=genai_new.types.GenerateContentConfig(
+                system_instruction=SYSTEM_PROMPT,
                 temperature=0.7,
                 max_output_tokens=800,
             ),
