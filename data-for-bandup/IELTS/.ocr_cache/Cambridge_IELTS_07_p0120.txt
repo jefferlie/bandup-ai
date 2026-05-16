@@ -1,0 +1,40 @@
+Tapescripts
+SECTION 1
+MAN: Hello, this is Land Transport Information at Toronto Airport.
+How may I help you?
+WOMAN: Oh, good morning. Um, I’m flying to Toronto Airport next week, and
+I need to get to a town called um, Milton. Could you tell me how I
+can get there?
+MAN: Milton, did you say? Let me see. I think that’s about 150 miles south-
+west of here. In fact it’s 147 miles to be exact, so it'll take you at least Example
+~ say, three to four hours by road.
+WOMAN: Wow! Is it as far as that?
+MAN: Yes, I’m afraid so. But you have a number of options to get you there
+and you can always rent a car right here at the airport. of course.
+WOMAN: Right. Well, [ don’t really want to drive myself, so I’d like more
+information about public transport.
+MAN: OK. In that case the quickest and most comfortable is a cab and of Ql
+course there are always plenty available. But it’ll cost you. You can
+also take a Greyhound bus or there’s an Airport Shuttle Service to
+Milton
+WOMAN: Hmmm, I think for that kind of distance a cab would be way beyond
+my budget. But the bus sounds OK. Can you tell me how much that
+would cost?
+MAN: Sure. Let’s see, that would be $15 one way, or $27.50 return. . . that’s
+on the Greyhound.
+WOMAN: Oh, that’s quite cheap ~ great! But whereabouts does it stop in
+Milton?
+MAN: It goes directly from the airport here to the City Centre and it’s pretty Q2
+fast. But you have to bear in mind that there is only one departure a
+day, so it depends what time your flight gets in.
+WOMAN: Oh, of course. Hang on, we're due to get there at 11.30 am.
+MAN: Hmmm, too bad, the bus leaves at 3.45, so you would have quite a Q3
+wait — more than 4 hours.
+WOMAN: Oh, I see. Well, what about the Shuttle you mentioned?
+MAN: OK. That’s the Airport Shuttle that will take you from the airport
+right to your hotel or private address. It’s a door-to-door service and it O04
+would suit you much better, because there’s one every two hours.
+WOMAN: So how much does that cost? .
+MAN: Let's see. Yeah, that’s $35 one way, $65 return, so I guess it’s a bit
+more expensive than the Greyhound.
+129

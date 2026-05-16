@@ -1,0 +1,46 @@
+Reading
+Attitudes towards Artificial Intelligence
+
+A Artificial intelligence (AI) can already predict the future. Police forces are using it
+to map when and where crime is likely to occur. Doctors can use it to predict when a
+patient is most likely to have a heart attack or stroke. Researchers are even trying to
+give AI imagination so it can plan for unexpected consequences.
+
+Many decisions in our lives require a good forecast, and AI is almost always better
+at forecasting than we are. Yet for all these technological advances, we still seem to
+deeply lack confidence in AI predictions. Recent cases show that people don’t like
+relying on AI and prefer to trust human experts, even if these experts are wrong.
+
+If we want AI to really benefit people, we need to find a way to get people to trust
+it. To do that, we need to understand why people are so reluctant to trust AI in the
+first place.
+
+B Take the case of Watson for Oncology, one of technology giant IBM’s
+supercomputer programs. Their attempt to promote this program to cancer doctors
+was a PR disaster. The AI promised to deliver top-quality recommendations on
+the treatment of 12 cancers that accounted for 80% of the world’s cases. But when
+doctors first interacted with Watson, they found themselves in a rather difficult
+situation. On the one hand, if Watson provided guidance about a treatment that
+coincided with their own opinions, physicians did not see much point in Watson’s
+recommendations. The supercomputer was simply telling them what they already
+knew, and these recommendations did not change the actual treatment.
+
+On the other hand, if Watson generated a recommendation that contradicted the
+experts’ opinion, doctors would typically conclude that Watson wasn’t competent.
+And the machine wouldn’t be able to explain why its treatment was plausible
+because its machine-learning algorithms were simply too complex to be fully
+understood by humans. Consequently, this has caused even more suspicion
+
+and disbelief, leading many doctors to ignore the seemingly outlandish AI
+recommendations and stick to their own expertise.
+
+C This is just one example of people’s lack of confidence in AI and their reluctance to
+accept what AI has to offer. Trust in other people is often based on our understanding
+of how others think and having experience of their reliability. This helps create
+a psychological feeling of safety. AI, on the other hand, is still fairly new and
+unfamiliar to most people. Even if it can be technically explained (and that’s not
+always the case), Al’s decision-making process is usually too difficult for most
+people to comprehend. And interacting with something we don’t understand can
+cause anxiety and give us a sense that we’re losing control.
+
+91

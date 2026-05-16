@@ -1,0 +1,15 @@
+1,1,"Who funded the early research that led to the Internet?","The United States Department of Defense",short_answer
+2,1,"What was the original purpose of ARPANET?","To allow computers at different universities to communicate with each other",short_answer
+3,1,"Tim Berners-Lee invented the Internet.",FALSE,true_false_ng
+4,1,"The World Wide Web made it easier for ordinary people to use the Internet.",TRUE,true_false_ng
+5,1,"The Internet has had no negative effects on society.",FALSE,true_false_ng
+6,2,"What percentage of marine species do coral reefs support?",25%,short_answer
+7,2,"What is coral bleaching?","A phenomenon in which corals expel the algae living in their tissues due to rising ocean temperatures",short_answer
+8,2,"Coral reefs cover more than 10% of the ocean floor.",FALSE,true_false_ng
+9,2,"Ocean acidification helps corals build stronger skeletons.",FALSE,true_false_ng
+10,2,"Marine protected areas alone are enough to save coral reefs.",FALSE,true_false_ng
+11,3,"Why should you research the company before an interview?","To show genuine interest and gain material for answering questions",short_answer
+12,3,"What does the author suggest if you are unsure about what to wear?","Be slightly overdressed rather than underdressed",short_answer
+13,3,"It is acceptable to arrive at an interview a few minutes late.",FALSE,true_false_ng
+14,3,"Preparing answers to common questions can reduce nervousness.",TRUE,true_false_ng
+15,3,"An interview is described as a two-way conversation.",TRUE,true_false_ng

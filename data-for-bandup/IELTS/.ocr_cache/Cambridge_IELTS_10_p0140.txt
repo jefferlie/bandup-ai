@@ -1,0 +1,48 @@
+Audioscripts
+TEST 3
+SECTION 1
+DIRECTOR: Good morning. Welcome to the Early Learning Childcare Centre. How
+may | help you?
+CAROL: Hi. | spoke to you last week about enrolling my daughter for next year.
+DIRECTOR: Oh, yes. I'll just get some details from you. So, you're her mother?
+CAROL: That's right.
+DIRECTOR: And, can | have your name?
+CAROL: It's Carol, Carol Smith. Example
+DIRECTOR: And your daughter's name?
+CAROL: It's Kate.
+DIRECTOR: Now, we have several groups at the centre and we cater for children from
+three to five years old. How old is your daughter?
+CAROL: She's three now but she turns four next month.
+DIRECTOR: I'l put four down because that's how old she'll be when she starts. Qt
+CAROL: Fine, she’s so excited about her birthday and coming to the centre.
+DIRECTOR: That's good to hear. And what's your address?
+CAROL: It's 46 Wombat Road, that’s W-O-M-B-A-T. Woodside 4032. Q2
+DIRECTOR: And what's the phone number?
+CAROL: Oh... it's ... 3345 9865.
+DIRECTOR: So, have you decided on the days you'd like to bring your daughter here?
+CAROL: I'd prefer Monday and Wednesday if possible.
+DIRECTOR: Mmm. I'll check, Monday's fine, but | think the centre is already full for
+Wednesday. Erm. Yes. Sorry. It seems to be a very popular day. We can
+offer you a Thursday or a Friday as well.
+CAROL: Oh dear. | suppose Thursday would be all right because she has Q3
+swimming on Friday.
+DIRECTOR: OK, got that. Because a lot of parents work, we do offer flexible start and
+finish times. We are open from 7:30 in the morning until 6 o'clock at night.
+What time would you like your daughter to start?
+CAROL: I need to get to work in the city by 9:00 so I'll drop her off at 8:30. You're Q4
+pretty close to the city here so that should give me plenty of time to get
+there.
+DIRECTOR: That's fine. Now, we also need to decide which group she'll be in. We
+have two different groups and they're divided up according to age. There's
+the green group, which is for three- to four-year-olds. And then there’s the
+red group which is for four- to five-year-olds.
+CAROL: She's quite mature for her age and she can already write her name and
+read a little.
+DIRECTOR: Well, I'll put her in the red group and we can always change her to the Q5
+green one if there are any problems.
+CAROL: That sounds fine.
+DIRECTOR: OK. Let's move on to meals. We can provide breakfast, lunch and dinner.
+As she’s finishing pretty early, she won't need dinner, will you give her
+breakfast before she comes?
+CAROL: Yes, she'll only need lunch. Q6
+140

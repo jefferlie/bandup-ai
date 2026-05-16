@@ -1,0 +1,41 @@
+Test 3
+SECTION 1
+AGENT: Good morning.
+STUDENT: Ch, good morning. Is this... er. . . room number 26?
+AGENT: Yes, that’s right.
+STUDENT: So is this the Student Job Centre?
+AGENT: It certainly is. How can I help you?
+STUDENT: Well, actually I’m looking for a job ~ a part-time job. Do you have Example
+anything available at the moment?
+AGENT: Ah, yes... Are you a registered student? I’m afraid this service is
+only available to full-time students.
+STUDENT: Yes... 1am. I’m doing a degree in Business Studies. Here’s my Ql
+student card.
+AGENT: Which year are you in?
+STUDENT: Well. . . I’ve been at uni for four years but I’m in the Third Year Q2
+because I took last year off.
+AGENT: Right. . . well, let’s just have a look at what positions are available at
+the moment. There’s a job working at the reception desk at the Sports Q3
+Centre, for three evenings a week — that’s Wednesdays, Thursdays and
+Fridays.
+STUDENT: That sounds like fun but unfortunately I have evening lectures — so
+that’s not possible, I’m afraid. Is there anything during the day?
+AGENT: OK, that’s no good then. Um. What about cleaning? There's a
+position for a cleaner at the Child Care Centre. O4
+STUDENT: Right...
+AGENT: But you'd need to be there at 6 am. Does that appeal?
+STUDENT: Six o’clock in the morning! Oh, that’s far too early for me, I’m afraid.
+I'd never make it that early in the morning.
+AGENT: Mmm... Well — there was a position going in the Computer Lab. for
+three days a week that might be OK. Ah, here it is! No, it’s in the QS
+Library, not the Lab., Clerical Assistant required ~ I think it mostly
+involves putting the books back on the shelves. Oh no ~ hang on. It’s
+for Wednesday and Friday evenings again.
+STUDENT: No ~ [can’t manage that because of the lectures.
+AGENT: OK, I'm getting the idea. Look, I’ll just get a few details from you
+anyway, and then we can check through the list and see what comes up.
+AGENT: We'll fill in the personal details on this application form first, if that’s
+OK?
+STUDENT: Yes, that’s fine. :
+AGENT: Now, what's your name again?
+141

@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Request, HTTPException, Depends
 from loguru import logger
 from pydantic import BaseModel
 from dotenv import load_dotenv
@@ -12,9 +12,9 @@ sys.path.append(str(PROJECT_ROOT))
 
 load_dotenv(dotenv_path=PROJECT_ROOT / ".env", override=False)
 
-from core.config import BASE_URL
+from core.config import BASE_URL, DSN
 from db.db_functions import Users_DB
-from core.config import DSN
+from api.deps import get_current_user
 
 stripe.api_key = os.getenv("STRIPE_SECRET_KEY")
 
@@ -33,48 +33,40 @@ PRICE_IDS = {
 
 class CreateCheckoutRequest(BaseModel):
     price_id: str
-    user_id: int
 
 
 class CreateSubscriptionRequest(BaseModel):
-    user_id: int
     price_id: str
 
 
 @router.post("/create-checkout-session")
-async def create_checkout_session(request: CreateCheckoutRequest):
+async def create_checkout_session(
+    request: CreateCheckoutRequest,
+    current_user: dict = Depends(get_current_user),
+):
     try:
+        user_id = current_user["id"]
         await users.initialize()
 
-        user_data = await users.get_user_from_email(
-            f"user_{request.user_id}@placeholder.com"
-        )
-        if not user_data:
-            user_data = {"id": request.user_id}
-
-        subscription = await users.get_subscription(request.user_id)
+        subscription = await users.get_subscription(user_id)
         customer_id = subscription["stripe_customer_id"] if subscription else None
 
         if not customer_id:
             customer = stripe.Customer.create(
-                metadata={"user_id": str(request.user_id)}
+                email=current_user.get("email"),
+                metadata={"user_id": str(user_id)},
             )
             customer_id = customer.id
 
         session = stripe.checkout.Session.create(
             customer=customer_id,
             payment_method_types=["card"],
-            line_items=[
-                {
-                    "price": request.price_id,
-                    "quantity": 1,
-                }
-            ],
+            line_items=[{"price": request.price_id, "quantity": 1}],
             mode="subscription",
             success_url=f"{BASE_URL}/payment/success?session_id={{CHECKOUT_SESSION_ID}}",
             cancel_url=f"{BASE_URL}/payment/cancel",
             metadata={
-                "user_id": str(request.user_id),
+                "user_id": str(user_id),
                 "price_id": request.price_id,
             },
         )
@@ -85,24 +77,28 @@ async def create_checkout_session(request: CreateCheckoutRequest):
     except Exception as ex:
         logger.error(ex)
         await users.close()
-        return {"error": str(ex)}, 500
+        raise HTTPException(status_code=500, detail=str(ex))
 
 
 @router.post("/create-subscription")
-async def create_subscription(request: CreateSubscriptionRequest):
+async def create_subscription(
+    request: CreateSubscriptionRequest,
+    current_user: dict = Depends(get_current_user),
+):
     try:
+        user_id = current_user["id"]
         price_id = PRICE_IDS.get(request.price_id)
         if not price_id:
-            return {"error": "Invalid price_id"}, 400
+            raise HTTPException(status_code=400, detail="Invalid price_id")
 
         await users.initialize()
-        subscription = await users.get_subscription(request.user_id)
-
+        subscription = await users.get_subscription(user_id)
         customer_id = subscription["stripe_customer_id"] if subscription else None
 
         if not customer_id:
             customer = stripe.Customer.create(
-                metadata={"user_id": str(request.user_id)}
+                email=current_user.get("email"),
+                metadata={"user_id": str(user_id)},
             )
             customer_id = customer.id
 
@@ -114,7 +110,7 @@ async def create_subscription(request: CreateSubscriptionRequest):
         )
 
         await users.upsert_subscription(
-            user_id=request.user_id,
+            user_id=user_id,
             stripe_customer_id=customer_id,
             stripe_subscription_id=stripe_sub.id,
             stripe_price_id=price_id,
@@ -133,24 +129,33 @@ async def create_subscription(request: CreateSubscriptionRequest):
             else None,
         }
 
+    except HTTPException:
+        raise
     except Exception as ex:
         logger.error(ex)
         await users.close()
-        return {"error": str(ex)}, 500
+        raise HTTPException(status_code=500, detail=str(ex))
 
 
-@router.get("/subscription-status/{user_id}")
-async def get_subscription_status(user_id: int):
+@router.get("/subscription-status")
+async def get_subscription_status(current_user: dict = Depends(get_current_user)):
     try:
+        user_id = current_user["id"]
         await users.initialize()
         subscription = await users.get_subscription(user_id)
+        has_promo = await users.has_full_access(user_id)
         await users.close()
 
         if not subscription:
-            return {"status": "inactive", "subscription": None}
+            return {
+                "status": "inactive",
+                "hasFullAccess": has_promo,
+                "subscription": None,
+            }
 
         return {
             "status": subscription["status"],
+            "hasFullAccess": has_promo or subscription["status"] == "active",
             "subscription": {
                 "stripe_subscription_id": subscription["stripe_subscription_id"],
                 "stripe_price_id": subscription["stripe_price_id"],
@@ -160,28 +165,30 @@ async def get_subscription_status(user_id: int):
             },
         }
 
+    except HTTPException:
+        raise
     except Exception as ex:
         logger.error(ex)
         await users.close()
-        return {"error": str(ex)}, 500
+        raise HTTPException(status_code=500, detail=str(ex))
 
 
-@router.post("/cancel-subscription/{user_id}")
-async def cancel_subscription(user_id: int):
+@router.post("/cancel-subscription")
+async def cancel_subscription(current_user: dict = Depends(get_current_user)):
     try:
+        user_id = current_user["id"]
         await users.initialize()
         subscription = await users.get_subscription(user_id)
-        await users.close()
 
         if not subscription or not subscription["stripe_subscription_id"]:
-            return {"error": "No active subscription"}, 400
+            await users.close()
+            raise HTTPException(status_code=400, detail="No active subscription")
 
         stripe.Subscription.modify(
             subscription["stripe_subscription_id"],
             cancel_at_period_end=True,
         )
 
-        await users.initialize()
         await users.upsert_subscription(
             user_id=user_id,
             cancel_at_period_end=True,
@@ -190,106 +197,91 @@ async def cancel_subscription(user_id: int):
 
         return {"message": "Subscription will be cancelled at period end"}
 
+    except HTTPException:
+        raise
     except Exception as ex:
         logger.error(ex)
         await users.close()
-        return {"error": str(ex)}, 500
+        raise HTTPException(status_code=500, detail=str(ex))
 
 
 @router.post("/webhook")
-async def stripe_webhook(request: bytes):
-    payload = request
-    sig_header = None
+async def stripe_webhook(request: Request):
+    payload = await request.body()
+    sig_header = request.headers.get("stripe-signature")
+    webhook_secret = os.getenv("STRIPE_WEBHOOK_SECRET")
 
-    event = None
+    if not webhook_secret:
+        logger.error("STRIPE_WEBHOOK_SECRET is not configured")
+        raise HTTPException(status_code=500, detail="Webhook not configured")
 
     try:
-        event = stripe.Event.construct_from(
-            payload, sig_header, os.getenv("STRIPE_WEBHOOK_SECRET")
-        )
+        event = stripe.Webhook.construct_event(payload, sig_header, webhook_secret)
     except ValueError as e:
-        logger.error(f"Invalid payload: {e}")
-        return {"error": "Invalid payload"}, 400
+        logger.error(f"Invalid webhook payload: {e}")
+        raise HTTPException(status_code=400, detail="Invalid payload")
     except stripe.error.SignatureVerificationError as e:
-        logger.error(f"Signature verification failed: {e}")
-        return {"error": "Invalid signature"}, 400
+        logger.error(f"Webhook signature verification failed: {e}")
+        raise HTTPException(status_code=400, detail="Invalid signature")
 
     try:
+        await users.initialize()
+
         if event.type == "checkout.session.completed":
             session = event.data.object
             user_id = int(session.metadata.get("user_id", 0))
             price_id = session.metadata.get("price_id")
 
-            await users.initialize()
-
-            subscription = (
-                stripe.Subscription.list(customer=session.customer, limit=1).data[0]
-                if session.mode == "subscription"
-                else None
-            )
-
-            if subscription:
-                await users.upsert_subscription(
-                    user_id=user_id,
-                    stripe_customer_id=session.customer,
-                    stripe_subscription_id=subscription.id,
-                    stripe_price_id=price_id,
-                    status="active",
-                    current_period_start=subscription.current_period_start,
-                    current_period_end=subscription.current_period_end,
-                )
-
-            await users.close()
+            if session.mode == "subscription":
+                subs = stripe.Subscription.list(customer=session.customer, limit=1).data
+                subscription = subs[0] if subs else None
+                if subscription:
+                    await users.upsert_subscription(
+                        user_id=user_id,
+                        stripe_customer_id=session.customer,
+                        stripe_subscription_id=subscription.id,
+                        stripe_price_id=price_id,
+                        status="active",
+                        current_period_start=subscription.current_period_start,
+                        current_period_end=subscription.current_period_end,
+                    )
 
         elif event.type == "customer.subscription.updated":
             subscription = event.data.object
-            await users.initialize()
-
-            user_result = await users._pool.fetchval(
-                "SELECT user_id FROM subscriptions WHERE stripe_customer_id=$1",
-                subscription.customer,
-            )
-
-            if user_result:
+            async with users._pool.acquire() as conn:
+                user_id = await conn.fetchval(
+                    "SELECT user_id FROM subscriptions WHERE stripe_customer_id=$1",
+                    subscription.customer,
+                )
+            if user_id:
                 await users.upsert_subscription(
-                    user_id=user_result,
+                    user_id=user_id,
                     status=subscription.status,
                     current_period_start=subscription.current_period_start,
                     current_period_end=subscription.current_period_end,
                     cancel_at_period_end=subscription.cancel_at_period_end,
                 )
 
-            await users.close()
-
         elif event.type == "customer.subscription.deleted":
             subscription = event.data.object
-            await users.initialize()
-
-            user_result = await users._pool.fetchval(
-                "SELECT user_id FROM subscriptions WHERE stripe_subscription_id=$1",
-                subscription.id,
-            )
-
-            if user_result:
-                await users.upsert_subscription(
-                    user_id=user_result,
-                    status="cancelled",
+            async with users._pool.acquire() as conn:
+                user_id = await conn.fetchval(
+                    "SELECT user_id FROM subscriptions WHERE stripe_subscription_id=$1",
+                    subscription.id,
                 )
-
-            await users.close()
+            if user_id:
+                await users.upsert_subscription(user_id=user_id, status="cancelled")
 
         elif event.type == "invoice.payment_succeeded":
             invoice = event.data.object
-            await users.initialize()
-
-            user_result = await users._pool.fetchval(
-                "SELECT user_id FROM subscriptions WHERE stripe_customer_id=$1",
-                invoice.customer,
-            )
-
-            if user_result:
+            async with users._pool.acquire() as conn:
+                user_id = await conn.fetchval(
+                    "SELECT user_id FROM subscriptions WHERE stripe_customer_id=$1",
+                    invoice.customer,
+                )
+            if user_id and invoice.payment_intent:
                 await users.add_payment(
-                    user_id=user_result,
+                    user_id=user_id,
                     stripe_payment_intent_id=invoice.payment_intent,
                     amount=invoice.amount_paid,
                     currency=invoice.currency,
@@ -298,20 +290,16 @@ async def stripe_webhook(request: bytes):
                     description=f"Invoice {invoice.id}",
                 )
 
-            await users.close()
-
         elif event.type == "invoice.payment_failed":
             invoice = event.data.object
-            await users.initialize()
-
-            user_result = await users._pool.fetchval(
-                "SELECT user_id FROM subscriptions WHERE stripe_customer_id=$1",
-                invoice.customer,
-            )
-
-            if user_result:
+            async with users._pool.acquire() as conn:
+                user_id = await conn.fetchval(
+                    "SELECT user_id FROM subscriptions WHERE stripe_customer_id=$1",
+                    invoice.customer,
+                )
+            if user_id and invoice.payment_intent:
                 await users.add_payment(
-                    user_id=user_result,
+                    user_id=user_id,
                     stripe_payment_intent_id=invoice.payment_intent,
                     amount=invoice.amount_due,
                     currency=invoice.currency,
@@ -320,25 +308,38 @@ async def stripe_webhook(request: bytes):
                     description=f"Invoice {invoice.id}",
                 )
 
-            await users.close()
-
+        await users.close()
         return {"received": True}
 
     except Exception as ex:
-        logger.error(f"Webhook error: {ex}")
-        return {"error": str(ex)}, 500
+        logger.error(f"Webhook handler error: {ex}")
+        try:
+            await users.close()
+        except Exception:
+            pass
+        raise HTTPException(status_code=500, detail="Webhook processing failed")
 
 
-@router.get("/history/{user_id}")
-async def get_payment_history(user_id: int):
+@router.get("/history")
+async def get_payment_history(current_user: dict = Depends(get_current_user)):
     try:
+        user_id = current_user["id"]
         await users.initialize()
         payments = await users.get_user_payment_history(user_id)
         await users.close()
 
-        return {"payments": payments}
+        def ser(p):
+            d = dict(p)
+            for k, v in d.items():
+                if hasattr(v, "isoformat"):
+                    d[k] = v.isoformat()
+            return d
 
+        return {"payments": [ser(p) for p in payments]}
+
+    except HTTPException:
+        raise
     except Exception as ex:
         logger.error(ex)
         await users.close()
-        return {"error": str(ex)}, 500
+        raise HTTPException(status_code=500, detail=str(ex))

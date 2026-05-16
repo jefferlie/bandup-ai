@@ -1,0 +1,51 @@
+Audioscripts
+TEST 4
+PART 1
+JULIE: Hello?
+GREG: Oh, hello. Is that Julie Davison?
+JULIE: Yes.
+GREG: This is Greg Preston from the Employment Agency. We met last week when you
+, came in to enquire about office work.
+JULIE: Oh, that’s right.
+; GREG: Now we’ve just had some details come in of a job which might interest you.
+JULIE: OK.
+GREG! So this is a position for a receptionist — | believe you’ve done that sort of work Qi
+before?
+JULIE: Yes, | have, | worked in a sports centre for a couple of years before | got married
+and had the children.
+GREG: Right. Well, this job’s in Fordham, so not too far away for you, and it’s at the Q2
+medical centre there.
+JULIE: OK. So where exactly is that?
+GREG: It’s quite near the station, on Chastons Road. Q3
+JULIE: Sorry?
+GREG: Chastons Road — that’s C-H-A-S-T-O-N-S.
+JULIE: OK, thanks. So what would the work involve? Dealing with enquiries from
+patients?
+GREG: Yes, and you'd also be involved in making appointments, whether face to face or Q4
+on the phone. And rescheduling them if necessary.
+JULIE! Fine, that shouldn’t be a problem.
+GREG: And another of your duties would be keeping the centre’s database up-to-date. Q5
+Then you might have other general administrative duties as well, but those would
+be the main ones.
+JULIE: OK.
+mo GREG: Now when the details came in, | immediately thought of you because one thing Q6
+they do require is someone with experience, and you did mention your work at
+; the sports centre when you came in to see us.
+‘ JULIE: Yes, in fact | enjoyed that job. Is there anything else they’re looking for?
+GREG: Well, they say it’s quite a high-pressure environment, they’re always very busy,
+and patients are often under stress, so they want someone who can cope with
+that and stay calm, and at the same time be confident when interacting with the Q7
+public. :
+JULIE: Well, after dealing with three children all under five, | reckon | can cope with that.
+GREG: I’m sure you can.
+GREG: And then another thing they mention is that they’re looking for someone with
+good IT skills ...
+JULIE: Not a problem.
+GREG: So you’d be interested in following this up?
+JULIE: Sure. When would it start?
+GREG: Well, they’re looking for someone from the beginning of next month, but | should
+. tell you that this isn’t a permanent job. it’s temporary, so the contract would Q8
+be just to the end of September. But they do say that there could be further
+opportunities after that.
+JULIE: OK. And what would the hours be?
+114

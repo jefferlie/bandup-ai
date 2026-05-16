@@ -12,7 +12,7 @@ load_dotenv(dotenv_path=PROJECT_ROOT / ".env", override=False)
 
 from db.db_functions import Users_DB
 from core.config import DSN
-from utils.security import verify_password
+from api.deps import get_current_admin
 
 users = Users_DB(DSN)
 
@@ -20,32 +20,6 @@ router = APIRouter(
     prefix="/admin",
     tags=["Admin"],
 )
-
-
-async def get_current_admin(authorization: str = Header(None)):
-    if not authorization:
-        raise HTTPException(status_code=401, detail="Authorization header missing")
-
-    try:
-        token = authorization.replace("Bearer ", "")
-        await users.initialize()
-
-        admin_user = await users._pool.fetchrow(
-            "SELECT * FROM users WHERE is_admin = TRUE LIMIT 1"
-        )
-
-        if not admin_user:
-            await users.close()
-            raise HTTPException(status_code=403, detail="No admin user found")
-
-        await users.close()
-        return admin_user
-
-    except HTTPException:
-        raise
-    except Exception as ex:
-        logger.error(ex)
-        raise HTTPException(status_code=500, detail="Internal server error")
 
 
 class UserUpdate(BaseModel):
@@ -83,21 +57,29 @@ async def get_user(
     try:
         await users.initialize()
         user = await users._pool.fetchrow("SELECT * FROM users WHERE id = $1", user_id)
-        settings = await users.get_user_settings(
-            user_id, user["full_name"], user["email"]
-        )
+        if not user:
+            await users.close()
+            raise HTTPException(status_code=404, detail="User not found")
+
+        settings = await users.get_user_settings(user_id, user["full_name"], user["email"])
         subscription = await users.get_subscription(user_id)
         payments = await users.get_user_payment_history(user_id)
         await users.close()
 
-        if not user:
-            raise HTTPException(status_code=404, detail="User not found")
+        def ser(row):
+            if row is None:
+                return None
+            d = dict(row)
+            for k, v in d.items():
+                if hasattr(v, "isoformat"):
+                    d[k] = v.isoformat()
+            return d
 
         return {
-            "user": user,
+            "user": ser(user),
             "settings": settings,
-            "subscription": subscription,
-            "payments": payments,
+            "subscription": ser(subscription),
+            "payments": [ser(p) for p in (payments or [])],
         }
     except HTTPException:
         raise

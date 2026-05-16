@@ -47,18 +47,18 @@ const HomePage = () => {
             {data?.heroSubtitle ||
               "Your personal AI assistant for learning and practice 24/7."}
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
-            <button onClick={() => navigate("/register")} className="btn-primary text-lg px-8">
+          <div className="flex flex-col sm:flex-row items-center gap-4 justify-center pt-8">
+            <button onClick={() => navigate("/register")} className="btn-primary text-lg px-8 w-full sm:w-auto">
               Start Learning
             </button>
-            <button onClick={() => navigate("/ai-info")} className="btn-secondary text-lg px-8">
+            <button onClick={() => navigate("/ai-info")} className="btn-secondary text-lg px-8 w-full sm:w-auto">
               About AI Assistants
             </button>
-            <button onClick={() => navigate("/login")} className="btn-secondary text-lg px-8">
+            <button onClick={() => navigate("/login")} className="btn-secondary text-lg px-8 w-full sm:w-auto">
               Already Have an Account
             </button>
-            <button onClick={() => navigate("/pricing")} className="btn-secondary text-lg px-8">
-              Тарифы и цены
+            <button onClick={() => navigate("/pricing")} className="btn-secondary text-lg px-8 w-full sm:w-auto">
+              Pricing
             </button>
           </div>
         </div>

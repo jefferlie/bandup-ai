@@ -1,0 +1,38 @@
+60
+Practice Test 3
+READING
+READING PASSAGE 1
+You should spend about 20 minutes on Questions 1-12 which are based on Reading
+Passage 2 below.
+-%1, %2-,3-4
+A   The compiling of dictionaries has been historically the provenance
+of studious professorial types - usually bespectacled - who love
+to pore over weighty tomes and make pronouncements on the
+finer nuances of meaning. They were probably good at crosswords
+and definitely knew a lot of words, but the image was always
+rather dry and dusty. The latest technology, and simple technology
+at that, is revolutionising the content of dictionaries and the way
+they are put together.
+B   For the first time, dictionary publishers are incorporating real,
+spoken English into their data. It gives lexicographers (people
+who write dictionaries) access to a more vibrant, up-to-date
+vernacular language which has never really been studied before.
+ In one project, 150 volunteers each agreed to discreetly tie a
+Walkman recorder to their waist and leave it running for anything
+up to two weeks. Every conversation they had was recorded. When
+the data was collected, the length of tapes was 35 times the depth
+of the Atlantic Ocean. Teams of audio typists transcribed the tapes
+to produce a computerised database of ten million words.
+C   This has been the basis - along with an existing written corpus -
+for the Language Activator dictionary, described by lexicographer
+Professor Randolph Quirk as “the book the world has been waiting
+for”. It shows advanced foreign learners of English how the
+language is really used. In the dictionary, key words such as “eat”
+are followed by related phrases such as “wolf down” or “be a
+picky eater”, allowing the student to choose the appropriate phrase.
+D    “This kind of research would be impossible without computers,”
+said Delia Summers, a director of dictionaries. “It has transformed
+the way lexicographers work. If you look at the word “like”, you
+may intuitively think that the first and most frequent meaning is
+the verb, as in “I like swimming”. It is not. It is the preposition, as
+in: “she walked like a duck”. Just because a word or phrase is

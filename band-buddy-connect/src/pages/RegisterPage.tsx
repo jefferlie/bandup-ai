@@ -262,7 +262,7 @@ const RegisterPage = () => {
               <span>{currentStep === 1 ? "Step 1: Account" : "Step 2: Study Goals"}</span>
               <span>{progressPercent}%</span>
             </div>
-            <div className="h-2 rounded-full bg-slate-100 overflow-hidden">
+            <div className="h-2 rounded-full bg-muted overflow-hidden">
               <div
                 className="h-full bg-primary transition-all duration-300"
                 style={{ width: `${progressPercent}%` }}
@@ -346,10 +346,10 @@ const RegisterPage = () => {
                 </div>
               </>
             ) : (
-              <div className="rounded-lg border border-slate-200 bg-slate-50 p-4 space-y-4">
+              <div className="rounded-lg border border-border bg-card dark:bg-slate-800/50 p-4 space-y-4">
                 <div>
-                  <h2 className="text-sm font-semibold text-slate-900">Study Onboarding</h2>
-                  <p className="text-xs text-slate-500 mt-1">
+                  <h2 className="text-sm font-semibold text-foreground">Study Onboarding</h2>
+                  <p className="text-xs text-muted-foreground mt-1">
                     We use these answers for personalized schedule, weak-skill focus, and
                     recommendations.
                   </p>
@@ -361,7 +361,7 @@ const RegisterPage = () => {
                     name="primaryExam"
                     value={formData.primaryExam}
                     onChange={handleSelectChange}
-                    className="w-full h-12 px-4 border border-input rounded-lg bg-white"
+                    className="w-full h-12 px-4 border border-input rounded-lg bg-background text-foreground"
                   >
                     <option value="ielts">IELTS</option>
                     <option value="sat">SAT</option>
@@ -382,7 +382,7 @@ const RegisterPage = () => {
                         step={0.5}
                         value={formData.currentIeltsScore}
                         onChange={handleInputChange}
-                        className="w-full h-12 px-4 border border-input rounded-lg bg-white"
+                        className="w-full h-12 px-4 border border-input rounded-lg bg-background text-foreground"
                         placeholder="Optional"
                       />
                     </div>
@@ -398,7 +398,7 @@ const RegisterPage = () => {
                         step={0.5}
                         value={formData.targetIeltsScore}
                         onChange={handleInputChange}
-                        className="w-full h-12 px-4 border border-input rounded-lg bg-white"
+                        className="w-full h-12 px-4 border border-input rounded-lg bg-background text-foreground"
                         placeholder="7.0"
                       />
                     </div>
@@ -414,7 +414,7 @@ const RegisterPage = () => {
                       step={10}
                       value={formData.targetSatScore}
                       onChange={handleInputChange}
-                      className="w-full h-12 px-4 border border-input rounded-lg bg-white"
+                      className="w-full h-12 px-4 border border-input rounded-lg bg-background text-foreground"
                       placeholder="1200"
                     />
                   </div>
@@ -427,7 +427,7 @@ const RegisterPage = () => {
                     name="targetExamDate"
                     value={formData.targetExamDate}
                     onChange={handleInputChange}
-                    className="w-full h-12 px-4 border border-input rounded-lg bg-white"
+                    className="w-full h-12 px-4 border border-input rounded-lg bg-background text-foreground"
                   />
                 </div>
 
@@ -441,7 +441,7 @@ const RegisterPage = () => {
                       max={40}
                       value={formData.studyHoursPerWeek}
                       onChange={handleInputChange}
-                      className="w-full h-12 px-4 border border-input rounded-lg bg-white"
+                      className="w-full h-12 px-4 border border-input rounded-lg bg-background text-foreground"
                     />
                   </div>
                   <div>
@@ -450,7 +450,7 @@ const RegisterPage = () => {
                       name="preferredStudyTime"
                       value={formData.preferredStudyTime}
                       onChange={handleSelectChange}
-                      className="w-full h-12 px-4 border border-input rounded-lg bg-white"
+                      className="w-full h-12 px-4 border border-input rounded-lg bg-background text-foreground"
                     >
                       <option value="flexible">Flexible</option>
                       <option value="morning">Morning</option>
@@ -468,7 +468,7 @@ const RegisterPage = () => {
                       return (
                         <label
                           key={skill}
-                          className="flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700"
+                          className="flex items-center gap-2 rounded-lg border border-border bg-background px-3 py-2 text-sm text-foreground"
                         >
                           <input
                             type="checkbox"
@@ -490,7 +490,7 @@ const RegisterPage = () => {
                     name="discoverySource"
                     value={formData.discoverySource}
                     onChange={handleSelectChange}
-                    className="w-full h-12 px-4 border border-input rounded-lg bg-white"
+                    className="w-full h-12 px-4 border border-input rounded-lg bg-background text-foreground"
                   >
                     {DISCOVERY_SOURCES.map((option) => (
                       <option key={option.value} value={option.value}>

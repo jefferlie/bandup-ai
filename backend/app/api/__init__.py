@@ -6,3 +6,6 @@ from .content import content_router
 from .settings import settings_router
 from .ai.main import ai_router
 from .schedule import schedule_router
+from .sat import sat_router
+from .materials import materials_router
+from .promo import promo_router

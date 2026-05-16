@@ -1,0 +1,46 @@
+Audioscripts
+TEST 1
+SECTION 1
+TRAVELAGENT: Good morning. World Tours. My name is Jamie. How can | help you?
+ANDREA: Good morning. | want some information on self-drive tours in the USA.
+Could you send me a brochure?
+TRAVELAGENT: Of course. Could | have your name please?
+ANDREA: Andrea Brown. Example
+TRAVELAGENT: Thank you. And your address?
+ANDREA: 24, Ardleigh Road. Qt
+TRAVELAGENT: Can you spell that?
+ANDREA: A-R-D-L-E-I-G-H Road.
+TRAVELAGENT: Postcode?
+ANDREA: BHS5 20P
+TRAVELAGENT: Thanks. And can | have your phone number?
+ANDREA: ls a mobile alright?
+TRAVELAGENT: Fine.
+ANDREA: It's 07786643091.
+TRAVELAGENT: Thank you. And can | ask you where you heard about World Tours? From
+a friend? Or did you see an advert somewhere?
+ANDREA: No, | read about you in the newspaper. Q2
+TRAVELAGENT: OK, I'll get the brochures in the post to you but can | give you some
+information over the phone. What kinds of things do you want to do on
+your holiday?
+ANDREA: I'm interested in going to California with my family. I've got two children
+and we want to hire a car.
+TRAVELAGENT: OK. We have a couple of self-drive tours there visiting different places
+of interest in California. The first one begins in Los Angeles and there's
+plenty of time to visit some of the theme parks there. Q3
+ANDREA: That's something on my children’s list so I'd want to include that.
+TRAVELAGENT: Good. Then you drive to San Francisco. From San Francisco you can
+drive to Yosemite Park where you spend a couple of nights. You can
+choose to stay in a lodge or on the campsite.
+ANDREA: | don't like the idea of staying in a tent. It'd be too hot. Q4
+TRAVELAGENT: Right. And the tour ends in Las Vegas.
+ANDREA: OK.
+TRAVELAGENT: The other trip we can arrange is slightly different. It starts in San
+Francisco. Then you drive south to Cambria.
+ANDREA: Someone told me there's a really nice castle near Cambria. Will we go Q5
+near that?
+TRAVELAGENT: Hearst Castle is on that road so you could stop there.
+ANOREA: Good. I'd like to do that. Does this trip also go into the desert?
+TRAVELAGENT. No, it continues to Santa Monica where most people like to stop and do
+some shopping.
+ANDREA: We have enough of that at home so that doesn't interest us.
+130

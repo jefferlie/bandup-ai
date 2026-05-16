@@ -1,0 +1,46 @@
+Tapescripts
+SECTION 3
+SIMON: Thanks to all of you for coming along today to hear about how the
+robotic float project is helping with ocean research, Well, first of all
+we'll look at what a robotic float does and its use. So let’s start with
+the device itself. It looks a bit like a cigar and it’s about one and a half Q21
+metres long. More importantly it’s full of equipment that’s designed
+to collect data. So, it can help us in building up a profile of different
+factors which work together within the world’s oceans.
+STUDENT I: Sounds like a big project ~ isn’t it too big for one country to
+undertake?
+SIMON: That’s quite true but this project is a really good example of
+international co-operation. Over the last five years scientists from
+thirteen countries have been taking part in the project and launching Q22
+floats in their area of ocean control. And next year this number will
+rise to fourteen when Indonesia joins the project.
+STUDENT 2: That's impressive.
+SIMON: But let’s move onto how floats work.
+SIMON: The operational cycle goes like this. Each of the floats is dropped in
+the ocean from a boat at a set point and activated from a satellite. 023
+Then the float immediately sinks about 2,000 metres. . . that’s two
+whole kilometres down in the water. It stays at this depth for about 10
+days and is carried around by the currents which operate in the ocean
+at this level. During this time it’s possible for it to cover quite large
+distances but the average is fifty kilometres. O24
+STUDENT 2: So what is it actually recording?
+SIMON: Well at this stage nothing, but as it rises to the surface it collects all
+sorts of data, most importantly variations in salinity, that’s salt levels,
+and the changes in temperature, a bit like underwater weather balloons. Q25
+Then when it gets back to the surface all the data it’s collected is
+beamed up to the satellite. After about five hours on the surface the
+float automatically sinks, beginning the whole process again.
+STUDENT I: What happens to the data?
+SIMON: Well the information is transferred direct to onshore meteorological
+stations. . . like our one in Hobart. . . and within four hours the
+findings can be on computers and they can be mapped and analysed.
+STUDENT 2: You say you're building models of the world’s ocean systems but
+how’re they going to be used, and more importantly, when?
+SIMON: Some of the data has already helped in completing projects. For 026
+example, our understanding of the underlying causes of El Nifio
+events is being confirmed by float data. Another way we're using float
+data is to help us to understand the mechanics of climate change, like — Q27
+global warming and ozone depletion. That's part of an ongoing
+variability study but the results are still along way of
+144
+BDA SR SDE SOP 7 77S oe

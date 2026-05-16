@@ -1,0 +1,35 @@
+Test 1 
+restrictions imposed by the FAA has only to stay in uncontrolled airspace, below 
+365m, while the pilot who does want the protection afforded by ATC can easily 
+enter the controlled airspace. 
+F The FAA then recognised two types of operating environments. In good 
+meteorological conditions, flying would be permitted under Visual Flight Rules 
+(VFR), which suggests a strong reliance on vi sua! cues to maintain an acceptable 
+level of safety. Poor visibility necessitated a set of Instrumental Flight Rules (IFR), 
+under which the pilot relied on altitude and navigational information provided by the 
+plane's instrument panel to fly safely. On a clear day, a pilot in controlled airspace 
+can choose a VFR or IFR flight plan, and the FAA regulations were devised in a way 
+which accommodates both VFR and IFR operations in the same airspace. However, 
+a pilot can only choose to fly IFR if they possess an instrument rating which is 
+above and beyond the basic pilot's license that must also be held. 
+G Controlled airspace is divided into several different types, designated by letters 
+24 
+of the alphabet. Uncontrolled airspace is designated Class F, while controlled 
+airspace below 5,490m above sea level and not in the vicinity of an airport is Class 
+E. All airspace above 5,490m is designated Class A. The reason for the division 
+of Class E and Class A airspace stems from the type of planes operating in them. 
+Generally, Class E airspace is where one finds general aviation aircraft (few of 
+which can climb above 5,490m anyway), and commercial turboprop aircraft. Above 
+5,490m is the realm of the heavy jets, since jet engines operate more efficiently at 
+higher altitudes. The difference between Class E and A airspace 'is thatin Class 
+A, all operations are IFR, and pilots must be instrument-rated, that is, skilled and 
+licensed in aircraft instrumentation. This is because ATC control of the entire 
+space is essential. Three other types of airspace, Classes 0, C and B, govern the 
+vicinity of airports. These correspond roughly to small municipal, medium-sized 
+metropolitan and major metropolitan airports respectively, and encompass an 
+increasingly rigorous set of regulations. For example, all aVFR pilot has to do to 
+enter Class C airspace is establish two-way radio contact with ATG. No explicit 
+permission from ATC to enter is needed, although the pilot must continue to obey all 
+regulations governing VFR flight. To enter Class B airspace, such as on approach 
+to a major metropolitan airport, an explicit ATC clearance is required. The private 
+pilot who cruises without permission into this airspace risks losing their license.

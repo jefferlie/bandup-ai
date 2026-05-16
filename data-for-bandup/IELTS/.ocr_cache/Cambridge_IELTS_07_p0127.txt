@@ -1,0 +1,48 @@
+i a
+Tapescripts
+WOMAN: OK... nowa few details about your car... What size is the engine?
+MAN: It’s 1200 ces,
+WOMAN: Thank you... and the make and model?
+MAN: It’s a Hewton Sable.
+WOMAN: Could you spell the model name please?
+MAN: Yes... S-A-B-L-E, O3
+WOMAN: Ah yes... thanks. And when was it made?
+MAN: 1997,
+WOMAN: Lovely... right... presume you've had a previous insurer?
+MAN: Yes.
+WOMAN: Right... we need to know the name of the company,
+MAN: Yes... it was Northern Star. O4
+WOMAN: Thank you, and have you made any insurance claims in the last five
+years?
+MAN: Yes... one in 1999,
+WOMAN: And what was the problem?
+MAN: It was stolen... but. . , QS
+WOMAN: That's fine, Mr Jones. . . that’s all we need to know at the moment. . 7
+WOMAN: And will there be any other named drivers?
+MAN: Just the one...
+WOMAN: And his name?
+MAN: Simon Paynter,
+WOMAN: Could you spell the surname please?
+MAN: P-A-Y-N-T-E-R. O06
+WOMAN: OK thank you... And what relationship is he to you?
+MAN: He's my brother-in-law. QO7
+WOMAN: And what will you or Mr Paynter be using the car for?
+MAN: Well. . . mainly for social use...
+WOMAN: Social use (murmuring). Will you be using it to travel to work? Os
+MAN: Yes . . . sometimes.
+WOMAN: ... Anything else?
+MAN: No. That’s it...
+WOMAN: And finally... when would you like to start the insurance?
+MAN: I'll need it from the 31st of January,
+WOMAN: Right... Mr Jones... 'm getting a couple of quotes coming up on
+the computer now. . . and the best bet looks like being with a
+company called Red Flag. Q9
+MAN: Yeah.
+WOMAN: And that comes out at $450 per year... Q10
+MAN: Well... that seems OK .. . it’s quite a bit lower than I've been paying
+up tonow...
+WOMAN: Great... so would you like me to go ahead with that?
+MAN: Sure... why not?
+WOMAN: How would you like to pay?
+136
+|

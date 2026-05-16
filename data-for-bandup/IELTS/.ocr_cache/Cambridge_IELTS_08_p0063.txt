@@ -1,0 +1,37 @@
+Reading 
+READING 
+READING PASSAGE 1 
+You should spend about 20 minutes on Questions 1-13 which are based on Reading 
+Passage 1 below. 
+Striking Back at Lightning 
+With Lasers 
+Seldom is the weather more· dramatic than when thunderstorms strike. Their electrical fury 
+inflicts death or serious injury on around 500 people each year in the United States alone. As the 
+clouds roll in, a leisurely round of golf can become a terrifying dice with death - out in the open, 
+a lone golfer may be a lightning bolt's most inviting target. And there is damage to proper~y 
+too. Lightning damage costs American power companies more than $100 million a year. 
+But researchers in the United States and Japan are planning to hit back. Already in laboratory 
+trials they have tested strategies for neutralising the power of thunderstorms, and this winter 
+they will brave real storms, equipped with an armoury of lasers that they will be pointing 
+towards the heavens to discharge thunderclouds before lightning can strike. 
+The idea of forcing storm clouds to discharge their lightning on command is not new. In the 
+early 1960s, researchers tried firing rockets trailing wires into thunderclouds to set up an 
+easy discharge path for the huge electric charges that these clouds generate. The technique 
+survives to this day at a test site in Florida run by the University of Florida, with support 
+from the Electrical Power Research Institute (EPRI), based in California. EPRI, which is 
+funded by power companies, is looking at ways to protect the United States' power grid from 
+lightning strikes. 'We can cause the lightning to strike where we want it to using rockets,' says 
+Ralph Bernstein, manager of lightning projects at EPR!. The rocket site is providing precise 
+measurements of lightning voltages and allowing engineers to check how electrical equipment 
+bears up. 
+Bad behaviour 
+But while rockets are fine for research, they cannot provide the protection from lightning 
+strikes that everyone is looking for. The rockets cost around $1,200 each, can only be fired 
+at a limited frequency and their failure rate is about 40 per cent. And even when they do 
+trigger lightning, things still do not always go according to plan. 'Lightning is not perfectly 
+well behaved,' says Bernstein. 'Occasionally, it will take a branch and go someplace it wasn't 
+supposed to go.' 
+And anyway, who would want to fire streams of rockets in a populated area? 'What goes up 
+must come down,' points out Jean-Claude Diels of the University of New Mexico. Diels is 
+leading a project, which is backed by EPRI, to try to use lasers to discharge lightning safely 
+65

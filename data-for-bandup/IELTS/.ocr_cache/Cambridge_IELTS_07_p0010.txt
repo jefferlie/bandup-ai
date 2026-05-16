@@ -1,0 +1,33 @@
+Reading
+brighter if it is to be used as a headlight to illurninate the path, than if it is to be used as a signal
+to others. In any event, whether or not the reason is the energy expense, it seems to be the
+case that, with the possible exception of some weird deep-sea fish, no animal apart from man
+uses manufactured light to find its way about.
+
+D What else might the engineer think off Well, blind humans sometimes seem to have an uncanny
+sense of obstacles in their path. It has been given the name ‘facial vision’, because blind people
+have reported that it feels a bit like the sense of touch, on the face. One report tells of a totally
+blind boy who could ride his tricycle at good speed round the block near his home, using facial
+vision. Experiments showed that, in fact, facial vision is nothing to do with touch or the front of
+the face, although the sensation may be referred to the front of the face, like the referred pain
+in a phantom limb. The sensation of facial vision, it turns out, really goes in through the ears.
+Blind people, without even being aware of the fact, are actually using echoes of their own
+footsteps and of other sounds, to sense the presence of obstacles, Before this was discovered,
+engineers had already built instruments to exploit the principle, for example to measure the
+depth of the sea under a ship. After this technique had been invented, it was only a matter of
+time before weapons designers adapted it for the detection of submarines. Both sides in the
+Second World War relied heavily on these devices, under such codenames as Asdic (British) and
+Sonar (American), as well as Radar (American) or RDF (British), which uses radio echoes rather
+than sound echoes.
+
+E_ The Sonar and Radar pioneers didn't know it then, but all the world now knows that bats, or
+rather natural selection working on bats, had perfected the system tens of millions of years
+earlier, and their ‘radar’ achieves feats of detection and navigation that would strike an engineer
+dumb with admiration. It is technically incorrect to talk about bat ‘radar’, since they do not use
+radio waves. It is sonar But the underlying mathematical theories of radar and sonar are very
+similar, and much of our scientific understanding of the details of what bats are doing has come
+from applying radar theory to them. The American zoologist Donald Griffin, who was largely
+responsible for the discovery of sonar in bats, coined the term ‘echolocation’ to cover both
+sonar and radar, whether used by animals or by human instruments.
+
+19

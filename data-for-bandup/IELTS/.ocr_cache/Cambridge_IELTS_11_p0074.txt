@@ -1,0 +1,33 @@
+Test3 
+sketched intuitively, when a part of the physical universe is finally understood, its 
+description often looks like a page in a mathematics text. 
+E 
+Still, the non-mathematical reader can go far in understanding mathematical 
+reasoning. This book presents the details that illustrate the mathematical style 
+of thinking, which involves sustained, step-by-step analysis, experiments, and 
+insights. You will turn these pages much more slowly than when reading a novel 
+or a newspaper. It may help to have a pencil and paper ready to check claims and 
+carry out experiments. 
+F 
+As I wrote, I kept in mind two types of readers: those who enjoyed mathematics 
+until they were turned off by an unpleasant episode, usually around fifth grade, and 
+mathematics aficionados, who will find much that is new throughout the book. 
+This book also serves readers who simply want to sharpen their analytical skills. 
+Many careers, such as law and medicine, require extended, precise analysis. Each 
+chapter offers practice in following a sustained and closely argued line of thought. 
+That mathematics can develop this skill is shown by these two testimonials: 
+G 
+A physician wrote, The discipline of analytical thought processes [in mathematics] 
+prepared me extremely well for medical school. In medicine one is faced with a 
+problem which must be thoroughly analyzed before a solution can be found. The 
+process is similar to doing mathematics.' 
+74 
+A lawyer made the same point, 'Although I had no background in law - not even 
+one political science course - I did well at one of the best law schools. I attribute 
+much of my success there to having learned, through the study of mathematics, 
+and, in particular, theorems, how to analyze complicated principles. Lawyers who 
+have studied mathematics can master the legal principles in a way that most others 
+cannot.' 
+I hope you will share my delight in watching as simple, even na"ive, questions 
+lead to remarkable solutions and purely theoretical discoveries find unanticipated 
+applications.

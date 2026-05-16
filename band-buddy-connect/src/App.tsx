@@ -25,6 +25,9 @@ import Terms from "./pages/Terms";
 import Privacy from "./pages/Privacy";
 import AdminPage from "./pages/AdminPage";
 import PricingPage from "./pages/PricingPage";
+import SATMath from "./pages/SATMath";
+import SATEnglish from "./pages/SATEnglish";
+import AIChatPage from "./pages/AIChatPage";
 
 const queryClient = new QueryClient();
 
@@ -62,6 +65,9 @@ const App = () => (
               <Route path="/privacy/*" element={<Navigate to="/privacy" replace />} />
               <Route path="/admin" element={<AdminPage />} />
               <Route path="/pricing" element={<PricingPage />} />
+              <Route path="/sat/math" element={<SATMath />} />
+              <Route path="/sat/english" element={<SATEnglish />} />
+              <Route path="/ai-chat" element={<AIChatPage />} />
               
               <Route path="*" element={<NotFound />} />
             </Routes>

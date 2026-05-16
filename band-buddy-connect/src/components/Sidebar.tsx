@@ -23,7 +23,7 @@ const Sidebar = () => {
             <div className="flex flex-shrink-0 h-[72px] items-center px-6">
                 <Link to="/" className="flex items-center gap-2">
                     <img src={logo} alt="Logo" className="w-8 h-8" />
-                    <span className="text-xl font-bold text-primary tracking-tight">Band<span className="font-bold text-slate-800 dark:text-white">Up</span></span>
+                    <span className="text-xl font-bold text-primary tracking-tight">Band<span className="font-bold text-foreground">Up</span></span>
                 </Link>
             </div>
 
@@ -53,18 +53,25 @@ const Sidebar = () => {
                     <span className="text-sm font-medium">Speaking</span>
                 </Link>
 
-                <div className="mt-8 mb-2 px-3 flex items-center justify-between">
-                    <span className="text-[11px] font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase">SAT</span>
-                    <span className="rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold text-slate-500 dark:bg-slate-800 dark:text-slate-400">Coming Soon</span>
+                <div className="mt-8 mb-2 px-3 text-[11px] font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase">
+                    SAT
                 </div>
-                <div className="group flex items-center gap-3 rounded-lg px-3 py-2.5 text-slate-400 dark:text-slate-500 cursor-not-allowed opacity-70">
-                    <span className="material-symbols-outlined opacity-80">calculate</span>
+                <Link className={getLinkClass("/sat/math")} to="/sat/math">
+                    <span className="material-symbols-outlined">calculate</span>
                     <span className="text-sm font-medium">Mathematics</span>
-                </div>
-                <div className="group flex items-center gap-3 rounded-lg px-3 py-2.5 text-slate-400 dark:text-slate-500 cursor-not-allowed opacity-70">
-                    <span className="material-symbols-outlined opacity-80">spellcheck</span>
+                </Link>
+                <Link className={getLinkClass("/sat/english")} to="/sat/english">
+                    <span className="material-symbols-outlined">spellcheck</span>
                     <span className="text-sm font-medium">English</span>
+                </Link>
+
+                <div className="mt-8 mb-2 px-3 text-[11px] font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase">
+                    AI ASSISTANT
                 </div>
+                <Link className={getLinkClass("/ai-chat")} to="/ai-chat">
+                    <span className="material-symbols-outlined">smart_toy</span>
+                    <span className="text-sm font-medium">AI Chat</span>
+                </Link>
 
                 <div className="mt-8 mb-2 px-3 text-[11px] font-bold tracking-wider text-slate-400 dark:text-slate-500 uppercase">
                     ACCOUNT

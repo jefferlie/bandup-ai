@@ -1,0 +1,47 @@
+Test 1 
+ 
+ 
+128
+JON:         380. Is that including water? 
+JANICE:     No, I’m afraid not, but it does include the telephone rental.                                    
+Q6 
+JON:         Oh well, that’s not too bad then. So,. .. 
+JANICE:     So, when would you be available to see them? 
+JON:         Well, I’ll be in town next week . . . say . . . Thursday? 
+JANICE:     No, I’m sorry we don’t have any availability for Thursday. How about Wednesday afternoon?    
+Q7 
+JON:         OK. That’s fine. Would 5.00 be OK? 
+JANICE:     Yes, fine. 5.00 it is. Just come to the Flagstone Offices. 
+JON:         Oh, before I forget. What sort of things do I need to get done ... to rent with you? 
+JANICE:     Well, the most important thing is a letter from your bank ... 
+JON:         NO problem . . . 
+JANICE:     And then a reference letter from your employer.                                                    
+Q8 
+JON:         Yes, that’s OK. 
+JANICE:    Great, and then we would need you to give 2 weeks’ notice of moving in ...            
+Q9 
+JON:         Right... 2 weeks’ notice. And what about a deposit?                                             
+Q10 
+JANICE:    That’s one month’s rent, whatever the amount is. 
+JON:         OK. One month. Is that it? 
+JANICE:     No, sorry, one more . . . you will have to pay for the contract. 
+JON:         Oh yes. I’d forgotten about that. OK, fine. So I’ll start arranging those, and I’ll . . . 
+JANICE:     ... I’ll see you next week. 
+JON:         Yes. Thanks very much. Bye. 
+JANICE:     Goodbye. 
+ 
+SECTION 2 
+ 
+MRS SMITH:       Hello, Mrs Sutton. Come in. How are you settling in next door? Have all your things from Canada 
+arrived yet? I thought I saw a removals van outside your house yesterday afternoon. 
+MRS SUTTON:    Yes. They came yesterday. We spent all day yesterday arranging them. It’s beginning to feel a bit 
+more like home now. 
+MRS SMITH:      That’s good. Look, come in and sit down. Are you alright? You look a bit worried. 
+MRS SUTTON:    Well, I am a bit. I’m sorry to bother you so early, Mrs Smith, but I wonder if you could help me. 
+Could you tell me how I can get hold of a doctor? Our daughter, Anna, isn’t very well this morning 
+and I may have to call somebody out. She keeps being sick and I am beginning to get a  
+Q11 
+bit worried. I just don’t know how the health system works here in England. All I know is that it’s 
+very different from ours back in Canada. 
+MRS SMITH:      Well, I don’t know really where to start. Let me think. Well, the first thing you have to do is find a 
+family doctor - sometimes we call them general

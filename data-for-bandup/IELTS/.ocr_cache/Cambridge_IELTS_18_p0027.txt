@@ -1,0 +1,46 @@
+Test 1
+lead to explosions. The intergovernmental groups also advise lowering satellites
+deep enough into the atmosphere that they will burn up or disintegrate within 25
+years. But so far, only about half of all missions have abided by this 25-year goal,
+
+says Holger Krag, head of the European Space Agency's space-debris office in
+Darmstadt, Germany. Operators of the planned large constellations of satellites say
+they will be responsible stewards in their enterprises in space, but Krag worries
+that problems could increase, despite their best intentions. “What happens to those
+that fail or go bankrupt?’ he asks. ‘They are probably not going to spend money to
+remove their satellites from space.’
+: Oe D __Intheory, given the vastness of space, satellite operators should have plenty of
+ae room for all these missions to fly safely without ever nearing another object. So
+a some scientists are tackling the problem of space junk by trying to find out where
+Os all the debris is to a high degree of precision. That would alleviate the need for
+eee many of the unnecessary manoeuvres that are carried out to avoid potential
+ane collisions. ‘If you knew precisely where everything was, you would almost never
+have a problem,’ says Marlon Sorge, a space-debris specialist at the Aerospace
+Corporation in El Segundo, California.
+
+E The field is called space traffic management, because it’s similar to managing traffic
+on the roads or in the air. Think about a busy day at an airport, says Moriba Jah,
+an astrodynamicist at the University of Texas at Austin: planes line up in the sky,
+
+landing and taking off close to one another in a carefully choreographed routine.
+Air-traffic controllers know the location of the planes down to one metre in accuracy.
+The same can’t be said for space debris. Not all objects in orbit are known, and
+even those included in databases are not tracked consistently.
+
+F  Anadditional problem is that there is no authoritative catalogue that accurately
+lists the orbits of all known space debris. Jah illustrates this with a web-based
+database that he has developed. It draws on several sources, such as catalogues
+maintained by the US and Russian governments, to visualise where objects are in
+space. When he types in an identifier for a particular space object, the database
+draws a purple line to designate its orbit. Only this doesn’t quite work for a number
+of objects, such as a Russian rocket body designated in the database as object
+number 32280. When Jah enters that number, the database draws two purple lines:
+the US and Russian sources contain two completely different orbits for the same
+object. Jah says that it is almost impossible to tell which is correct, unless a third
+source of information made it possible to cross-correlate.
+
+Jah describes himself as a space environmentalist: ‘I want to make space a place
+, that is safe to operate, that is free and useful for generations to come.’ Until that
+happens, he argues, the space community will continue devolving into a tragedy in
+| mo which all spaceflight operators are polluting a common resource.
+26

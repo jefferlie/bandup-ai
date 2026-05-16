@@ -1,0 +1,37 @@
+Test 3
+READING PASSAGE 3
+You should spend about 20 minutes on Questions 27-40, which are based on Reading
+Passage 3 below.
+Is the era of artificial speech translation upon us?
+Once the stuff of science fiction, technology that enables people to talk using
+different languages is now here. But how effective is it?
+Noise, Alex Waibel tells me, is one of the major challenges that artificial speech translation
+has to meet. A device may be able to recognise speech in a laboratory, or a meeting room, but
+will struggle to cope with the kind of background noise I can hear in my office surrounding
+Professor Waibel as he speaks to me from Kyoto station in Japan. I’m struggling to follow him
+in English, on a scratchy line that reminds me we are nearly 10,000 kilometres apart — and that
+distance is still an obstacle to communication even if you’re speaking the same language, as we
+are. We haven’t reached the future yet. If we had, Waibel would have been able to speak more
+comfortably in his native German and I would have been able to hear his words in English.
+At Karlsruhe Institute of Technology, where he is a professor of computer science, Waibel and
+his colleagues already give lectures in German that their students can follow in English via an
+electronic translator. The system generates text that students can read on their laptops or phones,
+so the process is somewhat similar to subtitling. It helps that lecturers speak clearly, don’t have to
+compete with background chatter, and say much the same thing each year.
+The idea of artificial speech translation has been around for a long time. Douglas Adams’ science
+fiction novel, The Hitchhiker s Guide to the Galaxy, published in 1979, featured a life form called
+the ‘Babel fish’ which, when placed in the ear, enabled a listener to understand any language in
+the universe. It came to represent one of those devices that technology enthusiasts dream of long
+before they become practically realisable, like TVs flat enough to hang on walls: objects that
+we once could only dream of having but that are now commonplace. Now devices that look like
+prototype Babel fish have started to appear, riding a wave of advances in artificial translation and
+voice recognition.
+At this stage, however, they seem to be regarded as eye-catching novelties rather than steps
+towards what Waibel calls ‘making a language-transparent society’. They tend to be domestic
+devices or applications suitable for hotel check-ins, for example, providing a practical alternative
+to speaking traveller’s English. The efficiency of the translator is less important than the social
+function. However, ‘Professionals are less inclined to be patient in a conversation,’ founder and
+CEO at Waverly Labs, Andrew Ochoa, observes. To redress this, Waverly is now preparing a
+new model for professional applications, which entails performance improvements in speech
+recognition, translation accuracy and the time it takes to deliver the translated speech.
+70

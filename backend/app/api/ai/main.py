@@ -4,8 +4,9 @@ import re
 import nltk
 import language_tool_python
 from nltk import sent_tokenize
-from fastapi import APIRouter, UploadFile, File, Form
+from fastapi import APIRouter, Depends, HTTPException, UploadFile, File, Form
 from pydantic import BaseModel
+from typing import List, Literal
 
 import google.generativeai as genai
 
@@ -20,13 +21,65 @@ genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
 nltk.download("punkt", quiet=True)
 nltk.download("averaged_perceptron_tagger_eng", quiet=True)
 nltk.download("averaged_perceptron_tagger", quiet=True)
+from api.deps import get_current_user
+
 ai_router = APIRouter()
+
+
 class ChatRequest(BaseModel):
     message: str
     subject: str
 
+
 class ChatResponse(BaseModel):
     reply: str
+
+
+class ConversationMessage(BaseModel):
+    role: Literal["user", "assistant"]
+    content: str
+
+
+class ChatMessageRequest(BaseModel):
+    message: str
+    conversation_history: List[ConversationMessage] = []
+
+
+SYSTEM_PROMPT = (
+    "You are BandUp AI, a friendly and expert study assistant for IELTS and SAT preparation. "
+    "Help students with grammar, essay writing, reading comprehension, vocabulary, math, and exam strategy. "
+    "Give concise, actionable advice. Use English by default unless the student writes in another language."
+)
+
+
+@ai_router.post("/api/chat/message", response_model=ChatResponse)
+async def chat_message(
+    request: ChatMessageRequest,
+    current_user: dict = Depends(get_current_user),
+):
+    try:
+        history = []
+        for msg in request.conversation_history:
+            history.append({
+                "role": "user" if msg.role == "user" else "model",
+                "parts": [msg.content],
+            })
+
+        model = genai.GenerativeModel(
+            model_name="gemini-2.0-flash",
+            system_instruction=SYSTEM_PROMPT,
+        )
+        chat = model.start_chat(history=history)
+        response = chat.send_message(
+            request.message,
+            generation_config=genai.types.GenerationConfig(
+                temperature=0.7,
+                max_output_tokens=800,
+            ),
+        )
+        return ChatResponse(reply=response.text)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"AI service error: {str(e)}")
 
 class EssayInput(BaseModel):
     text: str

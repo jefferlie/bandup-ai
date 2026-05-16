@@ -1,5 +1,5 @@
 import { useState, useEffect, createContext, useContext } from "react";
-import { apiRequest } from "@/lib/apiClient";
+import { apiRequest, ApiError } from "@/lib/apiClient";
 
 interface User {
   id?: string;
@@ -38,7 +38,7 @@ interface AuthContextType {
     password: string,
     onboarding?: RegisterOnboardingPayload
   ) => Promise<{ success: boolean; error?: string }>;
-  logout: () => void;
+  logout: () => Promise<void>;
   isLoading: boolean;
 }
 
@@ -112,6 +112,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
       return { success: true };
     } catch (err: unknown) {
+      if (err instanceof ApiError && err.status === 429) {
+        return { success: false, error: "Too many login attempts. Try again in a few minutes." };
+      }
       return {
         success: false,
         error: getErrorMessage(err, "Login failed"),
@@ -173,7 +176,12 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
   };
 
-  const logout = () => {
+  const logout = async () => {
+    try {
+      await apiRequest("/auth/logout", { method: "POST" });
+    } catch {
+      // ignore — still clear local session
+    }
     setUser(null);
     localStorage.removeItem("token");
     localStorage.removeItem("user");

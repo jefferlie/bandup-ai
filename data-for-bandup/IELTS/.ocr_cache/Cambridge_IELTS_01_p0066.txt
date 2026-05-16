@@ -1,0 +1,27 @@
+61
+Reading
+used doesn’t mean it ends up in a dictionary. The sifting out process
+is as vital as ever. But the database does allow lexicographers to
+search for a word and find out how frequently it is used - something
+that could only be guessed at intuitively before.
+E  Researchers have found that written English works in a very
+different way to spoken English. The phrase “say what you like”
+literally means “feel free to say anything you want”, but in reality
+it is used, evidence shows, by someone to prevent the other person
+voicing disagreement. The phrase “it”s a question of crops up on
+the database over and over again. It has nothing to do with enquiry,
+but it’s one of the most frequent English phrases which has never
+been in a language learner’s dictionary before: it is now.
+F The Spoken Corpus computer shows how inventive and humorous
+people are when they are using language by twisting familiar
+phrases for effect. It also reveals the power of the pauses and
+noises we use to play for time, convey emotion, doubt and irony.
+G For the moment, those benefiting most from the Spoken Corpus
+are foreign learners. “Computers allow lexicographers to search
+quickly through more examples of real English,” said Professor
+Geoffrey Leech of Lancaster University. “They allow dictionaries
+to be more accurate and give a feel for how language is being
+used.” The Spoken Corpus is part of the larger British National
+Corpus, an initiative carried out by several groups involved in the
+production of language learning materials: publishers, universities
+and the British Library.

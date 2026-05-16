@@ -1,0 +1,48 @@
+127
+TAPESCRIPTS 
+ 
+TEST 1 
+ 
+SECTION 1 
+ 
+JANICE:    Hello ... Flagstone. 
+JON:         Oh hello; is that Flagstone Properties? 
+JANICE:     Yes that’s right. Flagstone here. How can I help you?                                             
+Example 
+JON:         Hello. I’m ringing just to make enquiries about renting a house. My name’s Jon Anderson. 
+JANICE:     Yes, Mr Anderson. What sort of thing were you looking for? 
+JON:         Two-bedroomed house with garden. 
+JANICE:     Well. .. yes, sir, that shouldn’t be any problem ... just to let you know that our main areas, the main areas 
+we deal with, are the city centre itself...                          
+Ql 
+JON:         City centre ... uh-huh. 
+JANICE:     And the north suburbs. 
+JON:         Oh well... we were most interested in the Northern areas actually. 
+JANICE:     Right... yes... What sort of price were you thinking of? 
+JON:         Well... could you give me some idea? 
+JANICE:     Certainly. It really ranges from £250 per month.                                                     
+Q2 
+JON:         Only £250? 
+JANICE:     Yes, to about £500 depending on a number of different factors. 
+JON:         What does it depend on? 
+JANICE:     Well, obviously the quality of the area. And then whether there’s a garden.              
+Q3 
+JON:         Well, as I said, we’d want a garden. 
+JANICE:     And a garage pushes up the price. 
+JON:         Right... well, we wouldn’t necessarily need one. I think about £350 a month 
+would be our limit. 
+JANICE:     OK. Well.. . would you like to have a look at a couple of properties, sir? 
+JON:         Yes, that’d be great. 
+JANICE:     Looking at our files ... I think we’ve got two which might suit you ... 
+JON:         Hang on. I’ll just get a pen. Right. 
+JANICE:     OK. Well, there’s one on West Park Road which is £325 a month.                            
+Q4 
+JON:         Are the bills included? 
+JANICE:     Well, that one just includes the water bill.                                                              
+Q5 
+JON:         OK, right. 
+JANICE:     And the second house is in Tithe Road. I’ll just spell that for you ... OK? 
+JON :         Yep. 
+JANICE:     T-I-T-H-E Road. 
+JON:         Got that. And how much is that one? 
+JANICE:     That’s £380.

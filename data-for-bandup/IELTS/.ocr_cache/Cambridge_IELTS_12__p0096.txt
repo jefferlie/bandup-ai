@@ -1,0 +1,45 @@
+Audioscripts
+TEST 5
+SECTION 1
+TC EMPLOYEE: Hi. Can | help you?
+VISITOR: Pd like to find out if you have any excursions suitable for families.
+TC EMPLOYEE: Sure. How about taking your family for a cruise? We have a steamship that Example
+takes passengers out several times a day — it’s over 100 years old.
+VISITOR: That sounds interesting. How long is the trip?
+Tc EMPLOYEE: About an hour and a half. And don’t forget to take pictures of the mountains. Q1
+They're all around you when you’re on the boat and they look fantastic.
+VISITOR: OK. And | assume there’s a café or something on board?
+TC EMPLOYEE: Sure. How old are your children?
+VISITOR: Er, my daughter’s fifteen and my son’s seven.
+TC EMPLOYEE: Right. Well there are various things you can do once you’ve crossed the lake,
+to make a day of it. One thing that’s very popular is a visit to the Country Farm.
+You're met off the boat by the farmer and he'll take you to the holding pens,
+where the sheep are kept. Children love feeding them!
+VISITOR: My son would love that. He really likes animals.
+TC EMPLOYEE: Well, there’s also a 40-minute trek round the farm on a horse, if he wants. Q2
+VISITOR: Do you think he’d manage it? He hasn’t done that before.
+Tc EmpLoYee: Sure. It's suitable for complete beginners.
+VISITOR: Ah, good.
+TC EMPLOYEE: And again, visitors are welcome to explore the farm on their own, as long
+as they take care to close gates and so on. There are some very beautiful Q3
+gardens along the side of the lake which also belong to the farm — they'll be
+just at their best now. You could easily spend an hour or two there.
+VISITOR: OK. Well that all sounds good. And can we get lunch there? Q4
+TC EMPLOYEE: You can, and it’s very good, though it’s not included in the basic cost. You pay
+when you get there.
+VISITOR: Right.
+VISITOR: So is there anything else to do over on that side of the lake?
+TC EMPLOYEE: Well, what you can do is take a bike over on the ship and then go on a cycling
+trip. There’s a trail there called the Back Road — you could easily spend three
+or four hours exploring it, and the scenery’s wonderful. They'll give youamap Q5
+when you get your ticket for the cruise — there’s no extra charge.
+VISITOR: What's the trail like in terms of difficulty?
+TC EMPLOYEE: Quite challenging in places. it wouldn’t be suitable for your seven-year-old. It Q6
+needs someone who's got a bit more experience.
+VISITOR: Hmm. Well, my daughter loves cycling and so do I, so maybe the two of us
+could go, and my wife and son could stay on the farm. That might work out
+quite well. But we don’t have bikes here... is there somewhere we could
+rent them?
+TC EMPLOYEE: Yes, there’s a place here in the city. it's called Ratchesons. Q7
+VISITOR: I'll just make a note of that — er, how do you spell it?
+95

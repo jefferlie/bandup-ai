@@ -1,0 +1,91 @@
+SECTION 3 
+Questions 27-40
+Questions 27-32
+The Reading Passage on the following pages has seven paragraphs (A-G).
+Choose the most suitable headings for paragraphs A-B and D-G from the list of headings
+below.
+Write the appropriate numbers (i-ix) in boxes 27-32 on your answer sheet.
+NB There are more headings than paragraphs: so you will not use all of them.
+ROBOTS AT WORK
+List of Headings
+i 
+Robots working together
+ii 
+Preparing LGVs for take-over
+iii 
+Looking ahead
+iv 
+The LGVs' main functions
+v 
+Split location for newspaper production
+vi 
+Newspapers superseded by technology
+vii 
+Getting the newspaper to the printing
+centre 
+>*
+viii Controlling the robots
+ix 
+Beware of robots!
+Example 
+Answer
+Paragraph 
+C 
+ix
+27 
+Paragraph A
+28 
+Paragraph B
+29 
+Paragraph D
+30 
+Paragraph E
+31 
+Paragraph F
+32 
+Paragraph G
+A
+The newspaper production process has come a
+long way from the old days when the paper was
+written, edited, typeset and ultimately printed
+in one building with the journalists working on
+the upper floors and the printing presses going
+on the ground floor. These days the editor, sub-
+editors and journalists who put the paper
+together are likely to find themselves in a totally
+different building or maybe even in a different
+city. This is the situation which now prevails in
+Sydney. The daily paper is compiled at the
+editorial headquarters, known as the pre-press
+centre, in the heart of the city but printed far
+away in the suburbs at the printing centre. Here
+human beings are in the minority as much of
+the work is done by automated machines
+controlled by computers.
+B
+Once the finished newspaper has been created
+for the next morning's edition, all the pages are
+transmitted electronically from the pre-press
+centre to the printing centre. The system of
+transmission is an update on the sophisticated
+page facsimile system already in use on many
+other newspapers. An image-setter at the
+printing centre delivers the pages as film. Each
+page takes less than a minute to produce,
+although for colour pages four versions are
+used, one each for black, cyan, magenta and
+yellow. The pages are then processed into
+photographic negatives and the film is used to
+produce aluminium printing plates ready for the
+presses.
+C
+A procession of automated vehicles is busy at
+the new printing centre where the Sydney
+Morning Herald is printed each day. With lights
+flashing and warning horns honking, the robots
+(to give them their correct name, the LGVs or
+laser-guided vehicles) look for all the world like
+enthusiastic machines from a science-fiction
+movie, as they follow their own random paths
+around the plant busily getting on with their
+jobs. Automation of this kind is now standard

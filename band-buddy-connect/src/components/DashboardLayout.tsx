@@ -1,5 +1,6 @@
 import React from "react";
 import Sidebar from "./Sidebar";
+import ChatAssistant from "./ChatAssistant";
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 
@@ -24,6 +25,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
       <main className="flex-1 overflow-y-auto">
         {children}
       </main>
+      <ChatAssistant />
     </div>
   );
 };

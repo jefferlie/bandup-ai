@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Header
 from fastapi.responses import JSONResponse
 from fastapi.requests import Request
 
@@ -45,18 +45,23 @@ def load_json(path: Path) -> dict:
         return json.load(f)
 
 
-async def get_or_create_fallback_user_id() -> int:
-    user_row = await database.get_user_from_email("test@test.com")
-    if not user_row:
-        user_row = await database.get_user_from_email("guest@example.com")
+async def _get_guest_user_id() -> int:
+    user_row = await database.get_user_from_email("guest@example.com")
     if not user_row:
         await database.add_user("Guest", "none", "guest@example.com")
         user_row = await database.get_user_from_email("guest@example.com")
-
     if not user_row:
         raise HTTPException(status_code=500, detail="Could not resolve user for attempt.")
-
     return user_row["id"]
+
+
+async def resolve_user_id(authorization: str | None) -> int:
+    if authorization:
+        token = authorization.removeprefix("Bearer ").strip()
+        user_row = await database.get_user_by_token(token)
+        if user_row:
+            return user_row["id"]
+    return await _get_guest_user_id()
 
 
 def load_mode_test(mode: Literal["writing", "speaking"], test_id: str) -> dict:
@@ -77,18 +82,19 @@ def load_mode_test(mode: Literal["writing", "speaking"], test_id: str) -> dict:
 
 
 @router.get("/{mode}/attempts")
-async def attempts(mode: Literal['reading', 'listening', 'writing', 'speaking'],
-                   limit: int = 5):
-
+async def attempts(
+    mode: Literal['reading', 'listening', 'writing', 'speaking'],
+    limit: int = 5,
+    authorization: str = Header(None),
+):
     try:
         await database.initialize()
+        user_id = await resolve_user_id(authorization)
 
-        logger.info(mode)
-        temp = await database.get_mode_attempts(mode=mode)
-        logger.info(temp)
+        raw = await database.get_user_mode_attempts(user_id=user_id, mode=mode)
 
         attempts_ = []
-        for attempt in temp[: max(limit, 0)]:
+        for attempt in raw[: max(limit, 0)]:
             submitted_at = attempt["submitted_at"]
             attempts_.append({
                 "id": attempt["attempt_id"],
@@ -101,7 +107,6 @@ async def attempts(mode: Literal['reading', 'listening', 'writing', 'speaking'],
             })
 
         await database.close()
-
         return JSONResponse(attempts_)
 
     except Exception as ex:
@@ -164,7 +169,7 @@ async def reading_answers(request: Request, attempt_id: str):
 
 
 @router.get("/reading/{test_id}")
-async def reading(test_id: str):
+async def reading(test_id: str, authorization: str = Header(None)):
     logger.debug(test_id)
     try:
         is_part = "-" in test_id
@@ -186,13 +191,7 @@ async def reading(test_id: str):
             file_id = PART_FILES[0]
 
         await database.initialize()
-        user_row = await database.get_user_from_email("test@test.com")
-        if not user_row:
-            user_row = await database.get_user_from_email("guest@example.com")
-        if not user_row:
-            await database.add_user("Guest", "none", "guest@example.com")
-            user_row = await database.get_user_from_email("guest@example.com")
-        valid_user_id = user_row['id']
+        valid_user_id = await resolve_user_id(authorization)
 
         if not is_part:
             combined_parts = []
@@ -263,7 +262,7 @@ async def reading(test_id: str):
 
 
 @router.get("/writing/{test_id}")
-async def writing(test_id: str):
+async def writing(test_id: str, authorization: str = Header(None)):
     logger.debug(test_id)
     try:
         is_part = "-task" in test_id
@@ -279,7 +278,7 @@ async def writing(test_id: str):
             test_data["durationSeconds"] = 1200 if task_num == 1 else 2400
 
         await database.initialize()
-        valid_user_id = await get_or_create_fallback_user_id()
+        valid_user_id = await resolve_user_id(authorization)
 
         attempt = AttemptModel(
             attempt_id=str(uuid4()),
@@ -353,7 +352,7 @@ async def writing_answers(request: Request, attempt_id: str):
 
 
 @router.get("/speaking/{test_id}")
-async def speaking(test_id: str):
+async def speaking(test_id: str, authorization: str = Header(None)):
     logger.debug(test_id)
     try:
         is_part = "-part" in test_id
@@ -369,7 +368,7 @@ async def speaking(test_id: str):
             test_data["durationSeconds"] = 300 if part_num in [1, 3] else 240
 
         await database.initialize()
-        valid_user_id = await get_or_create_fallback_user_id()
+        valid_user_id = await resolve_user_id(authorization)
 
         attempt = AttemptModel(
             attempt_id=str(uuid4()),
@@ -513,7 +512,7 @@ async def listening_answers(request: Request, attempt_id: str):
     })
 
 @router.get("/listening/{test_id}")
-async def listening(test_id: str):
+async def listening(test_id: str, authorization: str = Header(None)):
     logger.debug(test_id)
     try:
         base_test_id, part_num = parse_part_test_id(test_id)
@@ -552,14 +551,7 @@ async def listening(test_id: str):
         test_data['testId'] = test_id
 
         await database.initialize()
-        user_row = await database.get_user_from_email("test@test.com")
-        if not user_row:
-            user_row = await database.get_user_from_email("guest@example.com")
-        if not user_row:
-            await database.add_user("Guest", "none", "guest@example.com")
-            user_row = await database.get_user_from_email("guest@example.com")
-            
-        valid_user_id = user_row['id']
+        valid_user_id = await resolve_user_id(authorization)
 
         attempt = AttemptModel(
             attempt_id=str(uuid4()), 

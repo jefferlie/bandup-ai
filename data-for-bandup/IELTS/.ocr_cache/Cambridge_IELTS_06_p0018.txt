@@ -1,0 +1,38 @@
+Reading
+running at 50 frames a second and breaks down each part of a swimmer’s performance into
+factors that can be analysed individually — stroke length, stroke frequency, average duration of
+each stroke, velocity, start, lap and finish times, and so on. At the end of each race, SWAN spits
+out data on each swimmer.
+
+D ‘Take a look, says Mason, pulling out a sheet of data. He points out the data on the swimmers in
+second and third place, which shows that the one who finished third actually swam faster: So
+why did he finish 35 hundredths of a second down? ‘His turn times were 44 hundredths of a
+second behind the other guy; says Mason, 'If he can improve on his turns, he can do much
+better’ This is the kind of accuracy that AIS scientists’ research is bringing to a range of sports.
+With the Cooperative Research Centre for Micro Technology in Melbourne, they are
+developing unobtrusive sensors that will be embedded in an athlete's clothes or running shoes
+to monitor heart rate, sweating, heat production or any other factor that might have an impact.
+on an athlete's ability to run. There's more to it than simply measuring performance. Fricker gives
+the example of athletes who may be down with coughs and colds |! or |2 times a year After
+year's of experimentation, AIS and the University of Newcastle in New South Wales developed
+a test that measures how much of the immune-system protein immunoglobulin A is present-in
+athletes’ saliva. If IgA levels suddenly fall below a certain level, training is eased or dropped
+altogether. Soon, IgA levels start rising again, and the danger passes. Since the tests were
+introduced, AIS athletes in all sports have been remarkably successful at staying healthy.
+
+E_ Using data is a complex business. Well before a championship, sports scientists and coaches
+start to prepare the athlete by developing a ‘competition model’, based on what they expect
+will be the winning times. ‘You design the model to make that time; says Mason.'A start of this
+much, each free-swimming period has to be this fast, with a certain stroke frequency and stroke
+length, with turns done in these times’ Alll the training is then geared towards making the athlete
+hit those targets, both overall and for each segment of the race. Techniques like these have
+transformed Australia into arguably the world's most successful sporting nation.
+
+F Ofcourse, there's nothing to stop other countries copying — and many have tried. Some years
+ago, the AIS unveiled coolant-lined jackets for endurance athletes. At the Atlanta Olympic
+Games in 1996, these sliced as much as two per cent off cyclists’ and rowers’ times. Now
+everyone uses them.The same has happened to the ‘altitude tent’, developed by AIS to replicate
+the effect of altitude training at sea level, But Australia’s success story is about more than easily
+copied technological fixes, and up to now no nation has replicated its all-encompassing system.
+
+www.TopSage.com 19

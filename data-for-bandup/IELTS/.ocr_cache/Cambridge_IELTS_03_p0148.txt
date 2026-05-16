@@ -1,0 +1,81 @@
+Tapescripts 
+ 
+ 
+144
+TEST 4 
+SECTION 1 
+ 
+SARAH: 
+John, I’ve just had some good news. Susan has had her baby. 
+JOHN: 
+Do you know when she had it? 
+SARAH: 
+Yesterday. The tenth of August. 
+Example
+JOHN: 
+Oh, my father was born on August the tenth. Give me the details and I’ll make a 
+note for everyone at work. 
+SARAH: 
+OK. 
+JOHN: 
+Well, was it a boy or a girl? 
+SARAH: 
+It’s a boy. 
+JOHN: 
+And what are they going to call him? 
+SARAH: 
+Tom. Tom Lightfoot. It sounds quite good, don’t you think? 
+JOHN: 
+Yes, that has quite a good ring to it. 
+SARAH: 
+JOHN: 
+You know he’s quite a big baby. He weighed four and a quarter kilos when he 
+was born. That does sound big, four and a quarter kilos. 
+Q1
+SARAH: 
+And he’s long too, forty-six centimetres. 
+Q2
+JOHN: 
+Mmmm. Tall parents. He’ll grow up to be over two metres, I’d say. 
+SARAH: 
+With masses of black hair, curly black hair. You know, we should go and visit 
+them in hospital. What about tomorrow afternoon at around 1 pm? 
+JOHN: 
+Yes, OK. 
+SARAH: 
+Where should we meet? ... Ah, I could come and pick you up at your house, if 
+you like. 
+JOHN: 
+Yes, that would be wonderful. My car is still off the road. 
+SARAH: 
+Just refresh my memory. What’s the address again? 
+JOHN: 
+It’s 15 Chesterfield Road, Paddington. 
+SARAH: 
+It’s next to the library, isn’t it? 
+JOHN: 
+Not exactly. It’s next to a bank. The State Bank actually. The library is opposite 
+us, on the corner. 
+Q3/Q4
+SARAH: 
+That’s right, and there’s a garage on the other street corner. I remember now. 
+Q5
+JOHN: 
+So, you’ll pick me up at a quarter to one and we’ll be there at one easily. 
+SARAH: 
+Now what should we take? We must take them something. 
+JOHN: 
+I always think flowers are good to take to someone in hospital, don’t you? 
+SARAH: 
+Well, not really. Everyone always brings flowers and they don’t last. I think it’s 
+much better to take a pot plant, so she can take it home with her. 
+JOHN: 
+Yes, but then she has to remember to water it. What about a big box of 
+chocolates? 
+SARAH: 
+OK, chocolates sound fine. We should get something for the baby too. What do 
+you think? 
+Q6
+JOHN: 
+Yes, you’re right. What do you think of something like baby shampoo or talcum 
+powder?

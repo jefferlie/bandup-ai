@@ -1,0 +1,36 @@
+Test 3 
+- and safety is a basic requirement since no one wants to put themselves or their expensive 
+equipment at risk. With around $500,000 invested so far, a promising system is just emerging 
+from the laboratory. 
+The idea began some 20 years ago, when high-powered lasers were revealing their ability to 
+extract electrons out of atoms and create ions. If a laser could generate a line of ionisation 
+in the air all the way up to a storm cloud, this conducting path could be used to guide 
+lightning to Earth, before the electric field becomes strong enough to break down the air in an 
+uncontrollable surge. To stop the laser itself being struck, it would not be pointed straight at 
+the clouds. Instead it would be directed at a mirror, and from there into the sky. The mirror 
+would be protected by placing lightning conductors close by. Ideally, the cloud-zapper (gun) 
+would be cheap enough to be installed around all key power installations, and portable enough 
+to be taken to international sporting events to beam up at brewing storm clouds. 
+A stumbling block 
+However, there is still a big stumbling block. The laser is no nifty portable: it's a monster 
+that takes up a whole room. Diels is trying to cut down the size and says that a laser around 
+the size of a small table is in the offing. He plans to test this more manageable system on live 
+thunderclouds next summer. 
+Bernstein says that Diels's system is attracting lots of interest from the power companies. 
+But they have not yet come up with the $5 million that EPRI says will be needed to develop a 
+commercial system, by making the lasers yet smaller and cheaper. '1 cannot say 1 have money 
+yet, but I'm working on it,' says Bernstein. He reckons that the forthcoming field tests will be 
+the turning point - and he's hoping for good news. Bernstein predicts 'an avalanche of interest 
+and support' if all goes well. He expects to see cloud-zappers eventually costing $50,000 to 
+$100,000 each. 
+Other scientists could also benefit. With a lightning 'switch' at their fingertips, materials 
+scientists could find out what happens when mighty currents meet matter. Diels also hopes to 
+see the birth of 'interactive meteorology' - not just forecasting the weather but controlling it. 
+'If we could discharge clouds, we might affect the weather,' he says. 
+And perhaps, says Diels, we'll be able to confront some other meteorological menaces. 'We 
+think we could prevent hail by inducing lightning,' he says. Thunder, the shock wave that 
+comes from a lightning flash, is thought to be the trigger for the torrential rain that is typical 
+of storms. A laser thunder factory could shake the moisture out of douds, perhaps preventing 
+the formation of the giant hailstones that threaten crops., With luck, as the storm douds 
+gather this winter, laser-toting researchers could, for the first time, strike back. 
+66

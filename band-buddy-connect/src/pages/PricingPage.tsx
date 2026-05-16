@@ -1,70 +1,94 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import { Check, Zap, Star, Crown } from "lucide-react";
 import { useAuth } from "../hooks/useAuth";
+import { apiRequest } from "@/lib/apiClient";
 
 const PLANS = [
   {
     id: "free",
-    name: "Бесплатный",
+    name: "Free",
     icon: <Zap className="w-6 h-6" />,
     priceMonthly: 0,
     priceYearly: 0,
-    description: "Для тех, кто только начинает",
+    description: "Perfect for getting started",
     color: "border-border",
     badge: null,
+    priceId: null,
     features: [
-      "5 практических заданий в день",
-      "Базовая обратная связь от AI",
-      "Доступ к библиотеке тестов (ограничено)",
-      "Прогресс-трекер",
+      "5 practice tasks per day",
+      "Basic AI feedback",
+      "Limited test library access",
+      "Progress tracker",
     ],
     notIncluded: [
-      "Неограниченные задания",
-      "Детальный анализ ошибок",
-      "Персональный план обучения",
-      "Приоритетная поддержка",
+      "Unlimited practice tasks",
+      "Detailed error analysis",
+      "Personalized study plan",
+      "Priority support",
     ],
   },
   {
     id: "monthly",
-    name: "Стандарт",
+    name: "Standard",
     icon: <Star className="w-6 h-6" />,
     priceMonthly: 4990,
     priceYearly: 49900,
-    description: "Лучший выбор для активной подготовки",
+    description: "Best choice for active preparation",
     color: "border-primary ring-2 ring-primary",
-    badge: "Популярный",
+    badge: "Popular",
+    priceId: "price_monthly",
     features: [
-      "Неограниченные практические задания",
-      "Детальная обратная связь от AI",
-      "Полный доступ к библиотеке тестов",
-      "Персональный план обучения",
-      "Анализ слабых мест",
-      "История всех попыток",
-      "Поддержка в чате",
+      "Unlimited practice tasks",
+      "Detailed AI feedback",
+      "Full test library access",
+      "Personalized study plan",
+      "Weak-spot analysis",
+      "Full attempt history",
+      "Chat support",
     ],
-    notIncluded: ["Приоритетная поддержка 24/7", "Индивидуальные сессии"],
+    notIncluded: ["24/7 priority support", "One-on-one sessions"],
   },
   {
     id: "yearly",
-    name: "Премиум",
+    name: "Premium",
     icon: <Crown className="w-6 h-6" />,
     priceMonthly: 8990,
     priceYearly: 89900,
-    description: "Максимальные возможности для достижения высшего балла",
+    description: "Maximum tools for top scores",
     color: "border-yellow-400 ring-2 ring-yellow-400",
-    badge: "Лучшая цена",
+    badge: "Best value",
+    priceId: "price_yearly",
     features: [
-      "Всё из тарифа «Стандарт»",
-      "Приоритетная поддержка 24/7",
-      "Расширенная аналитика прогресса",
-      "Эксклюзивные учебные материалы",
-      "Симуляция реального экзамена",
-      "Персональный AI-куратор",
-      "Скидка 17% при оплате за год",
+      "Everything in Standard",
+      "24/7 priority support",
+      "Advanced progress analytics",
+      "Exclusive study materials",
+      "Real exam simulation",
+      "Personal AI tutor",
+      "17% off with annual billing",
     ],
     notIncluded: [],
+  },
+];
+
+const FAQ = [
+  {
+    q: "Can I cancel my subscription?",
+    a: "Yes, you can cancel anytime. Access continues until the end of your paid period.",
+  },
+  {
+    q: "What payment methods are accepted?",
+    a: "We accept Visa, Mastercard, and Kaspi Pay.",
+  },
+  {
+    q: "Is there a free trial?",
+    a: "The Free plan lets you explore the platform with no time limit.",
+  },
+  {
+    q: "Does it support SAT prep?",
+    a: "Yes, the platform supports preparation for both IELTS and SAT.",
   },
 ];
 
@@ -72,8 +96,9 @@ const PricingPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const [billing, setBilling] = useState<"monthly" | "yearly">("monthly");
+  const [loadingPlanId, setLoadingPlanId] = useState<string | null>(null);
 
-  const handleSelect = (planId: string) => {
+  const handleSelect = async (planId: string, priceId: string | null) => {
     if (planId === "free") {
       navigate(user ? "/dashboard" : "/register");
       return;
@@ -82,7 +107,26 @@ const PricingPage = () => {
       navigate("/register");
       return;
     }
-    navigate("/settings");
+    if (!priceId) return;
+
+    setLoadingPlanId(planId);
+    try {
+      const res = await apiRequest<{ checkout_url: string }>(
+        "/payments/create-checkout-session",
+        {
+          method: "POST",
+          body: { price_id: priceId },
+        }
+      );
+      if (res.checkout_url) {
+        window.location.href = res.checkout_url;
+      }
+    } catch {
+      // Fall back to settings so user can use promo code
+      navigate("/settings");
+    } finally {
+      setLoadingPlanId(null);
+    }
   };
 
   return (
@@ -90,9 +134,9 @@ const PricingPage = () => {
       <Header showAuth={true} />
       <main className="flex-1 max-w-5xl mx-auto px-4 py-16 w-full">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-foreground mb-4">Тарифные планы</h1>
+          <h1 className="text-4xl font-bold text-foreground mb-4">Pricing Plans</h1>
           <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-            Выберите подходящий план и начните эффективную подготовку к IELTS или SAT уже сегодня.
+            Choose the right plan and start preparing for IELTS or SAT today.
           </p>
           <div className="mt-6 inline-flex items-center bg-muted rounded-full p-1 gap-1">
             <button
@@ -101,7 +145,7 @@ const PricingPage = () => {
                 billing === "monthly" ? "bg-background shadow text-foreground" : "text-muted-foreground"
               }`}
             >
-              Ежемесячно
+              Monthly
             </button>
             <button
               onClick={() => setBilling("yearly")}
@@ -109,7 +153,7 @@ const PricingPage = () => {
                 billing === "yearly" ? "bg-background shadow text-foreground" : "text-muted-foreground"
               }`}
             >
-              Ежегодно
+              Yearly
               <span className="ml-2 text-xs bg-green-100 text-green-700 px-1.5 py-0.5 rounded-full">−17%</span>
             </button>
           </div>
@@ -118,6 +162,7 @@ const PricingPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {PLANS.map((plan) => {
             const price = billing === "yearly" ? plan.priceYearly : plan.priceMonthly;
+            const isLoading = loadingPlanId === plan.id;
             return (
               <div
                 key={plan.id}
@@ -142,7 +187,7 @@ const PricingPage = () => {
 
                 <div className="mb-6">
                   {price === 0 ? (
-                    <p className="text-3xl font-bold">Бесплатно</p>
+                    <p className="text-3xl font-bold">Free</p>
                   ) : (
                     <div>
                       <p className="text-3xl font-bold">
@@ -150,7 +195,7 @@ const PricingPage = () => {
                         <span className="text-base font-normal text-muted-foreground"> ₸</span>
                       </p>
                       <p className="text-xs text-muted-foreground mt-0.5">
-                        {billing === "monthly" ? "в месяц" : "в год"}
+                        {billing === "monthly" ? "per month" : "per year"}
                       </p>
                     </div>
                   )}
@@ -172,16 +217,21 @@ const PricingPage = () => {
                 </ul>
 
                 <button
-                  onClick={() => handleSelect(plan.id)}
+                  onClick={() => void handleSelect(plan.id, plan.priceId)}
+                  disabled={isLoading}
                   className={
                     plan.id === "free"
                       ? "btn-secondary w-full"
                       : plan.id === "yearly"
-                      ? "w-full py-2.5 rounded-lg bg-yellow-400 hover:bg-yellow-500 text-black font-semibold transition-colors"
-                      : "btn-primary w-full"
+                      ? "w-full py-2.5 rounded-lg bg-yellow-400 hover:bg-yellow-500 text-black font-semibold transition-colors disabled:opacity-60"
+                      : "btn-primary w-full disabled:opacity-60"
                   }
                 >
-                  {plan.id === "free" ? "Начать бесплатно" : "Выбрать план"}
+                  {isLoading
+                    ? "Redirecting..."
+                    : plan.id === "free"
+                    ? "Get Started Free"
+                    : "Choose Plan"}
                 </button>
               </div>
             );
@@ -189,26 +239,9 @@ const PricingPage = () => {
         </div>
 
         <div className="mt-16 bg-accent rounded-2xl p-8 text-center">
-          <h2 className="text-2xl font-bold mb-3">Часто задаваемые вопросы</h2>
+          <h2 className="text-2xl font-bold mb-3">Frequently Asked Questions</h2>
           <div className="grid md:grid-cols-2 gap-6 text-left mt-6 max-w-3xl mx-auto">
-            {[
-              {
-                q: "Можно ли отменить подписку?",
-                a: "Да, вы можете отменить подписку в любое время. Доступ сохраняется до конца оплаченного периода.",
-              },
-              {
-                q: "Как оплатить?",
-                a: "Принимаем оплату картами Visa, Mastercard, а также через Kaspi Pay.",
-              },
-              {
-                q: "Есть ли пробный период?",
-                a: "Бесплатный тариф позволяет оценить платформу без ограничений по времени.",
-              },
-              {
-                q: "Подходит ли для SAT?",
-                a: "Да, платформа поддерживает подготовку как к IELTS, так и к SAT.",
-              },
-            ].map((faq) => (
+            {FAQ.map((faq) => (
               <div key={faq.q}>
                 <p className="font-semibold mb-1">{faq.q}</p>
                 <p className="text-sm text-muted-foreground">{faq.a}</p>
@@ -221,6 +254,4 @@ const PricingPage = () => {
   );
 };
 
-// useState imported inline
-import { useState } from "react";
 export default PricingPage;

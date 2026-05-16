@@ -1,0 +1,43 @@
+Test 4
+SECTION 1
+CLERK: Conference Centre Reservations, Good morning.
+WOMAN: Hi. I’m interested in the computing conference next month.
+CLERK: Future Directions in Computing? Example
+WOMAN: Yes, that’s right. Could I ask you a few questions about it?
+CLERK: Of course.
+WOMAN: OK. I know the conference is for three days but actually I want to
+attend on the Friday and Saturday only. Will that work out to be any
+cheaper?
+CLERK: Let me have a look. Well, you could register for the two days separately,
+but that wouldn't actually save you very much as it still costs £35 for
+each day. In fact, if you could register for the three days, you also get
+an invitation to a free dinner on the Saturday night, so that’s probably
+the better option.
+WOMAN: Right, I'll do that. How much will the fees be in that case?
+CLERK: It’s £75. Ql
+WOMAN: All right. I'd like to register for the full three days. Now, can I pay that
+by credit card?
+CLERK: I'm afraid not. You'll have to send a cheque to us, or you can pay at Q2
+the conference office.
+WOMAN: Fine. So it’s probably easiest if I pay by cheque. Now then, what else
+do I need to arrange? Right. How about accommodation? I guess
+that’s not included in the price?
+CLERK: No, I’m sorry, it’s not, but we do have a few rooms available for
+delegates at the conference centre if you'd like. Those are very cheap but
+if you're interested you'll nced to book soon, because there’s always a
+heavy demand for them. They are only £15 per night, but they are very Q3
+basic and you'd have to get your own breakfast, because they don’t
+provide you with that. But it’s very convenient, because it’s in the same
+building as the conference rooms.
+WOMAN: Uhuh.
+CLERK: Or there’s a very reasonable guest house which is £25 per night. AndI Q4
+think that includes your breakfast.
+WOMAN: Is it close to the conference centre?
+CLERK: It would be about a ten-minute walk away from here. Q5
+WOMAN: I see. That sounds quite reasonable.
+CLERK: The details are all in our conference pack, which I'll send you. Q6
+WOMAN: Great, thanks, That'll be very useful. Oh, and can you also send me an
+application form?
+CLERK: Of course. I’ll get that in the post to you straight away. Is there
+anything else?
+www.TopSage.com 145

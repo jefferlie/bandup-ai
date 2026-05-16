@@ -296,6 +296,10 @@ class Users_DB:
                         );
                     """)
                     await conn.execute("""
+                        CREATE UNIQUE INDEX IF NOT EXISTS idx_users_email
+                        ON users(email);
+                    """)
+                    await conn.execute("""
                         ALTER TABLE users
                         ADD COLUMN IF NOT EXISTS role VARCHAR(20) NOT NULL DEFAULT 'student';
                     """)
@@ -363,6 +367,50 @@ class Users_DB:
                             created_at TIMESTAMP NOT NULL DEFAULT NOW(),
                             updated_at TIMESTAMP NOT NULL DEFAULT NOW()
                         );
+                    """)
+                    await conn.execute("""
+                        CREATE TABLE IF NOT EXISTS attempts (
+                            attempt_id TEXT PRIMARY KEY,
+                            user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+                            mode VARCHAR(16) NOT NULL,
+                            test_id TEXT NOT NULL,
+                            test_title TEXT NOT NULL,
+                            submitted_at TIMESTAMP,
+                            score_label TEXT,
+                            status VARCHAR(16)
+                        );
+                    """)
+                    await conn.execute("""
+                        CREATE INDEX IF NOT EXISTS idx_attempts_user_id
+                        ON attempts(user_id, submitted_at DESC);
+                    """)
+                    await conn.execute("""
+                        CREATE TABLE IF NOT EXISTS sessions (
+                            token TEXT PRIMARY KEY,
+                            user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+                            created_at TIMESTAMP NOT NULL DEFAULT NOW()
+                        );
+                    """)
+                    await conn.execute("""
+                        CREATE TABLE IF NOT EXISTS promo_redemptions (
+                            id SERIAL PRIMARY KEY,
+                            user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+                            promo_code TEXT NOT NULL,
+                            redeemed_at TIMESTAMP NOT NULL DEFAULT NOW(),
+                            UNIQUE(user_id, promo_code)
+                        );
+                    """)
+                    await conn.execute("""
+                        CREATE UNIQUE INDEX IF NOT EXISTS idx_subscriptions_user_id
+                        ON subscriptions(user_id);
+                    """)
+                    await conn.execute("""
+                        CREATE INDEX IF NOT EXISTS idx_subscriptions_customer_id
+                        ON subscriptions(stripe_customer_id);
+                    """)
+                    await conn.execute("""
+                        CREATE INDEX IF NOT EXISTS idx_sessions_user_id
+                        ON sessions(user_id);
                     """)
             return 0
 
@@ -567,6 +615,19 @@ class Users_DB:
                 result = await conn.fetch(
                     "SELECT * FROM attempts WHERE user_id=$1 ORDER BY submitted_at DESC NULLS LAST",
                     user_id,
+                )
+                return result
+        except Exception as ex:
+            logger.error(ex)
+            return []
+
+    async def get_user_mode_attempts(self, user_id: int, mode: str):
+        try:
+            async with self._pool.acquire() as conn:
+                result = await conn.fetch(
+                    "SELECT * FROM attempts WHERE user_id=$1 AND mode=$2 AND status IS NOT NULL ORDER BY submitted_at DESC NULLS LAST",
+                    user_id,
+                    mode,
                 )
                 return result
         except Exception as ex:
@@ -910,6 +971,88 @@ class Users_DB:
     async def close(self):
         """No-op for pool-based connections. Pool lives for the app lifetime."""
         pass
+
+    async def create_session(self, token: str, user_id: int):
+        try:
+            async with self._pool.acquire() as conn:
+                await conn.execute(
+                    "INSERT INTO sessions (token, user_id) VALUES ($1, $2) ON CONFLICT (token) DO NOTHING",
+                    token,
+                    user_id,
+                )
+            return 0
+        except Exception as ex:
+            logger.error(ex)
+            return 1
+
+    async def get_user_by_token(self, token: str):
+        try:
+            async with self._pool.acquire() as conn:
+                result = await conn.fetchrow(
+                    """SELECT u.id, u.full_name, u.email, u.role, u.is_admin, u.created_at
+                       FROM sessions s
+                       JOIN users u ON s.user_id = u.id
+                       WHERE s.token = $1""",
+                    token,
+                )
+                return result
+        except Exception as ex:
+            logger.error(ex)
+            return None
+
+    async def delete_session(self, token: str):
+        try:
+            async with self._pool.acquire() as conn:
+                await conn.execute("DELETE FROM sessions WHERE token = $1", token)
+            return 0
+        except Exception as ex:
+            logger.error(ex)
+            return 1
+
+    async def redeem_promo(self, user_id: int, promo_code: str):
+        try:
+            async with self._pool.acquire() as conn:
+                await conn.execute(
+                    "INSERT INTO promo_redemptions (user_id, promo_code) VALUES ($1, $2)",
+                    user_id,
+                    promo_code,
+                )
+            return 0
+        except Exception as ex:
+            logger.error(ex)
+            return 1
+
+    async def has_redeemed_promo(self, user_id: int, promo_code: str) -> bool:
+        try:
+            async with self._pool.acquire() as conn:
+                exists = await conn.fetchval(
+                    "SELECT EXISTS (SELECT 1 FROM promo_redemptions WHERE user_id=$1 AND promo_code=$2)",
+                    user_id,
+                    promo_code,
+                )
+                return bool(exists)
+        except Exception as ex:
+            logger.error(ex)
+            return False
+
+    async def has_full_access(self, user_id: int) -> bool:
+        """Returns True if the user has an active subscription or has redeemed a promo."""
+        try:
+            async with self._pool.acquire() as conn:
+                active_sub = await conn.fetchval(
+                    "SELECT EXISTS (SELECT 1 FROM subscriptions WHERE user_id=$1 AND status='active')",
+                    user_id,
+                )
+                if active_sub:
+                    return True
+                promo = await conn.fetchval(
+                    "SELECT EXISTS (SELECT 1 FROM promo_redemptions WHERE user_id=$1)",
+                    user_id,
+                )
+                return bool(promo)
+        except Exception as ex:
+            logger.error(ex)
+            return False
 
 
 async def main():

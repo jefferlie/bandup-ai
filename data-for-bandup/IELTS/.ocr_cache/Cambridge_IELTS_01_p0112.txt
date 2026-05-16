@@ -1,0 +1,75 @@
+107
+Tapescripts
+PRACTICE TEST 1
+SECTION 1
+R = Receptionist
+W = Woman
+P = Police Officer
+R:
+Good evening, City Police Station. Can I help you?
+W:
+Oh hello, I’d like to report a stolen briefcase, please.
+Example
+R:
+Just a minute and I’ll put you through.
+Repeat
+P:
+Lost property. Can I help you?
+W:
+Oh, yes. I’ve had my briefcase stolen.
+P:
+OK  … I’ll take some details … Tell me what it looks like, first of all.
+W:
+Well … it’s a soft leather one, you know, not a heavy box-type like a man’s.
+P:
+Mmm … and how does it close?
+W:
+It’s got buckles at the front ... two of them They’re gold-plated ones.
+Q1
+P:
+Fine … Was it locked?
+W:
+No, I’m afraid not.
+P:
+Never mind. Any distinguishing features?
+W:
+Pardon?
+P:
+Any marks or badges on it that make it stand out?
+W:
+Only the brand name.
+P:
+And where’s that?
+W:
+It’s on the back … at the bottom in the left-hand corner. It’s Sagi. Oh and
+Q2
+there’s a scratch … it’s quite bad but small … directly above the brand
+name. I did it recently putting it on my bike.
+P:
+Right, got that. So, what did you have inside the briefcase?
+W:
+Well all my papers from college. It’s so frustrating but, thank goodness for
+computers, I haven’t lost them completely!
+P:
+Yes, you’re lucky.
+W:
+I had my wallet in my pocket so I didn’t lose that but there were also my pens
+Q3
+which I got for my birthday and a novel I was planning to read on the train.
+P:
+Right. Where exactly did you lose the briefcase?
+W:
+Well … I couldn’t believe it. I was standing on the platform … it was right
+next to me.
+P:
+You were holding it?
+W:
+I’d just put it down on the floor but I could almost feel it beside me. I was
+Q4
+watching for my tram because sometimes it comes early and then next time I
+looked, my briefcase wasn’t there.
+P:
+And what time was this?
+W:
+Ah … it was … it must have been about 5.20 … no a bit later. I’d say 5.30
+Q5

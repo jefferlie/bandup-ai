@@ -4,6 +4,25 @@ import DashboardLayout from "../components/DashboardLayout";
 import { useAuth } from "../hooks/useAuth";
 import ApiErrorState from "../components/ApiErrorState";
 import { settingsService, type UserSettings } from "../services/settingsService";
+import { apiRequest, ApiError } from "@/lib/apiClient";
+
+interface SubscriptionStatus {
+  status: string;
+  hasFullAccess: boolean;
+  subscription?: {
+    plan?: string;
+    current_period_end?: string;
+  } | null;
+}
+
+interface PaymentHistoryItem {
+  id: string;
+  amount: number;
+  currency: string;
+  status: string;
+  created_at: string;
+  description?: string;
+}
 
 const Settings = () => {
   const { user } = useAuth();
@@ -11,6 +30,9 @@ const Settings = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [statusMessage, setStatusMessage] = useState("");
+  const [promoCode, setPromoCode] = useState("");
+  const [promoStatus, setPromoStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [promoMessage, setPromoMessage] = useState("");
   const [form, setForm] = useState<UserSettings | null>(null);
 
   const {
@@ -21,6 +43,18 @@ const Settings = () => {
   } = useQuery({
     queryKey: ["settings", user?.email],
     queryFn: () => settingsService.fetchSettings(user?.email),
+    enabled: !!user,
+  });
+
+  const { data: subscriptionData } = useQuery({
+    queryKey: ["subscription-status"],
+    queryFn: () => apiRequest<SubscriptionStatus>("/payments/subscription-status"),
+    enabled: !!user,
+  });
+
+  const { data: historyData } = useQuery({
+    queryKey: ["payment-history"],
+    queryFn: () => apiRequest<{ payments: PaymentHistoryItem[] }>("/payments/history"),
     enabled: !!user,
   });
 
@@ -91,6 +125,38 @@ const Settings = () => {
         [section]: value,
       };
     });
+  };
+
+  const handlePromoRedeem = async () => {
+    const code = promoCode.trim();
+    if (!code || promoStatus === "loading") return;
+    setPromoStatus("loading");
+    setPromoMessage("");
+    try {
+      const res = await apiRequest<{ success: boolean; message: string }>("/api/promo/redeem", {
+        method: "POST",
+        body: { code },
+      });
+      if (res.success) {
+        setPromoStatus("success");
+        setPromoMessage(res.message || "Full access activated!");
+      }
+    } catch (err) {
+      if (err instanceof ApiError) {
+        if (err.status === 409) {
+          setPromoMessage("You've already redeemed this code.");
+        } else if (err.status === 400) {
+          setPromoMessage("This promo code is not valid.");
+        } else if (err.status === 429) {
+          setPromoMessage("Too many attempts. Try again later.");
+        } else {
+          setPromoMessage("Something went wrong. Please try again.");
+        }
+      } else {
+        setPromoMessage("Something went wrong. Please try again.");
+      }
+      setPromoStatus("error");
+    }
   };
 
   if (isLoading || !form) {
@@ -552,6 +618,86 @@ const Settings = () => {
           </div>
 
           <div className="flex flex-col gap-6 lg:col-span-1">
+            <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <h2 className="mb-4 text-lg font-bold text-slate-900 dark:text-white">Promo Code</h2>
+              {promoStatus === "success" ? (
+                <div className="flex items-center gap-2 rounded-lg bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 px-4 py-3">
+                  <span className="material-symbols-outlined text-green-600 dark:text-green-400 text-[20px]">check_circle</span>
+                  <span className="text-sm font-medium text-green-800 dark:text-green-300">{promoMessage}</span>
+                </div>
+              ) : (
+                <>
+                  <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">
+                    Have a promo code? Enter it below to unlock full access.
+                  </p>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={promoCode}
+                      onChange={(e) => setPromoCode(e.target.value)}
+                      onKeyDown={(e) => { if (e.key === "Enter") void handlePromoRedeem(); }}
+                      placeholder="Enter promo code"
+                      disabled={promoStatus === "loading"}
+                      className="flex-1 h-9 px-3 border border-slate-200 dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-sm placeholder:text-slate-400 disabled:opacity-50"
+                    />
+                    <button
+                      onClick={() => void handlePromoRedeem()}
+                      disabled={promoStatus === "loading" || !promoCode.trim()}
+                      className="h-9 px-4 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary/90 disabled:opacity-50 transition-colors"
+                    >
+                      {promoStatus === "loading" ? "..." : "Apply"}
+                    </button>
+                  </div>
+                  {promoStatus === "error" && (
+                    <p className="mt-2 text-xs text-red-500">{promoMessage}</p>
+                  )}
+                </>
+              )}
+            </div>
+
+            <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+              <h2 className="mb-4 text-lg font-bold text-slate-900 dark:text-white">Subscription</h2>
+              {subscriptionData ? (
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center gap-2">
+                    <span className={`inline-block w-2 h-2 rounded-full ${subscriptionData.hasFullAccess ? "bg-green-500" : "bg-slate-400"}`} />
+                    <span className="text-sm font-medium text-slate-900 dark:text-white capitalize">
+                      {subscriptionData.status === "active" ? "Active" : subscriptionData.hasFullAccess ? "Full Access" : "Free Plan"}
+                    </span>
+                  </div>
+                  {subscriptionData.subscription?.plan && (
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                      Plan: {subscriptionData.subscription.plan}
+                    </p>
+                  )}
+                  {subscriptionData.subscription?.current_period_end && (
+                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                      Renews: {new Date(subscriptionData.subscription.current_period_end).toLocaleDateString()}
+                    </p>
+                  )}
+                  {historyData?.payments && historyData.payments.length > 0 && (
+                    <div className="mt-2 border-t border-slate-100 dark:border-slate-800 pt-3">
+                      <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-2">Recent Payments</p>
+                      <ul className="flex flex-col gap-1.5">
+                        {historyData.payments.slice(0, 3).map((p) => (
+                          <li key={p.id} className="flex items-center justify-between text-xs">
+                            <span className="text-slate-600 dark:text-slate-300">
+                              {p.description || new Date(p.created_at).toLocaleDateString()}
+                            </span>
+                            <span className="font-medium text-slate-900 dark:text-white">
+                              {new Intl.NumberFormat("ru-KZ").format(p.amount / 100)} {p.currency?.toUpperCase()}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <p className="text-sm text-slate-500 dark:text-slate-400">Free Plan</p>
+              )}
+            </div>
+
             <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
               <h2 className="mb-4 text-lg font-bold text-slate-900 dark:text-white">
                 Notifications
